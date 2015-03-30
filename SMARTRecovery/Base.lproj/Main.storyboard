@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lyn-FN-jxJ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--CBA's-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="SMRListCostBenefitsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,9 +18,102 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="CBA's" id="fll-HC-df1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3bo-D9-ysO">
+                            <connections>
+                                <segue destination="Fez-iU-gJ5" kind="showDetail" id="lcV-kT-WaC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1142" y="361"/>
+        </scene>
+        <!--Edit Cost Benefit View Controller-->
+        <scene sceneID="07c-R7-Q4L">
+            <objects>
+                <viewController id="8qZ-py-Opz" customClass="SMREditCostBenefitViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zlf-8v-D7u"/>
+                        <viewControllerLayoutGuide type="bottom" id="e6W-VS-sAE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q16-Jk-cgs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-IN-iw1">
+                                <rect key="frame" x="24" y="104" width="552" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j6w-IN-iw1" firstAttribute="leading" secondItem="Q16-Jk-cgs" secondAttribute="leadingMargin" constant="8" id="aCi-MJ-jfG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j6w-IN-iw1" secondAttribute="trailing" constant="8" id="cWL-me-Zgr"/>
+                            <constraint firstItem="j6w-IN-iw1" firstAttribute="top" secondItem="Zlf-8v-D7u" secondAttribute="bottom" constant="40" id="pHa-A2-IcZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nbV-xV-eIG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eqe-Wo-rAP">
+                            <connections>
+                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="vz8-R4-j08"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NgT-Mb-fd5">
+                            <connections>
+                                <action selector="saveTapped:" destination="8qZ-py-Opz" id="L4o-tP-XnA"/>
+                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="JgV-K7-VUu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iyl-Vk-wmO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OFc-KI-wXK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2693" y="361"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oxe-sH-ACk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sal-eI-PAl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="my1-Vq-ZMt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9E-qT-BxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="303" y="-332"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qow-EB-6Eg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dV-8l-1XQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8qZ-py-Opz" kind="relationship" relationship="rootViewController" id="PKM-vd-eHa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUL-Kc-fgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="366"/>
         </scene>
     </scenes>
 </document>

@@ -13,4 +13,6 @@
 
 + (SMRCostBenefit *)createCostBenefitInContext:(NSManagedObjectContext *)context;
 
++ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context;
+
 @end

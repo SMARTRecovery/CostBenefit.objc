@@ -15,4 +15,15 @@
     return [NSEntityDescription insertNewObjectForEntityForName:@"SMRCostBenefit" inManagedObjectContext:context];
 }
 
++ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefit"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSError *error = nil;
+
+    return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
+}
 @end

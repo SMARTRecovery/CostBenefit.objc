@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SMRCoreDataStack.h"
+#import "SMRListCostBenefitsViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,26 @@
 
 @implementation AppDelegate
 
+- (NSURL*)storeURL
+{
+    NSURL* documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
+    return [documentsDirectory URLByAppendingPathComponent:@"db.sqlite"];
+}
+
+- (NSURL*)modelURL
+{
+    return [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    UINavigationController *rootNavVC = (UINavigationController *) self.window.rootViewController;
+    SMRListCostBenefitsViewController *initialVC = (SMRListCostBenefitsViewController *)rootNavVC.topViewController;
+
+    SMRCoreDataStack *coreDataStack = [[SMRCoreDataStack alloc] initWithStoreURL:[self storeURL] modelURL:[self modelURL]];
+
+    initialVC.context = coreDataStack.managedObjectContext;
+
     return YES;
 }
 
