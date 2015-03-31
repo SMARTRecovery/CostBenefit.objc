@@ -12,19 +12,42 @@
 
 @interface SMRListCostBenefitsViewController ()
 
+@property (strong, nonatomic) NSMutableArray *costBenefits;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation SMRListCostBenefitsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-     NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.context];
-     NSLog(@"%@", costBenefits);
+     self.costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.context];
+    NSLog(@"%@", self.costBenefits);
+    [self.tableView reloadData];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.costBenefits count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitCell" forIndexPath:indexPath];
+
+    SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
+    cell.textLabel.text = costBenefit.title;
+
+    return cell;
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
@@ -38,9 +61,7 @@
         NSError *error;
         [self.context save:&error];
     }
-
-//        [self.tableView reloadData];
-//        [self viewDidLoad];
+    [self viewDidAppear:YES];
 
 }
 

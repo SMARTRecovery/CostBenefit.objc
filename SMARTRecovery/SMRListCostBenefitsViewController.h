@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SMRListCostBenefitsViewController : UIViewController
+@interface SMRListCostBenefitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
