@@ -34,6 +34,23 @@
     return 4;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    switch (section) {
+        case 0:
+            return @"Pros of doing";
+        case 1:
+            return @"Cons of doing";
+        case 2:
+            return @"Pros of not doing";
+        case 3:
+            return @"Cons of not doing";
+        default:
+            break;
+    }
+    return @"";
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
