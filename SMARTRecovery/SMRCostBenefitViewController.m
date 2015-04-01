@@ -11,6 +11,7 @@
 
 @interface SMRCostBenefitViewController ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -61,11 +62,12 @@
 
 #pragma mark - Navigation
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *destNavVC = [segue destinationViewController];
-    SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
-    [destVC setContext:self.context];
+    if (sender != self.addButton) {
+        UINavigationController *destNavVC = [segue destinationViewController];
+        SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
+        [destVC setContext:self.context];
+    }
 }
 
 @end
