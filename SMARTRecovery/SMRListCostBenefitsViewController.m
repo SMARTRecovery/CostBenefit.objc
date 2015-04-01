@@ -9,10 +9,12 @@
 #import "SMRListCostBenefitsViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitViewController.h"
 
 @interface SMRListCostBenefitsViewController ()
 
 @property (strong, nonatomic) NSMutableArray *costBenefits;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -68,14 +70,19 @@
 
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (sender != self.addButton) {
+        UINavigationController *destNavVC = (UINavigationController *)[segue destinationViewController];
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        [destVC setCostBenefit:self.costBenefits[indexPath.row]];
+        [destVC setContext:self.context];
+    }
 }
-*/
+
 
 @end
