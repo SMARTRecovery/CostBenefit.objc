@@ -57,6 +57,9 @@
         SMRCostBenefit *costBenefit;
         costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         costBenefit.title = source.costBenefitTitle;
+        // Hard coded for now.
+        // @todo: Select switch for substance|activity.
+        costBenefit.type = @"substance";
         NSLog(@"source.costBenefitTitle = %@", source.costBenefitTitle);
         NSError *error;
         [self.context save:&error];
