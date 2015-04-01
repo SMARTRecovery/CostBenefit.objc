@@ -181,13 +181,33 @@
                     <view key="view" contentMode="scaleToFill" id="let-9E-98h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
+                                <rect key="frame" x="8" y="163" width="584" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leading" constant="8" id="IkD-DQ-JOB"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="trailing" secondItem="let-9E-98h" secondAttribute="trailingMargin" constant="8" id="NK0-5p-ble"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="svj-wt-t3F" secondAttribute="bottom" constant="99" id="iv1-PH-F5v"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
+                            <connections>
+                                <segue destination="VX8-Ln-rMA" kind="unwind" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="UNF-jl-JOI" id="EzH-UI-7yI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VX8-Ln-rMA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4317" y="1096"/>
         </scene>

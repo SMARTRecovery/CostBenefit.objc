@@ -9,6 +9,7 @@
 #import "SMRCostBenefitItemViewController.h"
 
 @interface SMRCostBenefitItemViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
 @end
 
