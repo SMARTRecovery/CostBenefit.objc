@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitItem+methods.h"
 
 @interface SMRCostBenefitItemViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
+@property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 
 @end

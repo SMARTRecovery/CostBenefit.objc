@@ -20,7 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if (self.costBenefitItem != nil) {
+        self.titleTextField.text = self.costBenefitItem.title;
+    }
 }
 
 

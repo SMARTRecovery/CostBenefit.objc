@@ -82,7 +82,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-IN-iw1">
                                 <rect key="frame" x="24" y="104" width="552" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -137,6 +137,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vKQ-Rk-Ne1" id="bBS-nc-rmr">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="NgB-nw-OMp" kind="show" id="Y8a-ki-Rmu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -163,6 +166,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="VY3-NC-y3Z" id="HJi-oO-UVC"/>
+                        <outlet property="backButton" destination="7Ic-8S-5rq" id="Hda-md-IOB"/>
                         <outlet property="tableView" destination="JR5-w7-UxO" id="7mc-cT-7bD"/>
                     </connections>
                 </viewController>
@@ -182,9 +186,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
                                 <rect key="frame" x="8" y="163" width="584" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -195,6 +199,9 @@
                             <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="svj-wt-t3F" secondAttribute="bottom" constant="99" id="iv1-PH-F5v"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="trash" id="hKI-sB-Lls"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
@@ -269,13 +276,16 @@
         <!--Navigation Controller-->
         <scene sceneID="L4V-wz-bEe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZLO-dD-4Ki">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8it-hN-PeC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Gcp-fH-Op0" kind="relationship" relationship="rootViewController" id="QKS-hE-11Z"/>
                     </connections>
@@ -285,4 +295,7 @@
             <point key="canvasLocation" x="3505" y="1096"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y8a-ki-Rmu"/>
+    </inferredMetricsTieBreakers>
 </document>

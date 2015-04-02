@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSMutableArray *items;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -36,7 +37,7 @@
 - (void) getItemTitles {
     self.items = [[NSMutableArray alloc] init];
     for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
-        [self.items addObject:item.title];
+        [self.items addObject:item];
     }
     [self.tableView reloadData];
 }
@@ -76,7 +77,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
-    cell.textLabel.text = self.items[indexPath.row];
+    SMRCostBenefitItem *item = self.items[indexPath.row];
+    cell.textLabel.text = item.title;
     return cell;
 }
 
@@ -88,7 +90,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
-    if (sender != self.addButton) {
+    if (sender == self.backButton) {
         SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
     }
@@ -96,6 +98,11 @@
         SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
+        if (sender != self.addButton) {
+            UITableViewCell *cell = (UITableViewCell *)sender;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+            [destVC setCostBenefitItem:self.items[indexPath.row]];
+        }
     }
 }
 
