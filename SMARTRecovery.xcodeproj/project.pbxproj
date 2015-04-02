@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B21989B31ACD83D700B91322 /* SMRCostBenefitItem+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */; };
 		B242D7C11ACC182500EC791D /* SMRCostBenefitItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */; };
 		B26BE5B21AC114C2001ABA41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5B11AC114C2001ABA41 /* main.m */; };
 		B26BE5B51AC114C2001ABA41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5B41AC114C2001ABA41 /* AppDelegate.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B21989B11ACD83D700B91322 /* SMRCostBenefitItem+methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRCostBenefitItem+methods.h"; sourceTree = "<group>"; };
+		B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRCostBenefitItem+methods.m"; sourceTree = "<group>"; };
 		B242D7BF1ACC182500EC791D /* SMRCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefitItemViewController.h; sourceTree = "<group>"; };
 		B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRCostBenefitItemViewController.m; sourceTree = "<group>"; };
 		B26BE5AC1AC114C2001ABA41 /* SMARTRecovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMARTRecovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +156,8 @@
 				B2A54C9A1AC9721500DD320D /* SMRCostBenefit+methods.m */,
 				B2A54C961AC9715000DD320D /* SMRCostBenefitItem.h */,
 				B2A54C971AC9715000DD320D /* SMRCostBenefitItem.m */,
+				B21989B11ACD83D700B91322 /* SMRCostBenefitItem+methods.h */,
+				B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				B2EBD0EC1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m in Sources */,
 				B26BE5B51AC114C2001ABA41 /* AppDelegate.m in Sources */,
 				B2A54C9B1AC9721500DD320D /* SMRCostBenefit+methods.m in Sources */,
+				B21989B31ACD83D700B91322 /* SMRCostBenefitItem+methods.m in Sources */,
 				B2C401301ACBA8C5002BD3EB /* SMRCostBenefitViewController.m in Sources */,
 				B26BE5B21AC114C2001ABA41 /* main.m in Sources */,
 				B2A54C981AC9715000DD320D /* SMRCostBenefitItem.m in Sources */,

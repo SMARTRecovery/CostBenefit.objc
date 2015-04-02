@@ -30,7 +30,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
      self.costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.context];
-    NSLog(@"%@", self.costBenefits);
     [self.tableView reloadData];
 }
 
@@ -61,8 +60,7 @@
         costBenefit.title = source.costBenefitTitle;
         // Hard coded for now.
         // @todo: Select switch for substance|activity.
-        costBenefit.type = @"substance";
-        NSLog(@"source.costBenefitTitle = %@", source.costBenefitTitle);
+        costBenefit.type = @"substance";;
         NSError *error;
         [self.context save:&error];
     }

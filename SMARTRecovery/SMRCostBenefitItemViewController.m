@@ -7,9 +7,12 @@
 //
 
 #import "SMRCostBenefitItemViewController.h"
+#import "SMRCostBenefitItem+methods.h"
 
 @interface SMRCostBenefitItemViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @end
 
@@ -20,14 +23,22 @@
     // Do any additional setup after loading the view.
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
+    costBenefitItem.title = self.titleTextField.text;
+    costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
+    costBenefitItem.isDoing = [NSNumber numberWithBool:YES];
+    costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
+    costBenefitItem.costBenefit = self.costBenefit;
+    costBenefitItem.seq = [NSNumber numberWithInt:10];
+    NSLog(@"costBenefitItem %@", costBenefitItem);
+
+    [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)costBenefitItem];
+    NSError *error;
+    [self.context save:&error];
 }
-*/
 
 @end

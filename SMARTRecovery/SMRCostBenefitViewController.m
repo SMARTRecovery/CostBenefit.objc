@@ -8,9 +8,12 @@
 
 #import "SMRCostBenefitViewController.h"
 #import "SMRListCostBenefitsViewController.h"
+#import "SMRCostBenefitItemViewController.h"
+#import "SMRCostBenefitItem+methods.h"
 
 @interface SMRCostBenefitViewController ()
 
+@property (strong, nonatomic) NSMutableArray *items;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -25,10 +28,23 @@
     self.title = self.costBenefit.title;
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self getItemTitles];
+}
+
+- (void) getItemTitles {
+    self.items = [[NSMutableArray alloc] init];
+    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
+        [self.items addObject:item.title];
+    }
+    [self.tableView reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Hardcode for now.
     // @todo: Calculate length of each section based on properties.
-    return 3;
+    return [self.items count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -36,40 +52,50 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    NSString *title;
     switch (section) {
         case 0:
-            return @"Pros of doing";
+            title = [NSString stringWithFormat:@"Advantages of %@", self.costBenefit.title];
+            break;
         case 1:
-            return @"Cons of doing";
+            title = [NSString stringWithFormat:@"Disadvantages of %@", self.costBenefit.title];
+            break;
         case 2:
-            return @"Pros of not doing";
+            title = [NSString stringWithFormat:@"Advantages of NO %@", self.costBenefit.title];
+            break;
         case 3:
-            return @"Cons of not doing";
+            title = [NSString stringWithFormat:@"Disadvantages of NO %@", self.costBenefit.title];
+            break;
         default:
             break;
     }
-    return @"";
+    return title;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"Placeholder %ld", indexPath.row];
+    cell.textLabel.text = self.items[indexPath.row];
     return cell;
 }
 
 - (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue {
-
+    [self viewDidAppear:YES];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *destNavVC = [segue destinationViewController];
     if (sender != self.addButton) {
-        UINavigationController *destNavVC = [segue destinationViewController];
         SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
+    }
+    else {
+        SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
+        [destVC setContext:self.context];
+        [destVC setCostBenefit:self.costBenefit];
     }
 }
 
