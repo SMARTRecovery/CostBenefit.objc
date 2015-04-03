@@ -29,6 +29,9 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (sender != self.saveButton) {
+        return;
+    }
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
     costBenefitItem.title = self.titleTextField.text;
     costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
