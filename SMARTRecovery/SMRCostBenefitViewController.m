@@ -98,10 +98,12 @@
         SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
+        [destVC setOp:@"insert"];
         if (sender != self.addButton) {
             UITableViewCell *cell = (UITableViewCell *)sender;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
             [destVC setCostBenefitItem:self.items[indexPath.row]];
+            [destVC setOp:@"update"];
         }
     }
 }

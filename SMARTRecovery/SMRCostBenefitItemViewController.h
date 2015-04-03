@@ -13,6 +13,7 @@
 @interface SMRCostBenefitItemViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) NSString *op;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 

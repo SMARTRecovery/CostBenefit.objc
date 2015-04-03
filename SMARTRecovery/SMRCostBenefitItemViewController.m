@@ -32,16 +32,20 @@
     if (sender != self.saveButton) {
         return;
     }
-    SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
-    costBenefitItem.title = self.titleTextField.text;
-    costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
-    costBenefitItem.isDoing = [NSNumber numberWithBool:YES];
-    costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
-    costBenefitItem.costBenefit = self.costBenefit;
-    costBenefitItem.seq = [NSNumber numberWithInt:10];
-    NSLog(@"costBenefitItem %@", costBenefitItem);
+    if ([self.op isEqualToString:@"insert"]) {
+        self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
+    }
 
-    [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)costBenefitItem];
+    self.costBenefitItem.title = self.titleTextField.text;
+    self.costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
+    self.costBenefitItem.isDoing = [NSNumber numberWithBool:YES];
+    self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
+    self.costBenefitItem.costBenefit = self.costBenefit;
+    self.costBenefitItem.seq = [NSNumber numberWithInt:10];
+    NSLog(@"costBenefitItem %@", self.costBenefitItem);
+    if ([self.op isEqualToString:@"insert"]) {
+        [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+    }
     NSError *error;
     [self.context save:&error];
 }
