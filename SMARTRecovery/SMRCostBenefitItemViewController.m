@@ -56,5 +56,35 @@
 }
 
 - (IBAction)trashTapped:(id)sender {
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:@"Delete item?"
+                                 message:@"This cannot be undone."
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Delete"
+                         style:UIAlertActionStyleDestructive
+                         handler:^(UIAlertAction * action)
+                         {
+                             [view dismissViewControllerAnimated:YES completion:nil];
+                             [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+                             [self.context deleteObject:self.costBenefitItem];
+                             [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
+                             NSError *error;
+                             [self.context save:&error];
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+
+                             }];
+
+
+    [view addAction:ok];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
 }
 @end

@@ -209,7 +209,7 @@
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
-                                <segue destination="VX8-Ln-rMA" kind="unwind" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
+                                <segue destination="VX8-Ln-rMA" kind="unwind" identifier="segueToCostBenefit" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
