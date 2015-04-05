@@ -14,6 +14,7 @@
 @interface SMRCostBenefitViewController ()
 
 @property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) NSMutableArray *boxes;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,6 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.boxes = [[NSMutableArray alloc] init];
+    for (int i=0; i<4; i++) {
+        [self.boxes addObject:[[NSMutableArray alloc] init]];
+    }
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = self.costBenefit.title;
@@ -31,9 +37,27 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self getItemTitles];
+    [self setCostBenefitBoxes];
+// currently unused
+//    [self getItemTitles];
 }
 
+- (void) setCostBenefitBoxes {
+    // Clear existing data.
+    for (int i=0; i<4; i++) {
+        self.boxes[i] = [[NSMutableArray alloc] init];
+    }
+    // Loop through costBenefitItems:
+    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
+        NSNumber *boxNumber = item.boxNumber;
+        NSMutableArray *boxItems = self.boxes[[boxNumber intValue]];
+        [boxItems addObject:item];
+        [self.items addObject:item];
+    }
+    [self.tableView reloadData];
+}
+
+/* currently unused (displaying all boxes in VC for now)
 - (void) getItemTitles {
     self.items = [[NSMutableArray alloc] init];
     for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
@@ -41,11 +65,11 @@
     }
     [self.tableView reloadData];
 }
+*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Hardcode for now.
-    // @todo: Calculate length of each section based on properties.
-    return [self.items count];
+    NSMutableArray *boxItems = self.boxes[section];
+    return [boxItems count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -77,7 +101,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
-    SMRCostBenefitItem *item = self.items[indexPath.row];
+
+    NSMutableArray *boxItems = self.boxes[indexPath.section];
+    if ([boxItems count] == 0) {
+        cell.textLabel.text = @"(None added)";
+        return cell;
+    }
+    SMRCostBenefitItem *item = boxItems[indexPath.row];
     cell.textLabel.text = item.title;
     NSString *detail = @"Short-term";
     if ([item.isLongTerm boolValue]) {

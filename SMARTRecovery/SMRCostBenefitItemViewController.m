@@ -46,12 +46,12 @@
     }
 
     self.costBenefitItem.title = self.titleTextField.text;
-    self.costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
-    self.costBenefitItem.isDoing = [NSNumber numberWithBool:YES];
+    // Hardcode box # for now.
+    self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:self.longTermSwitch.isOn];
     self.costBenefitItem.costBenefit = self.costBenefit;
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
-    NSLog(@"costBenefitItem %@", self.costBenefitItem);
+
     if ([self.op isEqualToString:@"insert"]) {
         [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
     }
