@@ -14,8 +14,7 @@
 
 @dynamic title;
 @dynamic seq;
-@dynamic isAdvantage;
-@dynamic isDoing;
+@dynamic boxNumber;
 @dynamic isLongTerm;
 @dynamic costBenefit;
 

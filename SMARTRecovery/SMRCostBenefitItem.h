@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * seq;
-@property (nonatomic, retain) NSNumber * isAdvantage;
+@property (nonatomic, retain) NSNumber * boxNumber;
 @property (nonatomic, retain) NSNumber * isDoing;
 @property (nonatomic, retain) NSNumber * isLongTerm;
 @property (nonatomic, retain) SMRCostBenefit *costBenefit;

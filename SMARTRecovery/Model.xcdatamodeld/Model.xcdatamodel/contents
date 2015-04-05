@@ -6,8 +6,7 @@
         <relationship name="costBenefitItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SMRCostBenefitItem" inverseName="costBenefit" inverseEntity="SMRCostBenefitItem" syncable="YES"/>
     </entity>
     <entity name="SMRCostBenefitItem" representedClassName="SMRCostBenefitItem" syncable="YES">
-        <attribute name="isAdvantage" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
-        <attribute name="isDoing" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="boxNumber" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
         <attribute name="isLongTerm" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="seq" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -15,6 +14,6 @@
     </entity>
     <elements>
         <element name="SMRCostBenefit" positionX="-288" positionY="-13" width="128" height="88"/>
-        <element name="SMRCostBenefitItem" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="SMRCostBenefitItem" positionX="-54" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
