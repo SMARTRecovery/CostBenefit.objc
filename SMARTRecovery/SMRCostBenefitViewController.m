@@ -79,6 +79,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
     SMRCostBenefitItem *item = self.items[indexPath.row];
     cell.textLabel.text = item.title;
+    NSString *detail = @"Short-term";
+    if ([item.isLongTerm boolValue]) {
+        detail = @"Long-term";
+    }
+    cell.detailTextLabel.text = detail;
     return cell;
 }
 

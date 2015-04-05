@@ -10,6 +10,8 @@
 #import "SMRCostBenefitItem+methods.h"
 
 @interface SMRCostBenefitItemViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *longTermSwitch;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
@@ -22,8 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.longTermLabel.text = @"Long-term advantage";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
+        self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
     }
     else {
         self.trashButton.enabled = NO;
@@ -44,7 +48,7 @@
     self.costBenefitItem.title = self.titleTextField.text;
     self.costBenefitItem.isAdvantage = [NSNumber numberWithBool:NO];
     self.costBenefitItem.isDoing = [NSNumber numberWithBool:YES];
-    self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
+    self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:self.longTermSwitch.isOn];
     self.costBenefitItem.costBenefit = self.costBenefit;
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
     NSLog(@"costBenefitItem %@", self.costBenefitItem);
