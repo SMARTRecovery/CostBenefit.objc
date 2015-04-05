@@ -13,7 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 
+- (IBAction)trashTapped:(id)sender;
 @end
 
 @implementation SMRCostBenefitItemViewController
@@ -22,6 +24,9 @@
     [super viewDidLoad];
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
+    }
+    else {
+        self.trashButton.enabled = NO;
     }
 }
 
@@ -50,4 +55,6 @@
     [self.context save:&error];
 }
 
+- (IBAction)trashTapped:(id)sender {
+}
 @end

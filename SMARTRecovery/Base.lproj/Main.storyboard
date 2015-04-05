@@ -30,7 +30,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KNO-ts-e4g">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -200,7 +200,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="trash" id="hKI-sB-Lls"/>
+                        <barButtonItem systemItem="trash" id="hKI-sB-Lls">
+                            <connections>
+                                <action selector="trashTapped:" destination="Gcp-fH-Op0" id="P62-Mj-7qn"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
@@ -212,6 +216,7 @@
                     <connections>
                         <outlet property="saveButton" destination="cAs-kr-ZAy" id="Isg-C4-tYE"/>
                         <outlet property="titleTextField" destination="UNF-jl-JOI" id="EzH-UI-7yI"/>
+                        <outlet property="trashButton" destination="hKI-sB-Lls" id="atB-DK-l4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
