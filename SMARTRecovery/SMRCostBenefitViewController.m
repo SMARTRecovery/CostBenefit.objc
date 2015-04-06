@@ -137,7 +137,8 @@
         if (sender != self.addButton) {
             UITableViewCell *cell = (UITableViewCell *)sender;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-            [destVC setCostBenefitItem:self.items[indexPath.row]];
+            NSMutableArray *boxItems = self.boxes[indexPath.section];
+            [destVC setCostBenefitItem:boxItems[indexPath.row]];
             [destVC setOp:@"update"];
         }
     }
