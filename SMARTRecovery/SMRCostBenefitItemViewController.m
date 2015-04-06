@@ -10,9 +10,10 @@
 #import "SMRCostBenefitItem+methods.h"
 
 @interface SMRCostBenefitItemViewController ()
+@property (strong, nonatomic) NSArray *boxOptions;
+@property (weak, nonatomic) IBOutlet UIPickerView *boxPicker;
 @property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *longTermSwitch;
-
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
@@ -24,7 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.longTermLabel.text = @"Long-term advantage";
+    self.boxPicker.dataSource = self;
+    self.boxPicker.delegate = self;
+    _boxOptions = @[@"An advantage of doing", @"A disadvantage of doing", @"An advantage of NOT doing", @"An disadvantage of NOT doing"];
+    self.longTermLabel.text = @"Long-term";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
         self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
@@ -34,6 +38,18 @@
     }
 }
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return _boxOptions.count;
+}
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _boxOptions[row];
+}
 
 #pragma mark - Navigation
 

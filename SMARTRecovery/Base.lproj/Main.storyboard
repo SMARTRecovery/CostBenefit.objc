@@ -200,16 +200,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
-                                <rect key="frame" x="8" y="163" width="584" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bx2-wj-DeN">
-                                <rect key="frame" x="543" y="221" width="51" height="31"/>
+                                <rect key="frame" x="535" y="362" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpQ-Gt-7p9">
-                                <rect key="frame" x="24" y="221" width="552" height="32"/>
+                                <rect key="frame" x="24" y="362" width="552" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="MTd-1L-Cid"/>
                                 </constraints>
@@ -217,19 +212,31 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBL-Tm-VoT">
+                                <rect key="frame" x="16" y="38" width="568" height="180"/>
+                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
+                                <rect key="frame" x="8" y="275" width="584" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" constant="8" id="3En-wH-LWP"/>
+                            <constraint firstItem="tBL-Tm-VoT" firstAttribute="top" secondItem="let-9E-98h" secondAttribute="topMargin" constant="30" id="6OX-G9-XMH"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="tBL-Tm-VoT" secondAttribute="bottom" constant="49" id="7Xf-lX-hhC"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="let-9E-98h" secondAttribute="top" constant="275" id="9yA-yh-RwA"/>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" constant="8" id="E2g-ih-ERi"/>
-                            <constraint firstItem="UNF-jl-JOI" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leading" constant="8" id="IkD-DQ-JOB"/>
-                            <constraint firstItem="IpQ-Gt-7p9" firstAttribute="centerX" secondItem="UNF-jl-JOI" secondAttribute="centerX" id="JAv-Qu-7UT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IpQ-Gt-7p9" secondAttribute="trailing" constant="8" id="KUm-8k-wgz"/>
-                            <constraint firstItem="UNF-jl-JOI" firstAttribute="trailing" secondItem="let-9E-98h" secondAttribute="trailingMargin" constant="8" id="NK0-5p-ble"/>
+                            <constraint firstItem="tBL-Tm-VoT" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" id="MgR-Qs-JLO"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="centerX" secondItem="tBL-Tm-VoT" secondAttribute="centerX" id="RRd-kY-FHq"/>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="top" secondItem="bx2-wj-DeN" secondAttribute="top" id="UeJ-MY-afE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bx2-wj-DeN" secondAttribute="trailing" constant="-8" id="UxJ-XM-3Rf"/>
-                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="svj-wt-t3F" secondAttribute="bottom" constant="99" id="iv1-PH-F5v"/>
-                            <constraint firstItem="bx2-wj-DeN" firstAttribute="top" secondItem="UNF-jl-JOI" secondAttribute="bottom" constant="28" id="xFJ-yp-KOy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bx2-wj-DeN" secondAttribute="trailing" id="UxJ-XM-3Rf"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" constant="-8" id="XdU-y0-71e"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="centerX" secondItem="IpQ-Gt-7p9" secondAttribute="centerX" id="cmh-67-JUZ"/>
+                            <constraint firstItem="IpQ-Gt-7p9" firstAttribute="top" secondItem="UNF-jl-JOI" secondAttribute="bottom" constant="57" id="ex7-ey-xNu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tBL-Tm-VoT" secondAttribute="trailing" id="jkx-5x-TIR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -253,6 +260,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="boxPicker" destination="tBL-Tm-VoT" id="6xr-Gw-9YF"/>
                         <outlet property="longTermLabel" destination="IpQ-Gt-7p9" id="qj7-IV-lvg"/>
                         <outlet property="longTermSwitch" destination="bx2-wj-DeN" id="QGu-Uh-fMt"/>
                         <outlet property="saveButton" destination="cAs-kr-ZAy" id="Isg-C4-tYE"/>
