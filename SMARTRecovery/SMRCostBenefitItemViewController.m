@@ -27,7 +27,8 @@
     [super viewDidLoad];
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
-    _boxOptions = @[@"An advantage of doing", @"A disadvantage of doing", @"An advantage of NOT doing", @"An disadvantage of NOT doing"];
+    _boxOptions =  @[@[@"Advantage", @"Disadvantage"],
+                     @[@"of doing", @"of not doing"]];
     self.longTermLabel.text = @"Long-term";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
@@ -35,11 +36,37 @@
     }
     else {
         self.trashButton.enabled = NO;
+        self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
+        // Set to Box 0 as default.
+        self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
+    switch ([self.costBenefitItem.boxNumber intValue]) {
+        case 1:
+            [self.boxPicker selectRow:1 inComponent:0 animated:YES];
+            [self.boxPicker reloadComponent:0];
+            break;
+        case 2:
+            [self.boxPicker selectRow:1 inComponent:1 animated:YES];
+            [self.boxPicker reloadComponent:1];
+            break;
+        case 3:
+            [self.boxPicker selectRow:1 inComponent:0 animated:YES];
+            [self.boxPicker reloadComponent:0];
+            [self.boxPicker selectRow:1 inComponent:1 animated:YES];
+            [self.boxPicker reloadComponent:1];
+            break;
+        default:
+            break;
     }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
+    return 2;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
@@ -48,7 +75,7 @@
 
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _boxOptions[row];
+    return _boxOptions[component][row];
 }
 
 #pragma mark - Navigation
@@ -57,17 +84,37 @@
     if (sender != self.saveButton) {
         return;
     }
-    if ([self.op isEqualToString:@"insert"]) {
-        self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
-    }
 
     self.costBenefitItem.title = self.titleTextField.text;
-    // Hardcode box # for now.
-    self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:self.longTermSwitch.isOn];
     self.costBenefitItem.costBenefit = self.costBenefit;
+
+    // Harcoded for now.
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
 
+    // Calculate boxNumber.
+    // If advantage is selected:
+    if ([self.boxPicker selectedRowInComponent:0] == 0) {
+        // Advantage of doing:
+        if ([self.boxPicker selectedRowInComponent:1] == 0) {
+            self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
+        }
+        // Advantage of not doing:
+        else {
+            self.costBenefitItem.boxNumber = [NSNumber numberWithInt:2];
+        }
+    }
+    // Else disadvantage is selected:
+    else {
+        // Disadvantage of doing:
+        if ([self.boxPicker selectedRowInComponent:1] == 0) {
+            self.costBenefitItem.boxNumber = [NSNumber numberWithInt:1];
+        }
+        // Disadvantage of not doing:
+        else {
+            self.costBenefitItem.boxNumber = [NSNumber numberWithInt:3];
+        }
+    }
     if ([self.op isEqualToString:@"insert"]) {
         [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
     }
