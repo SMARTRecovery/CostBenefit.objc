@@ -29,7 +29,7 @@
     self.boxPicker.delegate = self;
     _boxOptions =  @[@[@"Advantage", @"Disadvantage"],
                      @[@"of doing", @"of not doing"]];
-    self.longTermLabel.text = @"Long-term";
+    self.longTermLabel.text = @"Long-term advantage";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
         self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
@@ -51,6 +51,7 @@
         case 1:
             [self.boxPicker selectRow:1 inComponent:0 animated:YES];
             [self.boxPicker reloadComponent:0];
+            self.longTermLabel.text = @"Long-term disadvantage";
             break;
         case 2:
             [self.boxPicker selectRow:1 inComponent:1 animated:YES];
@@ -61,9 +62,23 @@
             [self.boxPicker reloadComponent:0];
             [self.boxPicker selectRow:1 inComponent:1 animated:YES];
             [self.boxPicker reloadComponent:1];
+            self.longTermLabel.text = @"Long-term disadvantage";
             break;
         default:
             break;
+    }
+}
+
+// Catpure the picker view selection
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (component == 0) {
+        if (row == 0) {
+            self.longTermLabel.text = @"Long-term advantage";
+        }
+        else {
+            self.longTermLabel.text = @"Long-term disadvantage";
+        }
     }
 }
 
