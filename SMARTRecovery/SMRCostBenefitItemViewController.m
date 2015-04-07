@@ -37,11 +37,15 @@
     }
     else {
         self.trashButton.enabled = NO;
+        self.saveButton.enabled = NO;
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
         self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
         self.title = @"Add Item";
     }
+    [self.titleTextField addTarget:self
+                            action:@selector(editingChanged:)
+                  forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -66,6 +70,13 @@
             break;
         default:
             break;
+    }
+}
+
+-(void) editingChanged:(id)sender {
+    self.saveButton.enabled = YES;
+    if ([self.titleTextField.text length] < 3) {
+        self.saveButton.enabled = NO;
     }
 }
 

@@ -10,7 +10,7 @@
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitItem+methods.h"
 
-@interface SMRCostBenefitItemViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface SMRCostBenefitItemViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSString *op;
