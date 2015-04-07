@@ -85,15 +85,19 @@
     switch (section) {
         case 0:
             title = [NSString stringWithFormat:@"Advantages of %@", self.costBenefit.title];
+            title = @"Advantages of doing";
             break;
         case 1:
             title = [NSString stringWithFormat:@"Disadvantages of %@", self.costBenefit.title];
+            title = @"Disadvantages of doing";
             break;
         case 2:
             title = [NSString stringWithFormat:@"Advantages of NO %@", self.costBenefit.title];
+            title = @"Advantages of not doing";
             break;
         case 3:
             title = [NSString stringWithFormat:@"Disadvantages of NO %@", self.costBenefit.title];
+            title = @"Disadvantages of not doing";
             break;
         default:
             break;
