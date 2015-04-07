@@ -69,7 +69,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableArray *boxItems = self.boxes[section];
-    return [boxItems count];
+    if ([boxItems count] > 0) {
+        return [boxItems count];
+    }
+    // Return 1 for empty placeholder cell.
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -105,8 +109,11 @@
     NSMutableArray *boxItems = self.boxes[indexPath.section];
     if ([boxItems count] == 0) {
         cell.textLabel.text = @"(None added)";
+        cell.detailTextLabel.text = @"";
+        [cell setUserInteractionEnabled:NO];
         return cell;
     }
+
     SMRCostBenefitItem *item = boxItems[indexPath.row];
     cell.textLabel.text = item.title;
     NSString *detail = @"Short-term";
@@ -114,6 +121,7 @@
         detail = @"Long-term";
     }
     cell.detailTextLabel.text = detail;
+    [cell setUserInteractionEnabled:YES];
     return cell;
 }
 
