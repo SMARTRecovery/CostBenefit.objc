@@ -33,12 +33,14 @@
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
         self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
+        self.title = @"Edit Item";
     }
     else {
         self.trashButton.enabled = NO;
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
-        self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];;
+        self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
+        self.title = @"Add Item";
     }
 }
 

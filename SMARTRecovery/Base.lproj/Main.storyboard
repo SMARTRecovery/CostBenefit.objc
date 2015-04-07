@@ -215,9 +215,9 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBL-Tm-VoT">
                                 <rect key="frame" x="16" y="38" width="568" height="180"/>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
                                 <rect key="frame" x="8" y="275" width="584" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -253,6 +253,11 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Enb-tX-haj">
+                            <connections>
+                                <segue destination="VX8-Ln-rMA" kind="unwind" unwindAction="unwindToCostBenefit:" id="IEX-Ba-a0O"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
                                 <segue destination="VX8-Ln-rMA" kind="unwind" identifier="segueToCostBenefit" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
