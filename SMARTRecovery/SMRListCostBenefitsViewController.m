@@ -53,27 +53,20 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
-    SMREditCostBenefitViewController *source = [segue sourceViewController];
-    if (source.op != nil) {
-        SMRCostBenefit *costBenefit;
-        costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
-        costBenefit.title = source.costBenefitTitle;
-        // Hard coded for now.
-        // @todo: Select switch for substance|activity.
-        costBenefit.type = @"substance";;
-        NSError *error;
-        [self.context save:&error];
-    }
     [self viewDidAppear:YES];
-
 }
 
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender != self.addButton) {
-        UINavigationController *destNavVC = (UINavigationController *)[segue destinationViewController];
+    UINavigationController *destNavVC = (UINavigationController *)[segue destinationViewController];
+    if (sender == self.addButton) {
+        SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
+        [destVC setContext:self.context];
+        [destVC setCostBenefit:nil];
+    }
+    else {
         SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
         UITableViewCell *cell = (UITableViewCell *)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -81,6 +74,5 @@
         [destVC setContext:self.context];
     }
 }
-
 
 @end

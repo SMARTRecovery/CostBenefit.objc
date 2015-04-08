@@ -107,6 +107,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="eqe-Wo-rAP" id="jN2-SH-oIV"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
                     </connections>
                 </viewController>
@@ -140,7 +141,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eSJ-kn-xsx">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a1Q-ui-YvI">
@@ -166,6 +167,13 @@
                             <constraint firstItem="BLI-Em-MaQ" firstAttribute="top" secondItem="JR5-w7-UxO" secondAttribute="bottom" id="xVg-2u-TIW"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="edit" id="KxR-dn-us1">
+                            <connections>
+                                <segue destination="Fez-iU-gJ5" kind="presentation" id="rEa-ZF-qqA"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Dt8-Qg-sPL">
                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="7Ic-8S-5rq">
                             <connections>
@@ -181,6 +189,7 @@
                     <connections>
                         <outlet property="addButton" destination="VY3-NC-y3Z" id="HJi-oO-UVC"/>
                         <outlet property="backButton" destination="7Ic-8S-5rq" id="Hda-md-IOB"/>
+                        <outlet property="editButton" destination="KxR-dn-us1" id="zMi-zD-FlM"/>
                         <outlet property="tableView" destination="JR5-w7-UxO" id="7mc-cT-7bD"/>
                     </connections>
                 </viewController>
@@ -296,10 +305,10 @@
             </objects>
             <point key="canvasLocation" x="303" y="-332"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Edit Cost Benefit-->
         <scene sceneID="qow-EB-6Eg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
+                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dV-8l-1XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -314,16 +323,19 @@
             </objects>
             <point key="canvasLocation" x="1874" y="366"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Cost Benefit-->
         <scene sceneID="R37-r8-Bh8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mNT-Nv-doj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="costBenefitNavigationController" title="Nav Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="mNT-Nv-doj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OwG-ji-ZeZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ups-ZY-rGX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="stZ-AG-dKe" kind="relationship" relationship="rootViewController" id="0Uw-My-9xh"/>
                     </connections>
@@ -356,5 +368,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Y8a-ki-Rmu"/>
+        <segue reference="rEa-ZF-qqA"/>
     </inferredMetricsTieBreakers>
 </document>

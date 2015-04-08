@@ -9,6 +9,7 @@
 #import "SMREditCostBenefitViewController.h"
 
 @interface SMREditCostBenefitViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 - (IBAction)saveTapped:(id)sender;
 
@@ -18,23 +19,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.op = nil;
+    if (self.costBenefit != nil) {
+        self.title = @"Edit CBA";
+        self.titleTextField.text = self.costBenefit.title;
+    }
+    else {
+        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
+        self.title = @"New CBA";
+    }
 }
 
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //sender != self.cancelButton &&
-    if ([self.titleTextField.text length] > 0) {
-        self.op = @"save";
-        self.costBenefitTitle = self.titleTextField.text;
+    if (sender == self.cancelButton) {
+        return;
     }
+    self.costBenefit.title = self.titleTextField.text;
+    // Hard coded for now.
+    // @todo: Select switch for substance|activity.
+    self.costBenefit.type = @"substance";
+    NSError *error;
+    [self.context save:&error];
 }
 
 
 - (IBAction)saveTapped:(id)sender {
-    self.op = @"save";
+    // @todo: if inserted, load new CostBenefit, else redirect to view CostBenefit
 }
 @end
