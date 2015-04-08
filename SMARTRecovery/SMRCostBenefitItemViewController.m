@@ -80,9 +80,8 @@
     }
 }
 
-// Catpure the picker view selection
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (component == 0) {
         if (row == 0) {
             self.longTermLabel.text = @"Long-term advantage";
