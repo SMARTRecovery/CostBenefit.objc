@@ -36,7 +36,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mNT-Nv-doj" kind="show" id="O0B-oq-Hdr"/>
+                                            <segue destination="mNT-Nv-doj" kind="presentation" id="O0B-oq-Hdr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -140,25 +140,24 @@
                     <navigationItem key="navigationItem" id="nbV-xV-eIG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eqe-Wo-rAP">
                             <connections>
-                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="vz8-R4-j08"/>
+                                <action selector="cancelTapped:" destination="8qZ-py-Opz" id="qul-AJ-GsI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NgT-Mb-fd5">
                             <connections>
                                 <action selector="saveTapped:" destination="8qZ-py-Opz" id="L4o-tP-XnA"/>
-                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="JgV-K7-VUu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="eqe-Wo-rAP" id="jN2-SH-oIV"/>
+                        <outlet property="saveButton" destination="NgT-Mb-fd5" id="jVh-yZ-XVH"/>
                         <outlet property="titleDescLabel" destination="AKE-tb-7Aw" id="XgF-cC-tBJ"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
                         <outlet property="typePicker" destination="WSP-Jh-qSv" id="8FO-93-zwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyl-Vk-wmO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="OFc-KI-wXK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2693" y="361"/>
         </scene>
@@ -199,7 +198,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NgB-nw-OMp" kind="show" id="Y8a-ki-Rmu"/>
+                                            <segue destination="NgB-nw-OMp" kind="presentation" id="Y8a-ki-Rmu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -228,7 +227,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VY3-NC-y3Z">
                             <connections>
-                                <segue destination="NgB-nw-OMp" kind="show" id="Vda-Lh-M66"/>
+                                <segue destination="NgB-nw-OMp" kind="presentation" id="Vda-Lh-M66"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -333,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="4317" y="1096"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav List Cost Benefits-->
         <scene sceneID="Oxe-sH-ACk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="listCostBenefitsNavigationController" title="Nav List Cost Benefits" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sal-eI-PAl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -349,7 +348,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9E-qT-BxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="-332"/>
+            <point key="canvasLocation" x="463" y="361"/>
         </scene>
         <!--Nav Edit Cost Benefit-->
         <scene sceneID="qow-EB-6Eg">
@@ -393,7 +392,7 @@
         <!--Navigation Controller-->
         <scene sceneID="L4V-wz-bEe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="costBenefitItemNavigationController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZLO-dD-4Ki">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

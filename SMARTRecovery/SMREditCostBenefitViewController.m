@@ -7,19 +7,25 @@
 //
 
 #import "SMREditCostBenefitViewController.h"
+#import "SMRListCostBenefitsViewController.h"
+#import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitItemViewController.h"
 
 @interface SMREditCostBenefitViewController ()
 
 @property (strong, nonatomic) NSArray *typeOptions;
 @property (strong, nonatomic) NSString *descActivity;
 @property (strong, nonatomic) NSString *descSubstance;
+@property (strong, nonatomic) NSString *op;
 @property (strong, nonatomic) NSString *placeholderActivity;
 @property (strong, nonatomic) NSString *placeholderSubstance;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+- (IBAction)cancelTapped:(id)sender;
 
 - (IBAction)saveTapped:(id)sender;
 
@@ -31,20 +37,23 @@
     [super viewDidLoad];
     self.typePicker.dataSource = self;
     self.typePicker.delegate = self;
-
     _typeOptions = @[@"The substance", @"The activity"];
+
     // Activity help text:
-    _descActivity = @"e.g. Procrastinating, gambling, over-eating";
+    _descActivity = @"e.g. Procrastinating, gambling, over-eating, etc.";
     _placeholderActivity = @"Activity name";
+
     // Substance help text:
-    _descSubstance = @"e.g. Alcohol, nicotine, sugar";
+    _descSubstance = @"e.g. Alcohol, nicotine, sugar, etc.";
     _placeholderSubstance = @"Substance name";
 
     if (self.costBenefit != nil) {
+        self.op = @"update";
         self.title = @"Edit CBA";
         self.titleTextField.text = self.costBenefit.title;
     }
     else {
+        self.op = @"insert";
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         self.title = @"New CBA";
         self.costBenefit.type = @"substance";
@@ -73,9 +82,11 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (row == 0) {
+        self.costBenefit.type = @"substance";
         [self setHelpText:@"substance"];
     }
     else {
+        self.costBenefit.type = @"activity";
         [self setHelpText:@"activity"];
     }
 }
@@ -95,23 +106,63 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender == self.cancelButton) {
-        return;
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if (sender == self.cancelButton) {
+//        return;
+//    }
+//    self.costBenefit.title = self.titleTextField.text;
+//    if ([self.typePicker selectedRowInComponent:0] == 0) {
+//        self.costBenefit.type = @"substance";
+//    }
+//    else {
+//        self.costBenefit.type = @"activity";
+//    }
+//    NSError *error;
+//    [self.context save:&error];
+//}
+
+
+- (IBAction)cancelTapped:(id)sender {
+    // If new CostBenefit:
+    if ([self.op isEqualToString:@"insert"]) {
+        // Redirect to the Home Nav VC.
+        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
+        SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
+        destVC.context = self.context;
+        [self presentViewController:destNavVC animated:YES completion:nil];
     }
-    self.costBenefit.title = self.titleTextField.text;
-    if ([self.typePicker selectedRowInComponent:0] == 0) {
-        self.costBenefit.type = @"substance";
-    }
+    // Else redirect to CostBenefit VC.
     else {
-        self.costBenefit.type = @"activity";
+        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
+        destVC.context = self.context;
+        destVC.costBenefit = self.costBenefit;
+        [self presentViewController:destNavVC animated:YES completion:nil];
     }
-    NSError *error;
-    [self.context save:&error];
 }
 
-
 - (IBAction)saveTapped:(id)sender {
-    // @todo: if inserted, load new CostBenefit, else redirect to view CostBenefit
+    self.costBenefit.title = self.titleTextField.text;
+    NSError *error;
+    [self.context save:&error];
+
+    // If new CostBenefit:
+    if ([self.op isEqualToString:@"insert"]) {
+        // Redirect to the CostBenefitItem Nav VC to create new item.
+        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitItemNavigationController"];
+        SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
+        destVC.context = self.context;
+        destVC.costBenefit = self.costBenefit;
+        [self presentViewController:destNavVC animated:YES completion:nil];
+    }
+    // Else redirect to CostBenefit VC.
+    else {
+        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
+        destVC.context = self.context;
+        destVC.costBenefit = self.costBenefit;
+        [self presentViewController:destNavVC animated:YES completion:nil];
+    }
+
 }
 @end
