@@ -10,6 +10,7 @@
 #import "SMRListCostBenefitsViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitItemViewController.h"
+#import "SMRViewControllerHelpers.h"
 
 @interface SMREditCostBenefitViewController ()
 
@@ -133,11 +134,7 @@
     }
     // Else redirect to CostBenefit VC.
     else {
-        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
-        destVC.context = self.context;
-        destVC.costBenefit = self.costBenefit;
-        [self presentViewController:destNavVC animated:YES completion:nil];
+        [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
 }
 
@@ -157,11 +154,7 @@
     }
     // Else redirect to CostBenefit VC.
     else {
-        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
-        destVC.context = self.context;
-        destVC.costBenefit = self.costBenefit;
-        [self presentViewController:destNavVC animated:YES completion:nil];
+        [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
 
 }
