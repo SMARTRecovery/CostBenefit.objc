@@ -23,6 +23,7 @@
 		B2C401301ACBA8C5002BD3EB /* SMRCostBenefitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4012F1ACBA8C5002BD3EB /* SMRCostBenefitViewController.m */; };
 		B2EBD0E91AC9AF7B00D52E8E /* SMRListCostBenefitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EBD0E81AC9AF7B00D52E8E /* SMRListCostBenefitsViewController.m */; };
 		B2EBD0EC1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EBD0EB1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m */; };
+		B2F340F81AD5927A00600623 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B2F340F71AD5927A00600623 /* logo.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		B2EBD0E81AC9AF7B00D52E8E /* SMRListCostBenefitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRListCostBenefitsViewController.m; sourceTree = "<group>"; };
 		B2EBD0EA1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMREditCostBenefitViewController.h; sourceTree = "<group>"; };
 		B2EBD0EB1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMREditCostBenefitViewController.m; sourceTree = "<group>"; };
+		B2F340F71AD5927A00600623 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		B26BE5AF1AC114C2001ABA41 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2F340F71AD5927A00600623 /* logo.jpeg */,
 				B26BE5B01AC114C2001ABA41 /* Info.plist */,
 				B26BE5B11AC114C2001ABA41 /* main.m */,
 			);
@@ -269,6 +272,7 @@
 			files = (
 				B26BE5BB1AC114C2001ABA41 /* Main.storyboard in Resources */,
 				B26BE5C01AC114C2001ABA41 /* LaunchScreen.xib in Resources */,
+				B2F340F81AD5927A00600623 /* logo.jpeg in Resources */,
 				B26BE5BD1AC114C2001ABA41 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
