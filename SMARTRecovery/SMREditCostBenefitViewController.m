@@ -126,6 +126,10 @@
 - (IBAction)cancelTapped:(id)sender {
     // If new CostBenefit:
     if ([self.op isEqualToString:@"insert"]) {
+
+        // Delete the newly created CostBenefit.
+        [self.context deleteObject:self.costBenefit];
+
         // Redirect to the Home Nav VC.
         UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
         SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
