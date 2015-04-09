@@ -40,8 +40,6 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setCostBenefitBoxes];
-// currently unused
-//    [self getItemTitles];
 }
 
 - (void) setCostBenefitBoxes {
@@ -58,16 +56,6 @@
     }
     [self.tableView reloadData];
 }
-
-/* currently unused (displaying all boxes in VC for now)
-- (void) getItemTitles {
-    self.items = [[NSMutableArray alloc] init];
-    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
-        [self.items addObject:item];
-    }
-    [self.tableView reloadData];
-}
-*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableArray *boxItems = self.boxes[section];
@@ -129,10 +117,6 @@
     cell.detailTextLabel.text = detail;
     [cell setUserInteractionEnabled:YES];
     return cell;
-}
-
-- (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue {
-    [self viewDidAppear:YES];
 }
 
 #pragma mark - Navigation

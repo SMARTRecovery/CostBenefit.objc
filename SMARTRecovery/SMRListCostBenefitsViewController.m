@@ -51,12 +51,6 @@
     return cell;
 }
 
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue
-{
-    [self viewDidAppear:YES];
-}
-
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

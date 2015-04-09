@@ -12,6 +12,4 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
-
 @end
