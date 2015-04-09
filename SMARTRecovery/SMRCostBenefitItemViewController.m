@@ -8,6 +8,7 @@
 
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
+#import "SMRViewControllerHelpers.h"
 
 @interface SMRCostBenefitItemViewController ()
 @property (strong, nonatomic) NSArray *boxOptions;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 
+- (IBAction)cancelTapped:(id)sender;
+- (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
 @end
 
@@ -105,13 +108,7 @@
     return _boxOptions[component][row];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender != self.saveButton) {
-        return;
-    }
-
+- (void)save {
     self.costBenefitItem.title = self.titleTextField.text;
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:self.longTermSwitch.isOn];
     self.costBenefitItem.costBenefit = self.costBenefit;
@@ -147,6 +144,15 @@
     }
     NSError *error;
     [self.context save:&error];
+}
+
+- (IBAction)cancelTapped:(id)sender {
+    [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+}
+
+- (IBAction)saveTapped:(id)sender {
+    [self save];
+    [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
 }
 
 - (IBAction)trashTapped:(id)sender {

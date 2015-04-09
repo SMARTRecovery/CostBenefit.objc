@@ -309,12 +309,12 @@
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Enb-tX-haj">
                             <connections>
-                                <segue destination="VX8-Ln-rMA" kind="unwind" unwindAction="unwindToCostBenefit:" id="IEX-Ba-a0O"/>
+                                <action selector="cancelTapped:" destination="Gcp-fH-Op0" id="KkS-DM-FM9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
-                                <segue destination="VX8-Ln-rMA" kind="unwind" identifier="segueToCostBenefit" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
+                                <action selector="saveTapped:" destination="Gcp-fH-Op0" id="lma-uB-NZc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -328,7 +328,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="VX8-Ln-rMA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4317" y="1096"/>
         </scene>
