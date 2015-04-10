@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *longTermSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 
 - (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
@@ -39,7 +38,7 @@
         self.title = @"Edit Item";
     }
     else {
-        self.trashButton.enabled = NO;
+        self.navigationController.toolbarHidden = YES;
         self.saveButton.enabled = NO;
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
@@ -156,7 +155,7 @@
 }
 
 - (IBAction)trashTapped:(id)sender {
-    UIAlertController * view=   [UIAlertController
+    UIAlertController* view=   [UIAlertController
                                  alertControllerWithTitle:@"Delete item?"
                                  message:@"This cannot be undone."
                                  preferredStyle:UIAlertControllerStyleActionSheet];
@@ -169,7 +168,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
+                             [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
                          }];
@@ -181,8 +180,6 @@
                                  [view dismissViewControllerAnimated:YES completion:nil];
 
                              }];
-
-
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];

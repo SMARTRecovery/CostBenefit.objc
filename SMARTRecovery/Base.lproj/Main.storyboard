@@ -162,7 +162,6 @@
                         <outlet property="saveButton" destination="NgT-Mb-fd5" id="jVh-yZ-XVH"/>
                         <outlet property="titleDescLabel" destination="AKE-tb-7Aw" id="XgF-cC-tBJ"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
-                        <outlet property="trashButton" destination="9Yb-3P-KaL" id="9E8-Xc-Csb"/>
                         <outlet property="typePicker" destination="WSP-Jh-qSv" id="8FO-93-zwc"/>
                     </connections>
                 </viewController>
@@ -334,7 +333,6 @@
                         <outlet property="longTermSwitch" destination="bx2-wj-DeN" id="QGu-Uh-fMt"/>
                         <outlet property="saveButton" destination="cAs-kr-ZAy" id="Isg-C4-tYE"/>
                         <outlet property="titleTextField" destination="UNF-jl-JOI" id="EzH-UI-7yI"/>
-                        <outlet property="trashButton" destination="hKI-sB-Lls" id="atB-DK-l4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>

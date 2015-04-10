@@ -26,8 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
-
 
 - (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
@@ -107,25 +105,6 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return _typeOptions[row];
 }
-
-
-#pragma mark - Navigation
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if (sender == self.cancelButton) {
-//        return;
-//    }
-//    self.costBenefit.title = self.titleTextField.text;
-//    if ([self.typePicker selectedRowInComponent:0] == 0) {
-//        self.costBenefit.type = @"substance";
-//    }
-//    else {
-//        self.costBenefit.type = @"activity";
-//    }
-//    NSError *error;
-//    [self.context save:&error];
-//}
-
 
 - (IBAction)cancelTapped:(id)sender {
     // If new CostBenefit:
