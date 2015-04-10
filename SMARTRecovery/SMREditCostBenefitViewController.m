@@ -26,9 +26,12 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-- (IBAction)cancelTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 
+
+- (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
+- (IBAction)trashTapped:(id)sender;
 
 @end
 
@@ -58,6 +61,7 @@
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         self.title = @"New CBA";
         self.costBenefit.type = @"substance";
+        self.navigationController.toolbarHidden = YES;
     }
     [self setHelpText:self.costBenefit.type];
 }
@@ -130,11 +134,8 @@
         // Delete the newly created CostBenefit.
         [self.context deleteObject:self.costBenefit];
 
-        // Redirect to the Home Nav VC.
-        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
-        SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
-        destVC.context = self.context;
-        [self presentViewController:destNavVC animated:YES completion:nil];
+        // Redirect to home screen.
+        [SMRViewControllerHelpers presentHome:self context:self.context];
     }
     // Else redirect to CostBenefit VC.
     else {
@@ -161,5 +162,37 @@
         [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
 
+}
+
+- (IBAction)trashTapped:(id)sender {
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:@"Delete this CBA?"
+                                 message:@"All items will be deleted as well. This cannot be undone."
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Delete"
+                         style:UIAlertActionStyleDestructive
+                         handler:^(UIAlertAction * action)
+                         {
+                             [view dismissViewControllerAnimated:YES completion:nil];
+                             [self.context deleteObject:self.costBenefit];
+                             [SMRViewControllerHelpers presentHome:self context:self.context];
+                             NSError *error;
+                             [self.context save:&error];
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+
+                             }];
+
+
+    [view addAction:ok];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
 }
 @end

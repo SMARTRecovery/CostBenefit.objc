@@ -137,6 +137,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CJq-NG-EcT"/>
+                        <barButtonItem systemItem="trash" id="9Yb-3P-KaL">
+                            <connections>
+                                <action selector="trashTapped:" destination="8qZ-py-Opz" id="3pv-wl-wiF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="nbV-xV-eIG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eqe-Wo-rAP">
                             <connections>
@@ -154,6 +162,7 @@
                         <outlet property="saveButton" destination="NgT-Mb-fd5" id="jVh-yZ-XVH"/>
                         <outlet property="titleDescLabel" destination="AKE-tb-7Aw" id="XgF-cC-tBJ"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
+                        <outlet property="trashButton" destination="9Yb-3P-KaL" id="9E8-Xc-Csb"/>
                         <outlet property="typePicker" destination="WSP-Jh-qSv" id="8FO-93-zwc"/>
                     </connections>
                 </viewController>
@@ -300,6 +309,7 @@
                         </variation>
                     </view>
                     <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XLp-5i-T7q"/>
                         <barButtonItem systemItem="trash" id="hKI-sB-Lls">
                             <connections>
                                 <action selector="trashTapped:" destination="Gcp-fH-Op0" id="P62-Mj-7qn"/>
@@ -352,13 +362,16 @@
         <!--Nav Edit Cost Benefit-->
         <scene sceneID="qow-EB-6Eg">
             <objects>
-                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
+                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dV-8l-1XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VTb-0u-mVW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="8qZ-py-Opz" kind="relationship" relationship="rootViewController" id="PKM-vd-eHa"/>
                     </connections>
