@@ -11,6 +11,7 @@
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMREditCostBenefitViewController.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMRCostBenefitViewController ()
 
@@ -40,8 +41,6 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setCostBenefitBoxes];
-// currently unused
-//    [self getItemTitles];
 }
 
 - (void) setCostBenefitBoxes {
@@ -59,16 +58,6 @@
     [self.tableView reloadData];
 }
 
-/* currently unused (displaying all boxes in VC for now)
-- (void) getItemTitles {
-    self.items = [[NSMutableArray alloc] init];
-    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
-        [self.items addObject:item];
-    }
-    [self.tableView reloadData];
-}
-*/
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableArray *boxItems = self.boxes[section];
     if ([boxItems count] > 0) {
@@ -84,22 +73,20 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     NSString *title;
+    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+
     switch (section) {
         case 0:
-            title = [NSString stringWithFormat:@"Advantages of %@", self.costBenefit.title];
-            title = @"Advantages of doing";
+            title = [NSString stringWithFormat:@"Advantages of %@", verb];
             break;
         case 1:
-            title = [NSString stringWithFormat:@"Disadvantages of %@", self.costBenefit.title];
-            title = @"Disadvantages of doing";
+            title = [NSString stringWithFormat:@"Disadvantages of %@", verb];
             break;
         case 2:
-            title = [NSString stringWithFormat:@"Advantages of NO %@", self.costBenefit.title];
-            title = @"Advantages of not doing";
+            title = [NSString stringWithFormat:@"Advantages of NOT %@", verb];
             break;
         case 3:
-            title = [NSString stringWithFormat:@"Disadvantages of NO %@", self.costBenefit.title];
-            title = @"Disadvantages of not doing";
+            title = [NSString stringWithFormat:@"Disadvantages of NOT %@", verb];
             break;
         default:
             break;
@@ -129,10 +116,6 @@
     cell.detailTextLabel.text = detail;
     [cell setUserInteractionEnabled:YES];
     return cell;
-}
-
-- (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue {
-    [self viewDidAppear:YES];
 }
 
 #pragma mark - Navigation

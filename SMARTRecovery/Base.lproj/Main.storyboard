@@ -36,7 +36,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mNT-Nv-doj" kind="show" id="O0B-oq-Hdr"/>
+                                            <segue destination="mNT-Nv-doj" kind="presentation" id="O0B-oq-Hdr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -137,28 +137,35 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CJq-NG-EcT"/>
+                        <barButtonItem systemItem="trash" id="9Yb-3P-KaL">
+                            <connections>
+                                <action selector="trashTapped:" destination="8qZ-py-Opz" id="3pv-wl-wiF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="nbV-xV-eIG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eqe-Wo-rAP">
                             <connections>
-                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="vz8-R4-j08"/>
+                                <action selector="cancelTapped:" destination="8qZ-py-Opz" id="qul-AJ-GsI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NgT-Mb-fd5">
                             <connections>
                                 <action selector="saveTapped:" destination="8qZ-py-Opz" id="L4o-tP-XnA"/>
-                                <segue destination="OFc-KI-wXK" kind="unwind" unwindAction="unwindToList:" id="JgV-K7-VUu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="eqe-Wo-rAP" id="jN2-SH-oIV"/>
+                        <outlet property="saveButton" destination="NgT-Mb-fd5" id="jVh-yZ-XVH"/>
                         <outlet property="titleDescLabel" destination="AKE-tb-7Aw" id="XgF-cC-tBJ"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
                         <outlet property="typePicker" destination="WSP-Jh-qSv" id="8FO-93-zwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyl-Vk-wmO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="OFc-KI-wXK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2693" y="361"/>
         </scene>
@@ -199,7 +206,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NgB-nw-OMp" kind="show" id="Y8a-ki-Rmu"/>
+                                            <segue destination="NgB-nw-OMp" kind="presentation" id="Y8a-ki-Rmu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -228,7 +235,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VY3-NC-y3Z">
                             <connections>
-                                <segue destination="NgB-nw-OMp" kind="show" id="Vda-Lh-M66"/>
+                                <segue destination="NgB-nw-OMp" kind="presentation" id="Vda-Lh-M66"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -301,6 +308,7 @@
                         </variation>
                     </view>
                     <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XLp-5i-T7q"/>
                         <barButtonItem systemItem="trash" id="hKI-sB-Lls">
                             <connections>
                                 <action selector="trashTapped:" destination="Gcp-fH-Op0" id="P62-Mj-7qn"/>
@@ -310,12 +318,12 @@
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Enb-tX-haj">
                             <connections>
-                                <segue destination="VX8-Ln-rMA" kind="unwind" unwindAction="unwindToCostBenefit:" id="IEX-Ba-a0O"/>
+                                <action selector="cancelTapped:" destination="Gcp-fH-Op0" id="KkS-DM-FM9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
-                                <segue destination="VX8-Ln-rMA" kind="unwind" identifier="segueToCostBenefit" unwindAction="unwindToCostBenefit:" id="dce-Pc-jav"/>
+                                <action selector="saveTapped:" destination="Gcp-fH-Op0" id="lma-uB-NZc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -325,18 +333,16 @@
                         <outlet property="longTermSwitch" destination="bx2-wj-DeN" id="QGu-Uh-fMt"/>
                         <outlet property="saveButton" destination="cAs-kr-ZAy" id="Isg-C4-tYE"/>
                         <outlet property="titleTextField" destination="UNF-jl-JOI" id="EzH-UI-7yI"/>
-                        <outlet property="trashButton" destination="hKI-sB-Lls" id="atB-DK-l4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="VX8-Ln-rMA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4317" y="1096"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav List Cost Benefits-->
         <scene sceneID="Oxe-sH-ACk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="listCostBenefitsNavigationController" title="Nav List Cost Benefits" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sal-eI-PAl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -349,18 +355,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9E-qT-BxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="-332"/>
+            <point key="canvasLocation" x="463" y="361"/>
         </scene>
         <!--Nav Edit Cost Benefit-->
         <scene sceneID="qow-EB-6Eg">
             <objects>
-                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
+                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dV-8l-1XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VTb-0u-mVW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="8qZ-py-Opz" kind="relationship" relationship="rootViewController" id="PKM-vd-eHa"/>
                     </connections>
@@ -393,7 +402,7 @@
         <!--Navigation Controller-->
         <scene sceneID="L4V-wz-bEe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="costBenefitItemNavigationController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NgB-nw-OMp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZLO-dD-4Ki">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

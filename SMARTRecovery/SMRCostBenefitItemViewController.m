@@ -8,6 +8,7 @@
 
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMRCostBenefitItemViewController ()
 @property (strong, nonatomic) NSArray *boxOptions;
@@ -16,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *longTermSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 
+- (IBAction)cancelTapped:(id)sender;
+- (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
 @end
 
@@ -27,8 +29,12 @@
     [super viewDidLoad];
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
-    _boxOptions =  @[@[@"Advantage", @"Disadvantage"],
-                     @[@"of doing", @"of not doing"]];
+
+    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+    _boxOptions =  @[@[@"Advantage",
+                       @"Disadvantage"],
+                     @[[NSString stringWithFormat:@"of %@", verb],
+                       [NSString stringWithFormat:@"of NOT %@", verb]]];
     self.longTermLabel.text = @"Long-term advantage";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
@@ -36,7 +42,7 @@
         self.title = @"Edit Item";
     }
     else {
-        self.trashButton.enabled = NO;
+        self.navigationController.toolbarHidden = YES;
         self.saveButton.enabled = NO;
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
@@ -80,7 +86,6 @@
     }
 }
 
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (component == 0) {
         if (row == 0) {
@@ -105,13 +110,7 @@
     return _boxOptions[component][row];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender != self.saveButton) {
-        return;
-    }
-
+- (void)save {
     self.costBenefitItem.title = self.titleTextField.text;
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:self.longTermSwitch.isOn];
     self.costBenefitItem.costBenefit = self.costBenefit;
@@ -149,8 +148,17 @@
     [self.context save:&error];
 }
 
+- (IBAction)cancelTapped:(id)sender {
+    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
+}
+
+- (IBAction)saveTapped:(id)sender {
+    [self save];
+    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
+}
+
 - (IBAction)trashTapped:(id)sender {
-    UIAlertController * view=   [UIAlertController
+    UIAlertController* view=   [UIAlertController
                                  alertControllerWithTitle:@"Delete item?"
                                  message:@"This cannot be undone."
                                  preferredStyle:UIAlertControllerStyleActionSheet];
@@ -163,7 +171,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
+                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
                          }];
@@ -175,8 +183,6 @@
                                  [view dismissViewControllerAnimated:YES completion:nil];
 
                              }];
-
-
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];

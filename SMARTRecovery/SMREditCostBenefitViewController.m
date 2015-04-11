@@ -7,21 +7,29 @@
 //
 
 #import "SMREditCostBenefitViewController.h"
+#import "SMRListCostBenefitsViewController.h"
+#import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitItemViewController.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMREditCostBenefitViewController ()
 
 @property (strong, nonatomic) NSArray *typeOptions;
 @property (strong, nonatomic) NSString *descActivity;
 @property (strong, nonatomic) NSString *descSubstance;
+@property (strong, nonatomic) NSString *op;
 @property (strong, nonatomic) NSString *placeholderActivity;
 @property (strong, nonatomic) NSString *placeholderSubstance;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
+- (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
+- (IBAction)trashTapped:(id)sender;
 
 @end
 
@@ -31,25 +39,33 @@
     [super viewDidLoad];
     self.typePicker.dataSource = self;
     self.typePicker.delegate = self;
-
     _typeOptions = @[@"The substance", @"The activity"];
+
     // Activity help text:
-    _descActivity = @"e.g. Procrastinating, gambling, over-eating";
+    _descActivity = @"e.g. Procrastinating, gambling, over-eating, etc.";
     _placeholderActivity = @"Activity name";
+
     // Substance help text:
-    _descSubstance = @"e.g. Alcohol, nicotine, sugar";
+    _descSubstance = @"e.g. Alcohol, nicotine, sugar, etc.";
     _placeholderSubstance = @"Substance name";
 
     if (self.costBenefit != nil) {
+        self.op = @"update";
         self.title = @"Edit CBA";
         self.titleTextField.text = self.costBenefit.title;
     }
     else {
+        self.saveButton.enabled = NO;
+        self.op = @"insert";
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         self.title = @"New CBA";
         self.costBenefit.type = @"substance";
+        self.navigationController.toolbarHidden = YES;
     }
     [self setHelpText:self.costBenefit.type];
+    [self.titleTextField addTarget:self
+                            action:@selector(editingChanged:)
+                  forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -57,6 +73,13 @@
     if ([self.costBenefit.type isEqualToString:@"activity"]) {
         [self.typePicker selectRow:1 inComponent:0 animated:YES];
         [self.typePicker reloadComponent:0];
+    }
+}
+
+-(void) editingChanged:(id)sender {
+    self.saveButton.enabled = YES;
+    if ([self.titleTextField.text length] < 3) {
+        self.saveButton.enabled = NO;
     }
 }
 
@@ -73,9 +96,11 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (row == 0) {
+        self.costBenefit.type = @"substance";
         [self setHelpText:@"substance"];
     }
     else {
+        self.costBenefit.type = @"activity";
         [self setHelpText:@"activity"];
     }
 }
@@ -92,26 +117,72 @@
     return _typeOptions[row];
 }
 
+- (IBAction)cancelTapped:(id)sender {
+    // If new CostBenefit:
+    if ([self.op isEqualToString:@"insert"]) {
 
-#pragma mark - Navigation
+        // Delete the newly created CostBenefit.
+        [self.context deleteObject:self.costBenefit];
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender == self.cancelButton) {
-        return;
+        // Redirect to home screen.
+        [SMRViewControllerHelper presentHome:self context:self.context];
     }
-    self.costBenefit.title = self.titleTextField.text;
-    if ([self.typePicker selectedRowInComponent:0] == 0) {
-        self.costBenefit.type = @"substance";
-    }
+    // Else redirect to CostBenefit VC.
     else {
-        self.costBenefit.type = @"activity";
+        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
-    NSError *error;
-    [self.context save:&error];
 }
 
-
 - (IBAction)saveTapped:(id)sender {
-    // @todo: if inserted, load new CostBenefit, else redirect to view CostBenefit
+    self.costBenefit.title = self.titleTextField.text;
+    NSError *error;
+    [self.context save:&error];
+
+    // If new CostBenefit:
+    if ([self.op isEqualToString:@"insert"]) {
+        // Redirect to the CostBenefitItem Nav VC to create new item.
+        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitItemNavigationController"];
+        SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
+        destVC.context = self.context;
+        destVC.costBenefit = self.costBenefit;
+        [self presentViewController:destNavVC animated:YES completion:nil];
+    }
+    // Else redirect to CostBenefit VC.
+    else {
+        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
+    }
+
+}
+
+- (IBAction)trashTapped:(id)sender {
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:@"Delete this CBA?"
+                                 message:@"All items will be deleted as well. This cannot be undone."
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Delete"
+                         style:UIAlertActionStyleDestructive
+                         handler:^(UIAlertAction * action)
+                         {
+                             [view dismissViewControllerAnimated:YES completion:nil];
+                             [self.context deleteObject:self.costBenefit];
+                             [SMRViewControllerHelper presentHome:self context:self.context];
+                             NSError *error;
+                             [self.context save:&error];
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+
+                             }];
+
+
+    [view addAction:ok];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
 }
 @end
