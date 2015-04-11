@@ -46,7 +46,7 @@
 - (void) setCostBenefitBoxes {
     // Clear existing data.
     for (int i=0; i<4; i++) {
-        self.boxes[i] = [[NSMutableArray alloc] init];
+        [self.boxes[i] removeAllObjects];
     }
     // Loop through costBenefitItems:
     for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
@@ -102,7 +102,7 @@
     NSMutableArray *boxItems = self.boxes[indexPath.section];
     if ([boxItems count] == 0) {
         cell.textLabel.text = @"(None added)";
-        cell.detailTextLabel.text = @"";
+        cell.detailTextLabel.text = @" ";
         [cell setUserInteractionEnabled:NO];
         return cell;
     }
