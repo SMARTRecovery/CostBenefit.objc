@@ -55,6 +55,7 @@
         self.titleTextField.text = self.costBenefit.title;
     }
     else {
+        self.saveButton.enabled = NO;
         self.op = @"insert";
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         self.title = @"New CBA";
@@ -62,6 +63,9 @@
         self.navigationController.toolbarHidden = YES;
     }
     [self setHelpText:self.costBenefit.type];
+    [self.titleTextField addTarget:self
+                            action:@selector(editingChanged:)
+                  forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -69,6 +73,13 @@
     if ([self.costBenefit.type isEqualToString:@"activity"]) {
         [self.typePicker selectRow:1 inComponent:0 animated:YES];
         [self.typePicker reloadComponent:0];
+    }
+}
+
+-(void) editingChanged:(id)sender {
+    self.saveButton.enabled = YES;
+    if ([self.titleTextField.text length] < 3) {
+        self.saveButton.enabled = NO;
     }
 }
 
