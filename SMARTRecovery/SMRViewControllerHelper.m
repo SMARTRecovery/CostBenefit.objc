@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 smartrecovery.org. All rights reserved.
 //
 
-#import "SMRViewControllerHelpers.h"
+#import "SMRViewControllerHelper.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRListCostBenefitsViewController.h"
 
-@implementation SMRViewControllerHelpers
+@implementation SMRViewControllerHelper
 
 + (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController*)viewController context:(NSManagedObjectContext *)context {
 

@@ -8,7 +8,7 @@
 
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
-#import "SMRViewControllerHelpers.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMRCostBenefitItemViewController ()
 @property (strong, nonatomic) NSArray *boxOptions;
@@ -146,12 +146,12 @@
 }
 
 - (IBAction)cancelTapped:(id)sender {
-    [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
 }
 
 - (IBAction)saveTapped:(id)sender {
     [self save];
-    [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
 }
 
 - (IBAction)trashTapped:(id)sender {
@@ -168,7 +168,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
                          }];

@@ -11,7 +11,7 @@
 #import "SMRCostBenefit+methods.h"
 
 
-@interface SMRViewControllerHelpers : NSObject
+@interface SMRViewControllerHelper : NSObject
 
 + (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
 

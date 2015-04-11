@@ -10,7 +10,7 @@
 #import "SMRListCostBenefitsViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitItemViewController.h"
-#import "SMRViewControllerHelpers.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMREditCostBenefitViewController ()
 
@@ -114,11 +114,11 @@
         [self.context deleteObject:self.costBenefit];
 
         // Redirect to home screen.
-        [SMRViewControllerHelpers presentHome:self context:self.context];
+        [SMRViewControllerHelper presentHome:self context:self.context];
     }
     // Else redirect to CostBenefit VC.
     else {
-        [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
 }
 
@@ -138,7 +138,7 @@
     }
     // Else redirect to CostBenefit VC.
     else {
-        [SMRViewControllerHelpers presentCostBenefit:self.costBenefit viewController:self context:self.context];
+        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
 
 }
@@ -156,7 +156,7 @@
                          {
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.context deleteObject:self.costBenefit];
-                             [SMRViewControllerHelpers presentHome:self context:self.context];
+                             [SMRViewControllerHelper presentHome:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
                          }];
