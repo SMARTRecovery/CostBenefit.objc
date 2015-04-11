@@ -29,8 +29,12 @@
     [super viewDidLoad];
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
-    _boxOptions =  @[@[@"Advantage", @"Disadvantage"],
-                     @[@"of doing", @"of not doing"]];
+
+    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+    _boxOptions =  @[@[@"Advantage",
+                       @"Disadvantage"],
+                     @[[NSString stringWithFormat:@"of %@", verb],
+                       [NSString stringWithFormat:@"of NOT %@", verb]]];
     self.longTermLabel.text = @"Long-term advantage";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;

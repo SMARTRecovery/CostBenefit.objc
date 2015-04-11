@@ -11,6 +11,7 @@
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMREditCostBenefitViewController.h"
+#import "SMRViewControllerHelper.h"
 
 @interface SMRCostBenefitViewController ()
 
@@ -72,22 +73,20 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     NSString *title;
+    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+
     switch (section) {
         case 0:
-            title = [NSString stringWithFormat:@"Advantages of %@", self.costBenefit.title];
-            title = @"Advantages of doing";
+            title = [NSString stringWithFormat:@"Advantages of %@", verb];
             break;
         case 1:
-            title = [NSString stringWithFormat:@"Disadvantages of %@", self.costBenefit.title];
-            title = @"Disadvantages of doing";
+            title = [NSString stringWithFormat:@"Disadvantages of %@", verb];
             break;
         case 2:
-            title = [NSString stringWithFormat:@"Advantages of NO %@", self.costBenefit.title];
-            title = @"Advantages of not doing";
+            title = [NSString stringWithFormat:@"Advantages of NOT %@", verb];
             break;
         case 3:
-            title = [NSString stringWithFormat:@"Disadvantages of NO %@", self.costBenefit.title];
-            title = @"Disadvantages of not doing";
+            title = [NSString stringWithFormat:@"Disadvantages of NOT %@", verb];
             break;
         default:
             break;
