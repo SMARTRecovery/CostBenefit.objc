@@ -39,31 +39,11 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setCostBenefitBoxes];
+    self.boxes = [self.costBenefit fetchBoxes];
     [self.tableView reloadData];
 }
 
-- (void) setCostBenefitBoxes {
-    // Clear existing data.
-    for (int i=0; i<4; i++) {
-        [self.boxes[i] removeAllObjects];
-    }
-    // Loop through costBenefitItems to set boxes.
-    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
-        NSNumber *boxNumber = item.boxNumber;
-        NSMutableArray *boxItems = self.boxes[[boxNumber intValue]];
-        [boxItems addObject:item];
-    }
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    // Sort each box by created.
-    for (int i=0; i<4; i++) {
-        NSArray *boxItems = self.boxes[i];
-        boxItems = [boxItems sortedArrayUsingDescriptors:sortDescriptors];
-        NSLog(@"sorted %@", boxItems);
-    }
 
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableArray *boxItems = self.boxes[section];

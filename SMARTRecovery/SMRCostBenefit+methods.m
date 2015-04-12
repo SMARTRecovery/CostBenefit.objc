@@ -7,6 +7,7 @@
 //
 
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitItem+methods.h"
 
 @implementation SMRCostBenefit (methods)
 
@@ -26,4 +27,26 @@
 
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
+
+- (NSMutableArray *)fetchBoxes {
+    NSMutableArray *boxes = [[NSMutableArray alloc] init];
+    for (int i=0; i<4; i++) {
+        [boxes addObject:[[NSMutableArray alloc] init]];
+    }
+    for (SMRCostBenefitItem *item in self.costBenefitItems) {
+        NSNumber *boxNumber = item.boxNumber;
+        NSMutableArray *boxItems = boxes[[boxNumber intValue]];
+        [boxItems addObject:item];
+    }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    // Sort each box by created.
+    for (int i=0; i<4; i++) {
+        NSArray *boxItems = boxes[i];
+        boxItems = [boxItems sortedArrayUsingDescriptors:sortDescriptors];
+        NSLog(@"sorted %@", boxItems);
+    }
+    return boxes;
+}
+
 @end
