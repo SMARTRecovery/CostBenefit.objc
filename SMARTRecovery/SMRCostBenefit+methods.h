@@ -15,4 +15,6 @@
 
 + (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context;
 
+- (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context;
+
 @end

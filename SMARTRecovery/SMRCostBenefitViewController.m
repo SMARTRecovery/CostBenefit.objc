@@ -15,7 +15,6 @@
 
 @interface SMRCostBenefitViewController ()
 
-@property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) NSMutableArray *boxes;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
@@ -40,21 +39,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setCostBenefitBoxes];
-}
-
-- (void) setCostBenefitBoxes {
-    // Clear existing data.
-    for (int i=0; i<4; i++) {
-        [self.boxes[i] removeAllObjects];
-    }
-    // Loop through costBenefitItems:
-    for (SMRCostBenefitItem *item in self.costBenefit.costBenefitItems) {
-        NSNumber *boxNumber = item.boxNumber;
-        NSMutableArray *boxItems = self.boxes[[boxNumber intValue]];
-        [boxItems addObject:item];
-        [self.items addObject:item];
-    }
+    self.boxes = [self.costBenefit fetchBoxes:self.context];
     [self.tableView reloadData];
 }
 
@@ -93,7 +78,6 @@
     }
     return title;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 

@@ -43,11 +43,12 @@
     }
     else {
         self.navigationController.toolbarHidden = YES;
+        self.title = @"Add Item";
         self.saveButton.enabled = NO;
+
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
         self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
-        self.title = @"Add Item";
     }
     [self.titleTextField addTarget:self
                             action:@selector(editingChanged:)

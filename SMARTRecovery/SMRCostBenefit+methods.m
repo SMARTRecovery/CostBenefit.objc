@@ -7,6 +7,7 @@
 //
 
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitItem+methods.h"
 
 @implementation SMRCostBenefit (methods)
 
@@ -26,4 +27,23 @@
 
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
+
+- (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context {
+    NSMutableArray *boxes = [[NSMutableArray alloc] init];
+    for (int i=0; i<4; i++) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem"
+                                                  inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, [NSNumber numberWithInt:i]];
+        [fetchRequest setPredicate:predicate];
+        NSError *error = nil;
+
+        NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
+        [boxes addObject:boxItems];
+    }
+    return boxes;
+}
+
 @end
