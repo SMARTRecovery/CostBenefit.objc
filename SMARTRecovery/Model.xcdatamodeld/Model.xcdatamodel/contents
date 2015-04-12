@@ -7,6 +7,7 @@
     </entity>
     <entity name="SMRCostBenefitItem" representedClassName="SMRCostBenefitItem" syncable="YES">
         <attribute name="boxNumber" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isLongTerm" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="seq" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -14,6 +15,6 @@
     </entity>
     <elements>
         <element name="SMRCostBenefit" positionX="-288" positionY="-13" width="128" height="88"/>
-        <element name="SMRCostBenefitItem" positionX="-54" positionY="-18" width="128" height="118"/>
+        <element name="SMRCostBenefitItem" positionX="-54" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
