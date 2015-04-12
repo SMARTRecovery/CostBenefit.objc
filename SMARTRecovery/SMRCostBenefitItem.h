@@ -17,7 +17,6 @@
 @property (nonatomic, retain) NSNumber * seq;
 @property (nonatomic, retain) NSNumber * boxNumber;
 @property (nonatomic, retain) NSNumber * isLongTerm;
-@property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) SMRCostBenefit *costBenefit;
 
 @end

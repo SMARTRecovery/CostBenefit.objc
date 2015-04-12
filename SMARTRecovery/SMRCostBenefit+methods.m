@@ -28,23 +28,20 @@
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSMutableArray *)fetchBoxes {
+- (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context {
     NSMutableArray *boxes = [[NSMutableArray alloc] init];
     for (int i=0; i<4; i++) {
-        [boxes addObject:[[NSMutableArray alloc] init]];
-    }
-    for (SMRCostBenefitItem *item in self.costBenefitItems) {
-        NSNumber *boxNumber = item.boxNumber;
-        NSMutableArray *boxItems = boxes[[boxNumber intValue]];
-        [boxItems addObject:item];
-    }
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    // Sort each box by created.
-    for (int i=0; i<4; i++) {
-        NSArray *boxItems = boxes[i];
-        boxItems = [boxItems sortedArrayUsingDescriptors:sortDescriptors];
-        NSLog(@"sorted %@", boxItems);
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem"
+                                                  inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, [NSNumber numberWithInt:i]];
+        [fetchRequest setPredicate:predicate];
+        NSError *error = nil;
+
+        NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
+        [boxes addObject:boxItems];
     }
     return boxes;
 }

@@ -17,6 +17,5 @@
 @dynamic boxNumber;
 @dynamic isLongTerm;
 @dynamic costBenefit;
-@dynamic created;
 
 @end

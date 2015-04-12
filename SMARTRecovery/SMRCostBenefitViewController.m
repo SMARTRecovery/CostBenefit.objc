@@ -39,11 +39,9 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.boxes = [self.costBenefit fetchBoxes];
+    self.boxes = [self.costBenefit fetchBoxes:self.context];
     [self.tableView reloadData];
 }
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableArray *boxItems = self.boxes[section];
@@ -80,7 +78,6 @@
     }
     return title;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
