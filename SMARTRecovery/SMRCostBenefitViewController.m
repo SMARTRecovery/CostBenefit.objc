@@ -15,7 +15,6 @@
 
 @interface SMRCostBenefitViewController ()
 
-@property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) NSMutableArray *boxes;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
@@ -53,8 +52,8 @@
         NSNumber *boxNumber = item.boxNumber;
         NSMutableArray *boxItems = self.boxes[[boxNumber intValue]];
         [boxItems addObject:item];
-        [self.items addObject:item];
     }
+    
     [self.tableView reloadData];
 }
 
