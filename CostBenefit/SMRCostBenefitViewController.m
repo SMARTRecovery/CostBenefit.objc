@@ -73,6 +73,7 @@
 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
     [label setText:title];
+    label.textColor = [UIColor whiteColor];
     [view addSubview:label];
 
     UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 20)];
@@ -93,9 +94,10 @@
     }
     [subtitle setText:subtitleText];
     [subtitle setFont:[UIFont systemFontOfSize:11]];
+    subtitle.textColor = [UIColor whiteColor];
     [view addSubview:subtitle];
 
-    [view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    [view setBackgroundColor:[UIColor grayColor]];
     return view;
 }
 
