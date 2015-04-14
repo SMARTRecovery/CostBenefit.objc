@@ -11,6 +11,7 @@
 #import "SMRViewControllerHelper.h"
 
 @interface SMRCostBenefitItemViewController ()
+
 @property (strong, nonatomic) NSArray *boxOptions;
 @property (weak, nonatomic) IBOutlet UIPickerView *boxPicker;
 @property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
@@ -21,6 +22,7 @@
 - (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
+
 @end
 
 @implementation SMRCostBenefitItemViewController
@@ -31,15 +33,28 @@
     self.boxPicker.delegate = self;
 
     NSString *verb = [self.costBenefit getVerb];
-    _boxOptions =  @[@[@"Advantage",
-                       @"Disadvantage"],
-                     @[[NSString stringWithFormat:@"of %@", verb],
-                       [NSString stringWithFormat:@"of NOT %@", verb]]];
+    _boxOptions =  @[@[
+                         [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:0] isPlural:NO],
+                         [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:1] isPlural:NO]
+                         ],
+                     @[
+                         [NSString stringWithFormat:@"of %@", verb],
+                         [NSString stringWithFormat:@"of NOT %@", verb]
+                         ]
+                     ];
     self.longTermLabel.text = @"Long-term advantage";
     if (self.costBenefitItem != nil) {
         self.titleTextField.text = self.costBenefitItem.title;
         self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
         self.title = @"Edit Item";
+        self.boxPicker.hidden = YES;
+
+        UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.bounds), 20)];
+        [boxLabel setTextColor:[UIColor blackColor]];
+        [boxLabel setBackgroundColor:[UIColor clearColor]];
+        [boxLabel setTextAlignment:NSTextAlignmentCenter];
+        [boxLabel setText:[self.costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]];
+        [self.view addSubview:boxLabel];
     }
     else {
         self.navigationController.toolbarHidden = YES;
