@@ -60,6 +60,44 @@
     NSNumber *boxNumber = [NSNumber numberWithInteger:section];
     return [self.costBenefit getBoxLabelText:boxNumber isPlural:YES];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSNumber *boxNumber = [NSNumber numberWithInteger:section];
+    NSString *title = [self.costBenefit getBoxLabelText:boxNumber isPlural:YES];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    [label setText:title];
+    [view addSubview:label];
+
+    UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 20)];
+    NSString *subtitleText;
+    switch (section) {
+        case 0:
+            subtitleText = @"What do I enjoy about my addiction?";
+            break;
+        case 1:
+            subtitleText = @"What do I hate about my addiction?";
+            break;
+        case 2:
+            subtitleText = @"What will I like about giving up my addiction?";
+            break;
+        case 3:
+            subtitleText = @"What won't I like about giving up my addiction?";
+            break;
+    }
+    [subtitle setText:subtitleText];
+    [subtitle setFont:[UIFont systemFontOfSize:11]];
+    [view addSubview:subtitle];
+
+    [view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    return view;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
