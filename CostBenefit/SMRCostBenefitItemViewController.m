@@ -30,7 +30,7 @@
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
 
-    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+    NSString *verb = [self.costBenefit getVerb];
     _boxOptions =  @[@[@"Advantage",
                        @"Disadvantage"],
                      @[[NSString stringWithFormat:@"of %@", verb],

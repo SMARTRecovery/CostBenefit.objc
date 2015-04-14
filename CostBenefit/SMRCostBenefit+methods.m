@@ -46,4 +46,18 @@
     return boxes;
 }
 
+- (NSString *)getVerb {
+    NSString *verb;
+    if ([self.type isEqualToString:@"activity"]) {
+        verb = self.title;
+    }
+    else {
+        verb = @"using";
+    }
+    return verb;
+}
+
+- (NSString *)getBoxLabel:(NSNumber*)boxNumber {
+    return @" ";
+}
 @end

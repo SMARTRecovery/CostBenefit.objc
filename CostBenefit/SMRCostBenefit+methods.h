@@ -17,4 +17,8 @@
 
 - (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context;
 
+- (NSString *)getBoxLabel:(NSNumber*)boxNumber;
+
+- (NSString *)getVerb;
+
 @end

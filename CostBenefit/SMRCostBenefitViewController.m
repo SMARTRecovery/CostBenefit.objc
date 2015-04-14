@@ -58,7 +58,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     NSString *title;
-    NSString *verb = [SMRViewControllerHelper getVerb:self.costBenefit];
+    NSString *verb = [self.costBenefit getVerb];
 
     switch (section) {
         case 0:
