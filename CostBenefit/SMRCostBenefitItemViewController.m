@@ -13,6 +13,10 @@
 @interface SMRCostBenefitItemViewController ()
 
 @property (strong, nonatomic) NSArray *boxOptions;
+@property (strong, nonatomic) NSString *textAdvantage;
+@property (strong, nonatomic) NSString *textDisadvantage;
+@property (strong, nonatomic) NSString *textLongTerm;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *boxPicker;
 @property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *longTermSwitch;
@@ -31,11 +35,14 @@
     [super viewDidLoad];
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
+    self.textAdvantage = [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:0] isPlural:NO];
+    self.textDisadvantage = [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:1] isPlural:NO];
+    self.textLongTerm = @"Long-term";
 
     NSString *verb = [self.costBenefit getVerb];
     _boxOptions =  @[@[
-                         [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:0] isPlural:NO],
-                         [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:1] isPlural:NO]
+                         self.textAdvantage,
+                         self.textDisadvantage
                          ],
                      @[
                          [NSString stringWithFormat:@"of %@", verb],
@@ -65,6 +72,7 @@
         // Set to Box 0 as default.
         self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
     }
+    [self setLongTermLabelText];
     [self.titleTextField addTarget:self
                             action:@selector(editingChanged:)
                   forControlEvents:UIControlEventEditingChanged];
@@ -77,7 +85,6 @@
         case 1:
             [self.boxPicker selectRow:1 inComponent:0 animated:YES];
             [self.boxPicker reloadComponent:0];
-            self.longTermLabel.text = @"Long-term disadvantage";
             break;
         case 2:
             [self.boxPicker selectRow:1 inComponent:1 animated:YES];
@@ -88,11 +95,15 @@
             [self.boxPicker reloadComponent:0];
             [self.boxPicker selectRow:1 inComponent:1 animated:YES];
             [self.boxPicker reloadComponent:1];
-            self.longTermLabel.text = @"Long-term disadvantage";
             break;
         default:
             break;
     }
+    [self setLongTermLabelText];
+}
+
+- (void) setLongTermLabelText {
+    self.longTermLabel.text = [NSString stringWithFormat:@"%@ %@", self.textLongTerm, [self.costBenefit getBoxDescriptor:self.costBenefitItem.boxNumber isPlural:NO]];
 }
 
 -(void) editingChanged:(id)sender {
@@ -105,10 +116,10 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (component == 0) {
         if (row == 0) {
-            self.longTermLabel.text = @"Long-term advantage";
+            self.longTermLabel.text = [NSString stringWithFormat:@"%@ %@", self.textLongTerm, self.textAdvantage];
         }
         else {
-            self.longTermLabel.text = @"Long-term disadvantage";
+            self.longTermLabel.text = [NSString stringWithFormat:@"%@ %@", self.textLongTerm, self.textDisadvantage];
         }
     }
 }
