@@ -46,4 +46,38 @@
     return boxes;
 }
 
+- (NSString *)getVerb {
+    NSString *verb;
+    if ([self.type isEqualToString:@"activity"]) {
+        verb = self.title;
+    }
+    else {
+        verb = @"using";
+    }
+    return verb;
+}
+
+- (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
+    NSString *descriptor;
+    if ([boxNumber intValue] % 2 == 0) {
+        descriptor = @"Advantage";
+    }
+    else {
+        descriptor = @"Disadvantage";
+    }
+    if (isPlural) {
+        descriptor = [NSString stringWithFormat:@"%@s", descriptor];
+    }
+    return descriptor;
+}
+
+- (NSString *)getBoxLabelText:(NSNumber*)boxNumber isPlural:(BOOL)isPlural{
+    NSString *action = @"";
+    if ([boxNumber intValue] > 1) {
+        action = @"NOT ";
+    }
+    NSString *descriptor = [self getBoxDescriptor:boxNumber isPlural:isPlural];
+    NSString *text = [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
+    return text;
+}
 @end

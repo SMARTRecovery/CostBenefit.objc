@@ -13,8 +13,6 @@
 
 @interface SMRViewControllerHelper : NSObject
 
-+ (NSString *)getVerb:(SMRCostBenefit *)costBenefit;
-
 + (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
 
 + (void)presentHome:(UIViewController *)viewController context:(NSManagedObjectContext *)context;

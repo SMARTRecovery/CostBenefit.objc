@@ -12,17 +12,6 @@
 
 @implementation SMRViewControllerHelper
 
-+ (NSString *)getVerb:(SMRCostBenefit *)costBenefit {
-    NSString *verb;
-    if ([costBenefit.type isEqualToString:@"activity"]) {
-        verb = costBenefit.title;
-    }
-    else {
-        verb = @"using";
-    }
-    return verb;
-}
-
 + (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController*)viewController context:(NSManagedObjectContext *)context {
 
     UINavigationController *destNavVC = [viewController.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
