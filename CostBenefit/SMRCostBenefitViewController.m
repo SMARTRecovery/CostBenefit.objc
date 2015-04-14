@@ -57,26 +57,8 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSString *title;
-    NSString *verb = [self.costBenefit getVerb];
-
-    switch (section) {
-        case 0:
-            title = [NSString stringWithFormat:@"Advantages of %@", verb];
-            break;
-        case 1:
-            title = [NSString stringWithFormat:@"Disadvantages of %@", verb];
-            break;
-        case 2:
-            title = [NSString stringWithFormat:@"Advantages of NOT %@", verb];
-            break;
-        case 3:
-            title = [NSString stringWithFormat:@"Disadvantages of NOT %@", verb];
-            break;
-        default:
-            break;
-    }
-    return title;
+    NSNumber *boxNumber = [NSNumber numberWithInteger:section];
+    return [self.costBenefit getBoxLabelText:boxNumber isPlural:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

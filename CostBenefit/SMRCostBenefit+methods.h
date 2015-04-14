@@ -17,7 +17,9 @@
 
 - (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context;
 
-- (NSString *)getBoxLabel:(NSNumber*)boxNumber;
+- (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural;
+
+- (NSString *)getBoxLabelText:(NSNumber*)boxNumber isPlural:(BOOL)isPlural;
 
 - (NSString *)getVerb;
 
