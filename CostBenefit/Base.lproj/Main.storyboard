@@ -265,8 +265,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpQ-Gt-7p9">
-                                <rect key="frame" x="16" y="289" width="568" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpQ-Gt-7p9">
+                                <rect key="frame" x="16" y="259" width="568" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="hca-DN-mdS"/>
                                 </constraints>
@@ -280,16 +280,16 @@
                                     <constraint firstAttribute="height" constant="80" id="bxL-cd-OHg"/>
                                 </constraints>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
-                                <rect key="frame" x="16" y="200" width="568" height="24"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-jl-JOI">
+                                <rect key="frame" x="16" y="180" width="568" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="ifq-6F-Atc"/>
+                                    <constraint firstAttribute="height" constant="32" id="ifq-6F-Atc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bx2-wj-DeN">
-                                <rect key="frame" x="535" y="289" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bx2-wj-DeN">
+                                <rect key="frame" x="535" y="259" width="51" height="31"/>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -300,14 +300,14 @@
                             <constraint firstItem="bx2-wj-DeN" firstAttribute="top" secondItem="UNF-jl-JOI" secondAttribute="bottom" constant="82" id="B8Q-tY-uxx"/>
                             <constraint firstItem="bx2-wj-DeN" firstAttribute="trailing" secondItem="UNF-jl-JOI" secondAttribute="trailing" id="B9t-iN-2LD"/>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="leading" secondItem="UNF-jl-JOI" secondAttribute="leading" id="DXD-eY-jsa"/>
-                            <constraint firstItem="bx2-wj-DeN" firstAttribute="top" secondItem="UNF-jl-JOI" secondAttribute="bottom" constant="67" id="Ha5-Fd-j0s"/>
+                            <constraint firstItem="bx2-wj-DeN" firstAttribute="top" secondItem="UNF-jl-JOI" secondAttribute="bottom" constant="47" id="Ha5-Fd-j0s"/>
                             <constraint firstItem="UNF-jl-JOI" firstAttribute="leading" secondItem="tBL-Tm-VoT" secondAttribute="leading" id="IBz-f0-MId"/>
                             <constraint firstItem="jh9-dL-X6e" firstAttribute="top" secondItem="IpQ-Gt-7p9" secondAttribute="bottom" constant="235" id="IaB-Rh-kGe"/>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="trailing" secondItem="bx2-wj-DeN" secondAttribute="trailing" id="JYa-Ox-z4y"/>
                             <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="let-9E-98h" secondAttribute="top" constant="200" id="K26-VV-tL1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IpQ-Gt-7p9" secondAttribute="trailing" id="KUm-8k-wgz"/>
                             <constraint firstItem="IpQ-Gt-7p9" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" constant="8" id="Lxo-Wl-s3G"/>
-                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="tBL-Tm-VoT" secondAttribute="bottom" constant="11" id="OCb-jv-UM9"/>
+                            <constraint firstItem="UNF-jl-JOI" firstAttribute="top" secondItem="tBL-Tm-VoT" secondAttribute="bottom" constant="20" id="OCb-jv-UM9"/>
                             <constraint firstItem="UNF-jl-JOI" firstAttribute="centerX" secondItem="tBL-Tm-VoT" secondAttribute="centerX" id="RRd-kY-FHq"/>
                             <constraint firstItem="UNF-jl-JOI" firstAttribute="leading" secondItem="let-9E-98h" secondAttribute="leadingMargin" id="Ts0-1n-fry"/>
                             <constraint firstItem="jh9-dL-X6e" firstAttribute="top" secondItem="bx2-wj-DeN" secondAttribute="bottom" constant="236" id="ZdO-YL-TYZ"/>
