@@ -108,6 +108,7 @@
     NSMutableArray *boxItems = self.boxes[indexPath.section];
     if ([boxItems count] == 0) {
         cell.textLabel.text = @"(None added)";
+        cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.detailTextLabel.text = @" ";
         [cell setUserInteractionEnabled:NO];
         return cell;
@@ -115,6 +116,7 @@
 
     SMRCostBenefitItem *item = boxItems[indexPath.row];
     cell.textLabel.text = item.title;
+    cell.textLabel.textColor = [UIColor blackColor];
     NSString *detail = @"Short-term";
     if ([item.isLongTerm boolValue]) {
         detail = @"Long-term";
