@@ -81,10 +81,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSP-Jh-qSv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="162"/>
+                                <rect key="frame" x="0.0" y="19" width="600" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="O7i-2v-ofE"/>
+                                </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="to consider is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-OY-zPL">
-                                <rect key="frame" x="24" y="172" width="552" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to consider is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-OY-zPL">
+                                <rect key="frame" x="16" y="150" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1hx-az-j3G"/>
                                     <constraint firstAttribute="width" constant="125" id="9qz-Oa-D8d"/>
@@ -99,7 +102,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKE-tb-7Aw">
-                                <rect key="frame" x="24" y="246" width="552" height="21"/>
+                                <rect key="frame" x="24" y="224" width="552" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="c3j-TL-p0u"/>
                                 </constraints>
@@ -108,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-IN-iw1">
-                                <rect key="frame" x="24" y="203" width="552" height="30"/>
+                                <rect key="frame" x="24" y="181" width="552" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -123,7 +126,7 @@
                             <constraint firstItem="AKE-tb-7Aw" firstAttribute="top" secondItem="j6w-IN-iw1" secondAttribute="bottom" constant="13" id="RUE-IX-sFt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yPu-OY-zPL" secondAttribute="trailing" id="TlC-1X-2pV"/>
                             <constraint firstItem="AKE-tb-7Aw" firstAttribute="leading" secondItem="j6w-IN-iw1" secondAttribute="leading" id="Vvl-IH-OZS"/>
-                            <constraint firstItem="WSP-Jh-qSv" firstAttribute="top" secondItem="Q16-Jk-cgs" secondAttribute="top" id="WCI-0h-YoM"/>
+                            <constraint firstItem="WSP-Jh-qSv" firstAttribute="top" secondItem="Q16-Jk-cgs" secondAttribute="top" constant="60" id="WCI-0h-YoM"/>
                             <constraint firstItem="e6W-VS-sAE" firstAttribute="top" secondItem="j6w-IN-iw1" secondAttribute="bottom" constant="306" id="hU3-2a-D6i"/>
                             <constraint firstItem="WSP-Jh-qSv" firstAttribute="centerX" secondItem="j6w-IN-iw1" secondAttribute="centerX" id="nOT-t6-RZ6"/>
                             <constraint firstItem="j6w-IN-iw1" firstAttribute="trailing" secondItem="AKE-tb-7Aw" secondAttribute="trailing" id="v6E-YI-9cP"/>
@@ -323,6 +326,7 @@
                                 <exclude reference="KUm-8k-wgz"/>
                                 <exclude reference="Lxo-Wl-s3G"/>
                                 <exclude reference="hLf-NB-aCh"/>
+                                <exclude reference="IaB-Rh-kGe"/>
                                 <exclude reference="ZdO-YL-TYZ"/>
                                 <exclude reference="zbg-yP-Cm7"/>
                                 <exclude reference="B8Q-tY-uxx"/>
