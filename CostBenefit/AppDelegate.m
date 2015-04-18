@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
 #import "SMRListCostBenefitsViewController.h"
+#import "SMREditCostBenefitViewController.h"
 #import <MMDrawerController.h>
 
 @interface AppDelegate ()
@@ -43,7 +44,11 @@
     initialVC.context = coreDataStack.managedObjectContext;
 
 
-    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:menuController
+    UINavigationController *newCostBenefitNavController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+    SMREditCostBenefitViewController *newCostBenefitVC = (SMREditCostBenefitViewController *)newCostBenefitNavController.topViewController;
+    newCostBenefitVC.context = coreDataStack.managedObjectContext;
+
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:newCostBenefitNavController
                                                             leftDrawerViewController:viewController];
     self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];

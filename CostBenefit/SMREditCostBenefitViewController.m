@@ -11,6 +11,8 @@
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRViewControllerHelper.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface SMREditCostBenefitViewController ()
 
@@ -66,6 +68,8 @@
     [self.titleTextField addTarget:self
                             action:@selector(editingChanged:)
                   forControlEvents:UIControlEventEditingChanged];
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -184,5 +188,10 @@
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
+}
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 @end

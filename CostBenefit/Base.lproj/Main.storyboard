@@ -386,7 +386,7 @@
         <!--Nav Edit Cost Benefit-->
         <scene sceneID="qow-EB-6Eg">
             <objects>
-                <navigationController title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="editCostBenefitNavVC" title="Nav Edit Cost Benefit" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Fez-iU-gJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dV-8l-1XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
