@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
 #import "SMRListCostBenefitsViewController.h"
+#import <MMDrawerController.h>
 
 @interface AppDelegate ()
 
@@ -29,13 +30,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    UINavigationController *rootNavVC = (UINavigationController *) self.window.rootViewController;
-    SMRListCostBenefitsViewController *initialVC = (SMRListCostBenefitsViewController *)rootNavVC.topViewController;
-
     SMRCoreDataStack *coreDataStack = [[SMRCoreDataStack alloc] initWithStoreURL:[self storeURL] modelURL:[self modelURL]];
 
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    SMRListCostBenefitsViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
+    viewController.context = coreDataStack.managedObjectContext;
+
+
+    UINavigationController* menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
+    SMRListCostBenefitsViewController *initialVC = (SMRListCostBenefitsViewController *)menuController.topViewController;
     initialVC.context = coreDataStack.managedObjectContext;
 
+
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:menuController
+                                                            leftDrawerViewController:viewController];
+    self.window.rootViewController = drawerController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

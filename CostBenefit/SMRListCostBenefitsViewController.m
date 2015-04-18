@@ -10,6 +10,8 @@
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface SMRListCostBenefitsViewController ()
 
@@ -25,6 +27,8 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -69,4 +73,8 @@
     }
 }
 
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 @end
