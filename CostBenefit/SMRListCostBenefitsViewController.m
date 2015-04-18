@@ -10,7 +10,6 @@
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
-#import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 
 @interface SMRListCostBenefitsViewController ()
@@ -53,6 +52,16 @@
     cell.textLabel.text = costBenefit.title;
 
     return cell;
+}
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+
+    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+    [costBenefitVC setCostBenefit:self.costBenefits[indexPath.row]];
+    [costBenefitVC setContext:self.context];
+    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
 }
 
 #pragma mark - Navigation

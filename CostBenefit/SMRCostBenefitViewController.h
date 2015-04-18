@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+MMDrawerController.h"
 #import "SMRCostBenefit+methods.h"
 
 @interface SMRCostBenefitViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
+
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
+@property (strong, nonatomic) MMDrawerController *drawer;
 
 @end

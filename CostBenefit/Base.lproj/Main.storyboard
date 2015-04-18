@@ -35,9 +35,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="mNT-Nv-doj" kind="presentation" id="O0B-oq-Hdr"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
