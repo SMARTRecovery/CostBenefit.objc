@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--CBA's-->
+        <!--List Cost Benefits View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="leftMenuViewController" id="vXZ-lx-hvc" customClass="SMRListCostBenefitsViewController" sceneMemberID="viewController">
@@ -48,16 +48,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="CBA's" id="fll-HC-df1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3bo-D9-ysO">
-                            <connections>
-                                <segue destination="Fez-iU-gJ5" kind="showDetail" id="lcV-kT-WaC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="fll-HC-df1"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addButton" destination="3bo-D9-ysO" id="lCo-xZ-8j3"/>
                         <outlet property="tableView" destination="mWy-d3-izO" id="Md7-He-85z"/>
                     </connections>
                 </viewController>
@@ -446,6 +439,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Y8a-ki-Rmu"/>
-        <segue reference="lcV-kT-WaC"/>
     </inferredMetricsTieBreakers>
 </document>

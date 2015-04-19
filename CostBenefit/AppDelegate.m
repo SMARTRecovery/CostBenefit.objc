@@ -47,7 +47,8 @@
 
     MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:newCostBenefitNavController
                                                             leftDrawerViewController:leftMenuNavVC];
-    [drawerController setShowsShadow:NO];
+    [drawerController setShowsShadow:YES];
+    [drawerController setShadowRadius:0.9];
     self.window.rootViewController = drawerController;
     leftMenuVC.drawer = drawerController;
     [self.window makeKeyAndVisible];

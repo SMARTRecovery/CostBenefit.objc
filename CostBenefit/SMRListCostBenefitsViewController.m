@@ -15,7 +15,6 @@
 @interface SMRListCostBenefitsViewController ()
 
 @property (strong, nonatomic) NSMutableArray *costBenefits;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -26,8 +25,6 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -84,22 +81,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = (UINavigationController *)[segue destinationViewController];
-    if (sender == self.addButton) {
+    //if (sender == self.addButton) {
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:nil];
-    }
-    else {
-        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
-        UITableViewCell *cell = (UITableViewCell *)sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        [destVC setCostBenefit:self.costBenefits[indexPath.row]];
-        [destVC setContext:self.context];
-    }
+    //}
 }
 
-#pragma mark - Button Handlers
--(void)leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
 @end
