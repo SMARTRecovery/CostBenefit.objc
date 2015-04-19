@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import <MMDrawerController.h>
 
@@ -37,7 +37,7 @@
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
 
     UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
-    SMRListCostBenefitsViewController *leftMenuVC = (SMRListCostBenefitsViewController *)leftMenuNavVC.topViewController;
+    SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;
     leftMenuVC.context = coreDataStack.managedObjectContext;
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "SMRCostBenefitViewController.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMREditCostBenefitViewController.h"
@@ -135,7 +135,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
     if (sender == self.backButton) {
-        SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
+        SMRLeftMenuViewController *destVC = (SMRLeftMenuViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
     }
     else if (sender == self.editButton) {

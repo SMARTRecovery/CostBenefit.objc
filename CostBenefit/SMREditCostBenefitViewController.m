@@ -7,7 +7,7 @@
 //
 
 #import "SMREditCostBenefitViewController.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRViewControllerHelper.h"

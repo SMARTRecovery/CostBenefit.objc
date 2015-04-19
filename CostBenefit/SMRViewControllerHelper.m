@@ -8,7 +8,7 @@
 
 #import "SMRViewControllerHelper.h"
 #import "SMRCostBenefitViewController.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 
 @implementation SMRViewControllerHelper
 
@@ -24,7 +24,7 @@
 + (void)presentHome:(UIViewController *)viewController context:(NSManagedObjectContext *)context {
 
     UINavigationController *destNavVC = [viewController.storyboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
-    SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
+    SMRLeftMenuViewController *destVC = (SMRLeftMenuViewController *)destNavVC.topViewController;
     destVC.context = context;
     [viewController presentViewController:destNavVC animated:YES completion:nil];
 }

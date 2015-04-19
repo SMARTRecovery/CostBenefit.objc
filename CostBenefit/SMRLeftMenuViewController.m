@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 smartrecovery.org. All rights reserved.
 //
 
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
 #import "MMDrawerBarButtonItem.h"
 
-@interface SMRListCostBenefitsViewController ()
+@interface SMRLeftMenuViewController ()
 
 @property (strong, nonatomic) NSMutableArray *costBenefits;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation SMRListCostBenefitsViewController
+@implementation SMRLeftMenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
