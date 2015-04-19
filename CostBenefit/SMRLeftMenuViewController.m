@@ -25,6 +25,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.title = @"SMART Recovery";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -34,7 +35,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.costBenefits count];
+    if (section > 0) {
+        return 2;
+    }
+    return [self.costBenefits count] + 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -47,7 +51,7 @@
         title = @"CBA's";
     }
     else {
-        title = @"About";
+        title = @"Info";
     }
     return title;
 }
@@ -55,14 +59,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitCell" forIndexPath:indexPath];
+    NSString *textLabel;
+
     if (indexPath.section == 0) {
-        SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
-        cell.textLabel.text = costBenefit.title;
-    }
-    else {
-        cell.textLabel.text = [NSString stringWithFormat:@"Row %ld", indexPath.row];
+        if (indexPath.row == [self.costBenefits count]) {
+            textLabel = @"New CBA";
+            cell.imageView.image = [UIImage imageNamed:@"plus-26"];
+            cell.textLabel.textColor = [UIColor grayColor];
+        }
+        else {
+            cell.imageView.image = nil;
+            SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
+            textLabel = costBenefit.title;
+            cell.textLabel.textColor = [UIColor blackColor];
+        }
     }
 
+    else {
+        if (indexPath.row == 0) {
+            textLabel = @"About CBA's";
+        }
+        else {
+            textLabel = @"About SMART Recovery";
+        }
+    }
+
+    cell.textLabel.text = textLabel;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView
