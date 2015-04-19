@@ -365,7 +365,7 @@
         <!--Nav List Cost Benefits-->
         <scene sceneID="Oxe-sH-ACk">
             <objects>
-                <navigationController storyboardIdentifier="listCostBenefitsNavigationController" title="Nav List Cost Benefits" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="leftMenuNavigationController" title="Nav List Cost Benefits" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sal-eI-PAl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

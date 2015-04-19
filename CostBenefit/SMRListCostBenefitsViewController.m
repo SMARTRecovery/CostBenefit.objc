@@ -41,27 +41,43 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *title;
+    if (section == 0) {
+        title = @"CBA's";
+    }
+    else {
+        title = @"About";
+    }
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitCell" forIndexPath:indexPath];
-
-    SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
-    cell.textLabel.text = costBenefit.title;
+    if (indexPath.section == 0) {
+        SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
+        cell.textLabel.text = costBenefit.title;
+    }
+    else {
+        cell.textLabel.text = [NSString stringWithFormat:@"Row %ld", indexPath.row];
+    }
 
     return cell;
 }
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-
-    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
-    [costBenefitVC setCostBenefit:self.costBenefits[indexPath.row]];
-    [costBenefitVC setContext:self.context];
-    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+    if (indexPath.section == 0) {
+        UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+        SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+        [costBenefitVC setCostBenefit:self.costBenefits[indexPath.row]];
+        [costBenefitVC setContext:self.context];
+        [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+    }
 }
 
 #pragma mark - Navigation

@@ -35,13 +35,10 @@
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    SMRListCostBenefitsViewController *leftMenuVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
+
+    UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
+    SMRListCostBenefitsViewController *leftMenuVC = (SMRListCostBenefitsViewController *)leftMenuNavVC.topViewController;
     leftMenuVC.context = coreDataStack.managedObjectContext;
-
-
-    UINavigationController* menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"listCostBenefitsNavigationController"];
-    SMRListCostBenefitsViewController *initialVC = (SMRListCostBenefitsViewController *)menuController.topViewController;
-    initialVC.context = coreDataStack.managedObjectContext;
 
 
     UINavigationController *newCostBenefitNavController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
@@ -49,7 +46,7 @@
     newCostBenefitVC.context = coreDataStack.managedObjectContext;
 
     MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:newCostBenefitNavController
-                                                            leftDrawerViewController:leftMenuVC];
+                                                            leftDrawerViewController:leftMenuNavVC];
     [drawerController setShowsShadow:NO];
     self.window.rootViewController = drawerController;
     leftMenuVC.drawer = drawerController;
