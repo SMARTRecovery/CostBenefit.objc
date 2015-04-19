@@ -199,7 +199,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NgB-nw-OMp" kind="presentation" id="Y8a-ki-Rmu"/>
+                                            <segue destination="NgB-nw-OMp" kind="show" id="Y8a-ki-Rmu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -228,7 +228,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VY3-NC-y3Z">
                             <connections>
-                                <segue destination="NgB-nw-OMp" kind="presentation" id="Vda-Lh-M66"/>
+                                <segue destination="NgB-nw-OMp" kind="show" identifier="segueToAddItem" id="Vda-Lh-M66"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -332,14 +332,9 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Enb-tX-haj">
-                            <connections>
-                                <action selector="cancelTapped:" destination="Gcp-fH-Op0" id="KkS-DM-FM9"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
-                                <action selector="saveTapped:" destination="Gcp-fH-Op0" id="lma-uB-NZc"/>
+                                <segue destination="5CO-iv-of2" kind="unwind" unwindAction="unwindToCostBenefit:" id="lKt-N2-WHa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -352,6 +347,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqj-VA-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5CO-iv-of2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4317" y="1105"/>
         </scene>
@@ -438,6 +434,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y8a-ki-Rmu"/>
+        <segue reference="Vda-Lh-M66"/>
     </inferredMetricsTieBreakers>
 </document>

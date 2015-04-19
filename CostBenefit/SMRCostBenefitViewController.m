@@ -132,6 +132,10 @@
 
 #pragma mark - Navigation
 
+- (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue {
+    [self.tableView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
     if (sender == self.backButton) {

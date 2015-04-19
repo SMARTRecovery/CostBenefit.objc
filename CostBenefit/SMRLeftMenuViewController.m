@@ -95,6 +95,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
         [costBenefitVC setCostBenefit:self.costBenefits[indexPath.row]];
         [costBenefitVC setContext:self.context];
+        [costBenefitVC setDrawer:self.drawer];
         [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
     }
 }
