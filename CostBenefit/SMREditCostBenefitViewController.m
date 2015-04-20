@@ -25,12 +25,10 @@
 @property (strong, nonatomic) NSString *placeholderSubstance;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
-- (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
 
@@ -124,38 +122,10 @@
     return _typeOptions[row];
 }
 
-- (IBAction)cancelTapped:(id)sender {
-    // If new CostBenefit:
-    if ([self.op isEqualToString:@"insert"]) {
-
-        // Delete the newly created CostBenefit.
-        [self.context deleteObject:self.costBenefit];
-
-        // Redirect to home screen.
-        [SMRViewControllerHelper presentHome:self context:self.context];
-    }
-    // Else redirect to CostBenefit VC.
-    else {
-        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
-    }
-}
-
 - (IBAction)saveTapped:(id)sender {
 
-    // If new CostBenefit:
     if ([self.op isEqualToString:@"insert"]) {
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
-        // Redirect to the CostBenefitItem Nav VC to create new item.
-//        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitItemNavigationController"];
-//        SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
-//        destVC.context = self.context;
-//        destVC.costBenefit = self.costBenefit;
-//        [self presentViewController:destNavVC animated:YES completion:nil];
-
-    }
-    // Else redirect to CostBenefit VC.
-    else {
- //       [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
     }
     self.costBenefit.title = self.titleTextField.text;
     self.costBenefit.type = self.costBenefitType;

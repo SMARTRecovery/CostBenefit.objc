@@ -139,11 +139,6 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="nbV-xV-eIG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eqe-Wo-rAP">
-                            <connections>
-                                <action selector="cancelTapped:" destination="8qZ-py-Opz" id="qul-AJ-GsI"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NgT-Mb-fd5">
                             <connections>
                                 <action selector="saveTapped:" destination="8qZ-py-Opz" id="L4o-tP-XnA"/>
@@ -151,7 +146,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="eqe-Wo-rAP" id="jN2-SH-oIV"/>
                         <outlet property="saveButton" destination="NgT-Mb-fd5" id="jVh-yZ-XVH"/>
                         <outlet property="titleDescLabel" destination="AKE-tb-7Aw" id="XgF-cC-tBJ"/>
                         <outlet property="titleTextField" destination="j6w-IN-iw1" id="sp3-f9-xBn"/>
