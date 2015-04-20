@@ -216,7 +216,7 @@
                     <toolbarItems>
                         <barButtonItem systemItem="edit" id="KxR-dn-us1">
                             <connections>
-                                <segue destination="Fez-iU-gJ5" kind="presentation" id="rEa-ZF-qqA"/>
+                                <segue destination="Fez-iU-gJ5" kind="show" id="rEa-ZF-qqA"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

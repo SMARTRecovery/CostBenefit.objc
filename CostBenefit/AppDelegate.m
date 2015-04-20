@@ -50,6 +50,7 @@
     [drawerController setShowsShadow:YES];
     [drawerController setShadowRadius:0.9];
     self.window.rootViewController = drawerController;
+    newCostBenefitVC.drawer = drawerController;
     leftMenuVC.drawer = drawerController;
     [self.window makeKeyAndVisible];
     return YES;

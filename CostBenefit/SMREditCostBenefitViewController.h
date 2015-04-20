@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+MMDrawerController.h"
 #import "SMRCostBenefit+methods.h"
 
 @interface SMREditCostBenefitViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
+@property (strong, nonatomic) MMDrawerController *drawer;
 
 @end

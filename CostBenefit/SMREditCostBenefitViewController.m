@@ -65,13 +65,14 @@
         self.title = @"New CBA";
         self.costBenefitType = @"substance";
         self.navigationController.toolbarHidden = YES;
+        MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     }
     [self setHelpText:self.costBenefitType];
     [self.titleTextField addTarget:self
                             action:@selector(editingChanged:)
                   forControlEvents:UIControlEventEditingChanged];
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -150,6 +151,7 @@
 //        destVC.context = self.context;
 //        destVC.costBenefit = self.costBenefit;
 //        [self presentViewController:destNavVC animated:YES completion:nil];
+
     }
     // Else redirect to CostBenefit VC.
     else {
@@ -159,6 +161,12 @@
     self.costBenefit.type = self.costBenefitType;
     NSError *error;
     [self.context save:&error];
+    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+    [costBenefitVC setDrawer:self.drawer];
+    [costBenefitVC setCostBenefit:self.costBenefit];
+    [costBenefitVC setContext:self.context];
+    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
 
 }
 
