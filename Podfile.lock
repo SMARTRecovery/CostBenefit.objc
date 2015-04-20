@@ -11,11 +11,14 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
+  - MMMarkdown (0.4.3)
 
 DEPENDENCIES:
   - MMDrawerController (~> 0.6)
+  - MMMarkdown (~> 0.4)
 
 SPEC CHECKSUMS:
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  MMMarkdown: faacc823952c6b63e85c6d2fd386f8ceab805430
 
 COCOAPODS: 0.36.4
