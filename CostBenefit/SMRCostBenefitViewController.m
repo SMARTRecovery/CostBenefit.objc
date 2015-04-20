@@ -39,6 +39,12 @@
     self.title = self.costBenefit.title;
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+
+    // Store this costBenefit in NSUserDefaults as the last viewed.
+    NSURL *costBenefitURL = [[self.costBenefit objectID] URIRepresentation];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setURL:costBenefitURL forKey:@"SMRLastViewedCostBenefit"];
+    [defaults synchronize];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

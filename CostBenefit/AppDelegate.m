@@ -9,7 +9,9 @@
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
 #import "SMRLeftMenuViewController.h"
+#import "SMRCostBenefitViewController.h"
 #import "SMREditCostBenefitViewController.h"
+#import "SMRCostBenefit+methods.h"
 #import <MMDrawerController.h>
 
 @interface AppDelegate ()
@@ -40,17 +42,33 @@
     SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;
     leftMenuVC.context = coreDataStack.managedObjectContext;
 
+    UINavigationController *centerController;
+    MMDrawerController *drawerController = [[MMDrawerController alloc] init];
+    [drawerController setLeftDrawerViewController:leftMenuNavVC];
 
-    UINavigationController *newCostBenefitNavController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-    SMREditCostBenefitViewController *newCostBenefitVC = (SMREditCostBenefitViewController *)newCostBenefitNavController.topViewController;
-    newCostBenefitVC.context = coreDataStack.managedObjectContext;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
 
-    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:newCostBenefitNavController
-                                                            leftDrawerViewController:leftMenuNavVC];
+    if (costBenefitURL != nil) {
+        NSManagedObjectID *moID = [coreDataStack.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:costBenefitURL];
+        SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
+        centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
+        [destVC setContext:coreDataStack.managedObjectContext];
+        [destVC setCostBenefit:costBenefit];
+        [destVC setDrawer:drawerController];
+    }
+    else {
+        centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+        SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
+        [destVC setContext:coreDataStack.managedObjectContext];
+        [destVC setDrawer:drawerController];
+    }
+
+    [drawerController setCenterViewController:centerController withFullCloseAnimation:NO completion:nil];
     [drawerController setShowsShadow:YES];
     [drawerController setShadowRadius:0.9];
     self.window.rootViewController = drawerController;
-    newCostBenefitVC.drawer = drawerController;
     leftMenuVC.drawer = drawerController;
     [self.window makeKeyAndVisible];
     return YES;
