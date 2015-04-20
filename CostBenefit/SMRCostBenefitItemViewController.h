@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+MMDrawerController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitItem+methods.h"
 
@@ -16,5 +17,6 @@
 @property (strong, nonatomic) NSString *op;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
+@property (strong, nonatomic) MMDrawerController *drawer;
 
 @end

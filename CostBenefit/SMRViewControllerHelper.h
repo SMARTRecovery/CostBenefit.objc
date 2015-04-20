@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UIViewController+MMDrawerController.h"
 #import "SMRCostBenefit+methods.h"
 
 
 @interface SMRViewControllerHelper : NSObject
 
-+ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
++ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context drawer:(MMDrawerController *)drawer;
 
 + (void)presentHome:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
 

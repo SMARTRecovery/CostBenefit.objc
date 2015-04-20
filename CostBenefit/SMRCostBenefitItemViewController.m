@@ -9,6 +9,7 @@
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMRViewControllerHelper.h"
+#import "SMRCostBenefitViewController.h"
 
 @interface SMRCostBenefitItemViewController ()
 
@@ -23,8 +24,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
-- (IBAction)cancelTapped:(id)sender;
-- (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
 
 @end
@@ -175,15 +174,6 @@
     [self.context save:&error];
 }
 
-- (IBAction)cancelTapped:(id)sender {
-    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
-}
-
-- (IBAction)saveTapped:(id)sender {
-    [self save];
-    [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
-}
-
 - (IBAction)trashTapped:(id)sender {
     UIAlertController* view=   [UIAlertController
                                  alertControllerWithTitle:@"Delete item?"
@@ -198,7 +188,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
+                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context drawer:self.drawer];
                              NSError *error;
                              [self.context save:&error];
                          }];
@@ -214,4 +204,12 @@
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
 }
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (sender != self.saveButton) return;
+    [self save];
+}
+
 @end

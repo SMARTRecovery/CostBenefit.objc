@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
+#import "SMREditCostBenefitViewController.h"
+#import <MMDrawerController.h>
 
 @interface AppDelegate ()
 
@@ -29,13 +31,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    UINavigationController *rootNavVC = (UINavigationController *) self.window.rootViewController;
-    SMRListCostBenefitsViewController *initialVC = (SMRListCostBenefitsViewController *)rootNavVC.topViewController;
-
     SMRCoreDataStack *coreDataStack = [[SMRCoreDataStack alloc] initWithStoreURL:[self storeURL] modelURL:[self modelURL]];
 
-    initialVC.context = coreDataStack.managedObjectContext;
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
 
+    UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
+    SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;
+    leftMenuVC.context = coreDataStack.managedObjectContext;
+
+
+    UINavigationController *newCostBenefitNavController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+    SMREditCostBenefitViewController *newCostBenefitVC = (SMREditCostBenefitViewController *)newCostBenefitNavController.topViewController;
+    newCostBenefitVC.context = coreDataStack.managedObjectContext;
+
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:newCostBenefitNavController
+                                                            leftDrawerViewController:leftMenuNavVC];
+    [drawerController setShowsShadow:YES];
+    [drawerController setShadowRadius:0.9];
+    self.window.rootViewController = drawerController;
+    newCostBenefitVC.drawer = drawerController;
+    leftMenuVC.drawer = drawerController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

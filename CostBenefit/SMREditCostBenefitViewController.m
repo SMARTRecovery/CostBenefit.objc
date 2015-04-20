@@ -7,14 +7,17 @@
 //
 
 #import "SMREditCostBenefitViewController.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRViewControllerHelper.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface SMREditCostBenefitViewController ()
 
 @property (strong, nonatomic) NSArray *typeOptions;
+@property (strong, nonatomic) NSString *costBenefitType;
 @property (strong, nonatomic) NSString *descActivity;
 @property (strong, nonatomic) NSString *descSubstance;
 @property (strong, nonatomic) NSString *op;
@@ -22,12 +25,10 @@
 @property (strong, nonatomic) NSString *placeholderSubstance;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleDescLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
-- (IBAction)cancelTapped:(id)sender;
 - (IBAction)saveTapped:(id)sender;
 - (IBAction)trashTapped:(id)sender;
 
@@ -39,6 +40,7 @@
     [super viewDidLoad];
     self.typePicker.dataSource = self;
     self.typePicker.delegate = self;
+
     _typeOptions = @[@"The substance", @"The activity"];
 
     // Activity help text:
@@ -53,19 +55,22 @@
         self.op = @"update";
         self.title = @"Edit CBA";
         self.titleTextField.text = self.costBenefit.title;
+        self.costBenefitType = self.costBenefit.type;
     }
     else {
         self.saveButton.enabled = NO;
         self.op = @"insert";
-        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
         self.title = @"New CBA";
-        self.costBenefit.type = @"substance";
+        self.costBenefitType = @"substance";
         self.navigationController.toolbarHidden = YES;
+        MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     }
-    [self setHelpText:self.costBenefit.type];
+    [self setHelpText:self.costBenefitType];
     [self.titleTextField addTarget:self
                             action:@selector(editingChanged:)
                   forControlEvents:UIControlEventEditingChanged];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -96,13 +101,13 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (row == 0) {
-        self.costBenefit.type = @"substance";
-        [self setHelpText:@"substance"];
+        self.costBenefitType = @"substance";
     }
     else {
-        self.costBenefit.type = @"activity";
-        [self setHelpText:@"activity"];
+        self.costBenefitType = @"activity";
+
     }
+    [self setHelpText:self.costBenefitType];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -117,40 +122,21 @@
     return _typeOptions[row];
 }
 
-- (IBAction)cancelTapped:(id)sender {
-    // If new CostBenefit:
-    if ([self.op isEqualToString:@"insert"]) {
-
-        // Delete the newly created CostBenefit.
-        [self.context deleteObject:self.costBenefit];
-
-        // Redirect to home screen.
-        [SMRViewControllerHelper presentHome:self context:self.context];
-    }
-    // Else redirect to CostBenefit VC.
-    else {
-        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
-    }
-}
-
 - (IBAction)saveTapped:(id)sender {
+
+    if ([self.op isEqualToString:@"insert"]) {
+        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
+    }
     self.costBenefit.title = self.titleTextField.text;
+    self.costBenefit.type = self.costBenefitType;
     NSError *error;
     [self.context save:&error];
-
-    // If new CostBenefit:
-    if ([self.op isEqualToString:@"insert"]) {
-        // Redirect to the CostBenefitItem Nav VC to create new item.
-        UINavigationController *destNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitItemNavigationController"];
-        SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
-        destVC.context = self.context;
-        destVC.costBenefit = self.costBenefit;
-        [self presentViewController:destNavVC animated:YES completion:nil];
-    }
-    // Else redirect to CostBenefit VC.
-    else {
-        [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
-    }
+    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+    [costBenefitVC setDrawer:self.drawer];
+    [costBenefitVC setCostBenefit:self.costBenefit];
+    [costBenefitVC setContext:self.context];
+    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
 
 }
 
@@ -167,9 +153,16 @@
                          {
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.context deleteObject:self.costBenefit];
-                             [SMRViewControllerHelper presentHome:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
+                             // Redirect to New CBA screen.
+                             UINavigationController *destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+                             SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
+                             [destVC setCostBenefit:nil];
+                             [destVC setContext:self.context];
+                             [destVC setDrawer:self.drawer];
+                             // Works, but choppy.
+                             [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"
@@ -184,5 +177,10 @@
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
+}
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 @end

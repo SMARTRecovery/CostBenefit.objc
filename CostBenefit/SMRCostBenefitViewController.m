@@ -7,11 +7,13 @@
 //
 
 #import "SMRCostBenefitViewController.h"
-#import "SMRListCostBenefitsViewController.h"
+#import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRViewControllerHelper.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface SMRCostBenefitViewController ()
 
@@ -35,6 +37,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = self.costBenefit.title;
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -128,21 +132,27 @@
 
 #pragma mark - Navigation
 
+- (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue {
+    [self.tableView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
     if (sender == self.backButton) {
-        SMRListCostBenefitsViewController *destVC = (SMRListCostBenefitsViewController *)destNavVC.topViewController;
+        SMRLeftMenuViewController *destVC = (SMRLeftMenuViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
     }
     else if (sender == self.editButton) {
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
+        [destVC setDrawer:self.drawer];
     }
     else {
         SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
+        [destVC setDrawer:self.drawer];
         [destVC setOp:@"insert"];
         if (sender != self.addButton) {
             UITableViewCell *cell = (UITableViewCell *)sender;
@@ -152,6 +162,11 @@
             [destVC setOp:@"update"];
         }
     }
+}
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 @end
