@@ -152,6 +152,7 @@
         SMRCostBenefitItemViewController *destVC = (SMRCostBenefitItemViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
+        [destVC setDrawer:self.drawer];
         [destVC setOp:@"insert"];
         if (sender != self.addButton) {
             UITableViewCell *cell = (UITableViewCell *)sender;

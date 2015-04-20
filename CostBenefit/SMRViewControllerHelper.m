@@ -19,8 +19,8 @@
     destVC.context = context;
     destVC.costBenefit = costBenefit;
     destVC.drawer = drawer;
-    destNavVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [viewController presentViewController:destNavVC animated:YES completion:nil];
+    [drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+
 }
 
 + (void)presentHome:(UIViewController *)viewController context:(NSManagedObjectContext *)context {
