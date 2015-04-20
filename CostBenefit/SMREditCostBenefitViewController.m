@@ -153,9 +153,16 @@
                          {
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.context deleteObject:self.costBenefit];
-                             [SMRViewControllerHelper presentHome:self context:self.context];
                              NSError *error;
                              [self.context save:&error];
+                             // Redirect to New CBA screen.
+                             UINavigationController *destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+                             SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
+                             [destVC setCostBenefit:nil];
+                             [destVC setContext:self.context];
+                             [destVC setDrawer:self.drawer];
+                             // Works, but choppy.
+                             [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"
