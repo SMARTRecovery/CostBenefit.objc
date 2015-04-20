@@ -20,9 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"About CBA's";
     NSError  *error;
-    NSString *markdown   = @"# Example\nWhat a library!";
-    NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:markdown error:&error];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cba"
+                                                     ofType:@"txt"];
+    NSString *content = [NSString stringWithContentsOfFile:path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
     [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];

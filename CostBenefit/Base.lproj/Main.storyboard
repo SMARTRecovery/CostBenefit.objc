@@ -438,12 +438,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-vj-lsu">
-                                <rect key="frame" x="5" y="36" width="600" height="600"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-vj-lsu">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8kh-vj-lsu" firstAttribute="leading" secondItem="BeV-xn-uSS" secondAttribute="leadingMargin" id="kyb-YA-hKh"/>
+                            <constraint firstItem="8kh-vj-lsu" firstAttribute="top" secondItem="BeV-xn-uSS" secondAttribute="topMargin" id="rIE-Ye-N7f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8kh-vj-lsu" secondAttribute="trailing" id="uei-Zp-VUe"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="8kh-vj-lsu" secondAttribute="bottom" id="xCA-ZV-JCV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eTY-4A-gBr"/>
                     <connections>
