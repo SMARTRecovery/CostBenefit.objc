@@ -188,7 +188,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
+                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context drawer:self.drawer];
                              NSError *error;
                              [self.context save:&error];
                          }];
