@@ -10,6 +10,7 @@
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
+#import "SMRStaticViewController.h"
 #import "MMDrawerBarButtonItem.h"
 
 @interface SMRLeftMenuViewController ()
@@ -110,6 +111,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             [destVC setContext:self.context];
             [destVC setDrawer:self.drawer];
         }
+        [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+    }
+    else {
+        destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"staticNavVC"];
+        SMRStaticViewController *destVC = (SMRStaticViewController *)destNavVC.topViewController;
+        [destVC setDrawer:self.drawer];
         [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
     }
 }

@@ -426,6 +426,52 @@
             </objects>
             <point key="canvasLocation" x="3505" y="1096"/>
         </scene>
+        <!--Static View Controller-->
+        <scene sceneID="D8F-jp-EkY">
+            <objects>
+                <viewController id="zyP-zA-Fjk" customClass="SMRStaticViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PJU-LG-LMa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nmk-s7-5au"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BeV-xn-uSS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-vj-lsu">
+                                <rect key="frame" x="5" y="36" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eTY-4A-gBr"/>
+                    <connections>
+                        <outlet property="webView" destination="8kh-vj-lsu" id="xnj-mq-diI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DN2-Kx-C2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3567" y="1907"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UcF-yZ-UXf">
+            <objects>
+                <navigationController storyboardIdentifier="staticNavVC" automaticallyAdjustsScrollViewInsets="NO" id="4RO-Xl-J4z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7xE-Q9-fIg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zyP-zA-Fjk" kind="relationship" relationship="rootViewController" id="GVg-Vh-VyT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYV-W1-NjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2755" y="1907"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Vda-Lh-M66"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C3AD848B701984A80B235BA /* libPods-CostBenefit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B53DB601E3EFC59289E99B /* libPods-CostBenefit.a */; };
+		B215CD211AE50A2100DF8CAA /* SMRStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */; };
 		B21989B31ACD83D700B91322 /* SMRCostBenefitItem+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */; };
 		B242D7C11ACC182500EC791D /* SMRCostBenefitItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */; };
 		B26BE5B21AC114C2001ABA41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5B11AC114C2001ABA41 /* main.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		2DAC313174CD7F2645247608 /* Pods-CostBenefit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostBenefit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit.debug.xcconfig"; sourceTree = "<group>"; };
 		81B53DB601E3EFC59289E99B /* libPods-CostBenefit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostBenefit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRStaticViewController.h; sourceTree = "<group>"; };
+		B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRStaticViewController.m; sourceTree = "<group>"; };
 		B21989B11ACD83D700B91322 /* SMRCostBenefitItem+methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRCostBenefitItem+methods.h"; sourceTree = "<group>"; };
 		B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRCostBenefitItem+methods.m"; sourceTree = "<group>"; };
 		B242D7BF1ACC182500EC791D /* SMRCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefitItemViewController.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				B2EBD0EB1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m */,
 				B2DA2F971AD6D4E800D7F266 /* SMRViewControllerHelper.h */,
 				B2DA2F981AD6D4E800D7F266 /* SMRViewControllerHelper.m */,
+				B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */,
+				B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				B2DA2F991AD6D4E800D7F266 /* SMRViewControllerHelper.m in Sources */,
 				B242D7C11ACC182500EC791D /* SMRCostBenefitItemViewController.m in Sources */,
 				B2EBD0E91AC9AF7B00D52E8E /* SMRLeftMenuViewController.m in Sources */,
+				B215CD211AE50A2100DF8CAA /* SMRStaticViewController.m in Sources */,
 				B2EBD0EC1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m in Sources */,
 				B26BE5B51AC114C2001ABA41 /* AppDelegate.m in Sources */,
 				B2A54C9B1AC9721500DD320D /* SMRCostBenefit+methods.m in Sources */,
