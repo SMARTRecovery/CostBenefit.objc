@@ -76,6 +76,11 @@
     }
 
     else {
+        // Weird stuff can happen when deleting rows.
+        // These cells can end up with the image and gray color,
+        // so explicitly set the attributes here.
+        cell.imageView.image = nil;
+        cell.textLabel.textColor = [UIColor blackColor];
         if (indexPath.row == 0) {
             textLabel = @"About CBA's";
         }
