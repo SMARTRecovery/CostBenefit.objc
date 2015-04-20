@@ -89,14 +89,23 @@
 }
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    UINavigationController *destNavVC;
     if (indexPath.section == 0) {
-        UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-        SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
-        [costBenefitVC setCostBenefit:self.costBenefits[indexPath.row]];
-        [costBenefitVC setContext:self.context];
-        [costBenefitVC setDrawer:self.drawer];
-        [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+        if (indexPath.row < [self.costBenefits count]) {
+            destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+            SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
+            [destVC setCostBenefit:self.costBenefits[indexPath.row]];
+            [destVC setContext:self.context];
+            [destVC setDrawer:self.drawer];
+        }
+        else {
+            destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+            SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
+            [destVC setCostBenefit:nil];
+            [destVC setContext:self.context];
+            [destVC setDrawer:self.drawer];
+        }
+        [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
     }
 }
 
