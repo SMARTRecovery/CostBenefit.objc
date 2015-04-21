@@ -28,7 +28,15 @@
                                                   encoding:NSUTF8StringEncoding
                                                      error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
-    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    NSString *aboutHTML = [NSString stringWithFormat:@"<html> \n"
+                                   "<head> \n"
+                                   "<style type=\"text/css\"> \n"
+                                   "body {font-family: \"%@\"; font-size: %@;}\n"
+                                   "</style> \n"
+                                   "</head> \n"
+                                   "<body>%@</body> \n"
+                                   "</html>", @"helvetica", [NSNumber numberWithInt:14], htmlString];
+    [self.webView loadHTMLString:aboutHTML baseURL:[[NSBundle mainBundle] bundleURL]];
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
