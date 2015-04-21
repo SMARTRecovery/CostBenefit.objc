@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C3AD848B701984A80B235BA /* libPods-CostBenefit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B53DB601E3EFC59289E99B /* libPods-CostBenefit.a */; };
+		B20F628B1AE65A6500D1478F /* smart.txt in Resources */ = {isa = PBXBuildFile; fileRef = B20F628A1AE65A6500D1478F /* smart.txt */; };
 		B215CD211AE50A2100DF8CAA /* SMRStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */; };
 		B215CD251AE5366800DF8CAA /* cba.txt in Resources */ = {isa = PBXBuildFile; fileRef = B215CD241AE5366800DF8CAA /* cba.txt */; };
 		B21989B31ACD83D700B91322 /* SMRCostBenefitItem+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		2DAC313174CD7F2645247608 /* Pods-CostBenefit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostBenefit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit.debug.xcconfig"; sourceTree = "<group>"; };
 		81B53DB601E3EFC59289E99B /* libPods-CostBenefit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostBenefit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20F628A1AE65A6500D1478F /* smart.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smart.txt; sourceTree = "<group>"; };
 		B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRStaticViewController.h; sourceTree = "<group>"; };
 		B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRStaticViewController.m; sourceTree = "<group>"; };
 		B215CD241AE5366800DF8CAA /* cba.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cba.txt; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B215CD241AE5366800DF8CAA /* cba.txt */,
+				B20F628A1AE65A6500D1478F /* smart.txt */,
 				B29DB2061AE342A300C60E56 /* plus-26.png */,
 				B2F340F71AD5927A00600623 /* logo.jpeg */,
 				B26BE5B01AC114C2001ABA41 /* Info.plist */,
@@ -315,6 +318,7 @@
 				B26BE5BB1AC114C2001ABA41 /* Main.storyboard in Resources */,
 				B26BE5C01AC114C2001ABA41 /* LaunchScreen.xib in Resources */,
 				B2F340F81AD5927A00600623 /* logo.jpeg in Resources */,
+				B20F628B1AE65A6500D1478F /* smart.txt in Resources */,
 				B215CD251AE5366800DF8CAA /* cba.txt in Resources */,
 				B26BE5BD1AC114C2001ABA41 /* Images.xcassets in Resources */,
 				B29DB2071AE342A300C60E56 /* plus-26.png in Resources */,

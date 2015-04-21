@@ -117,6 +117,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"staticNavVC"];
         SMRStaticViewController *destVC = (SMRStaticViewController *)destNavVC.topViewController;
         [destVC setDrawer:self.drawer];
+        if (indexPath.row == 0) {
+            destVC.txtFileName = @"cba";
+        }
+        else {
+            destVC.txtFileName = @"smart";
+        }
         [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
     }
 }
