@@ -19,10 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"About CBA's";
+    self.title = @"About SMART Recovery";
+    if ([self.txtFileName isEqualToString:@"cba"]) {
+        self.title = @"About CBA's";
+    }
+
     NSError  *error;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cba"
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.txtFileName
                                                      ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:path
                                                   encoding:NSUTF8StringEncoding

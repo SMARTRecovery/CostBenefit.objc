@@ -11,6 +11,7 @@
 
 @interface SMRStaticViewController : UIViewController
 
+@property (strong, nonatomic) NSString *txtFileName;
 @property (strong, nonatomic) MMDrawerController *drawer;
 
 @end
