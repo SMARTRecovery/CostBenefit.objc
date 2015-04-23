@@ -129,13 +129,4 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *destNavVC = (UINavigationController *)[segue destinationViewController];
-    //if (sender == self.addButton) {
-        SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
-        [destVC setContext:self.context];
-        [destVC setCostBenefit:nil];
-    //}
-}
-
 @end
