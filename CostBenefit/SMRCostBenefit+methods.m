@@ -23,6 +23,11 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefit"
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
+
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"dateCreated" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
     NSError *error = nil;
 
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
@@ -38,6 +43,10 @@
         [fetchRequest setEntity:entity];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, [NSNumber numberWithInt:i]];
         [fetchRequest setPredicate:predicate];
+
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                            initWithKey:@"dateCreated" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
         NSError *error = nil;
 
         NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];

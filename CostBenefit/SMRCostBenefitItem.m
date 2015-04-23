@@ -16,6 +16,7 @@
 @dynamic seq;
 @dynamic boxNumber;
 @dynamic isLongTerm;
+@dynamic dateCreated;
 @dynamic costBenefit;
 
 @end
