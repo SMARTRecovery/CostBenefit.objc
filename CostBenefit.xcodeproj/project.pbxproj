@@ -284,6 +284,7 @@
 				TargetAttributes = {
 					B26BE5AB1AC114C2001ABA41 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5VCEAK7F3Z;
 					};
 					B26BE5C41AC114C3001ABA41 = {
 						CreatedOnToolsVersion = 6.2;
@@ -514,6 +515,7 @@
 			baseConfigurationReference = 2DAC313174CD7F2645247608 /* Pods-CostBenefit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CostBenefit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CostBenefit;
@@ -525,6 +527,7 @@
 			baseConfigurationReference = CEED01310E18BA6CDD968909 /* Pods-CostBenefit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CostBenefit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CostBenefit;
