@@ -169,6 +169,7 @@
     }
     if ([self.op isEqualToString:@"insert"]) {
         [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+        self.costBenefitItem.dateCreated = [[NSDate alloc] init];
     }
     NSError *error;
     [self.context save:&error];
