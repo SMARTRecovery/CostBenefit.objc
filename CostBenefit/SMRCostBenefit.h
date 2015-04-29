@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSSet *costBenefitItems;
 @property (nonatomic, retain) NSDate * dateCreated;
+@property (nonatomic, retain) NSDate * dateUpdated;
 @end
 
 @interface SMRCostBenefit (CoreDataGeneratedAccessors)

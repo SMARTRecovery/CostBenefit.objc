@@ -14,6 +14,7 @@
 @dynamic title;
 @dynamic type;
 @dynamic dateCreated;
+@dynamic dateUpdated;
 @dynamic costBenefitItems;
 
 @end

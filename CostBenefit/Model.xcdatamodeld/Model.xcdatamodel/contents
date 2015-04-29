@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1514" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SMRCostBenefit" representedClassName="SMRCostBenefit" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="costBenefitItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SMRCostBenefitItem" inverseName="costBenefit" inverseEntity="SMRCostBenefitItem" syncable="YES"/>
@@ -15,7 +16,7 @@
         <relationship name="costBenefit" maxCount="1" deletionRule="Nullify" destinationEntity="SMRCostBenefit" inverseName="costBenefitItems" inverseEntity="SMRCostBenefit" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SMRCostBenefit" positionX="-288" positionY="-13" width="128" height="105"/>
+        <element name="SMRCostBenefit" positionX="-288" positionY="-13" width="128" height="120"/>
         <element name="SMRCostBenefitItem" positionX="-54" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
