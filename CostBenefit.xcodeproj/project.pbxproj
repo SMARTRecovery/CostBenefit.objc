@@ -53,7 +53,7 @@
 		B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRCostBenefitItem+methods.m"; sourceTree = "<group>"; };
 		B242D7BF1ACC182500EC791D /* SMRCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefitItemViewController.h; sourceTree = "<group>"; };
 		B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRCostBenefitItemViewController.m; sourceTree = "<group>"; };
-		B26BE5AC1AC114C2001ABA41 /* CostBenefit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CostBenefit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26BE5AC1AC114C2001ABA41 /* costbenefit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = costbenefit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26BE5B01AC114C2001ABA41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26BE5B11AC114C2001ABA41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B26BE5B31AC114C2001ABA41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		B26BE5AD1AC114C2001ABA41 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B26BE5AC1AC114C2001ABA41 /* CostBenefit.app */,
+				B26BE5AC1AC114C2001ABA41 /* costbenefit.app */,
 				B26BE5C51AC114C3001ABA41 /* CostBenefitTests.xctest */,
 			);
 			name = Products;
@@ -252,7 +252,7 @@
 			);
 			name = CostBenefit;
 			productName = CostBenefit;
-			productReference = B26BE5AC1AC114C2001ABA41 /* CostBenefit.app */;
+			productReference = B26BE5AC1AC114C2001ABA41 /* costbenefit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B26BE5C41AC114C3001ABA41 /* CostBenefitTests */ = {
