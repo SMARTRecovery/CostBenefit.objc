@@ -46,18 +46,22 @@
     MMDrawerController *drawerController = [[MMDrawerController alloc] init];
     [drawerController setLeftDrawerViewController:leftMenuNavVC];
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
+    NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:coreDataStack.managedObjectContext];
 
-    if (costBenefitURL != nil) {
-        NSManagedObjectID *moID = [coreDataStack.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:costBenefitURL];
-        SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
-        centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
-        [destVC setContext:coreDataStack.managedObjectContext];
-        [destVC setCostBenefit:costBenefit];
-        [destVC setDrawer:drawerController];
+    if ([costBenefits count] > 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
+        if (costBenefitURL != nil) {
+            NSManagedObjectID *moID = [coreDataStack.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:costBenefitURL];
+            SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
+            centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+            SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
+            [destVC setContext:coreDataStack.managedObjectContext];
+            [destVC setCostBenefit:costBenefit];
+            [destVC setDrawer:drawerController];
+        }
     }
+
     else {
         centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
