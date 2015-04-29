@@ -51,6 +51,10 @@
     [super viewDidAppear:animated];
     self.boxes = [self.costBenefit fetchBoxes:self.context];
     [self.tableView reloadData];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    NSLog(@"%@",[formatter stringFromDate:self.costBenefit.dateUpdated]);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -171,6 +171,7 @@
         [self.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
         self.costBenefitItem.dateCreated = [[NSDate alloc] init];
     }
+    [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
     NSError *error;
     [self.context save:&error];
 }
@@ -190,6 +191,7 @@
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
                              [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context drawer:self.drawer];
+                             [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
                              NSError *error;
                              [self.context save:&error];
                          }];

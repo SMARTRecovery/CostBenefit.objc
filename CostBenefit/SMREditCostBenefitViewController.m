@@ -123,13 +123,14 @@
 }
 
 - (IBAction)saveTapped:(id)sender {
-
+    NSDate *currentDate = [[NSDate alloc] init];
     if ([self.op isEqualToString:@"insert"]) {
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
-        self.costBenefit.dateCreated = [[NSDate alloc] init];
+        self.costBenefit.dateCreated = currentDate;
     }
     self.costBenefit.title = self.titleTextField.text;
     self.costBenefit.type = self.costBenefitType;
+    self.costBenefit.dateUpdated = currentDate;
     NSError *error;
     [self.context save:&error];
     UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
