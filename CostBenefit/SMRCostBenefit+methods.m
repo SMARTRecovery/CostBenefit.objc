@@ -58,7 +58,7 @@
 - (NSString *)getVerb {
     NSString *verb;
     if ([self.type isEqualToString:@"activity"]) {
-        verb = self.title;
+        verb = @"doing";
     }
     else {
         verb = @"using";
