@@ -215,11 +215,6 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="Dt8-Qg-sPL">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="7Ic-8S-5rq">
-                            <connections>
-                                <segue destination="Lyn-FN-jxJ" kind="showDetail" id="fQQ-yF-Jwf"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VY3-NC-y3Z">
                             <connections>
                                 <segue destination="NgB-nw-OMp" kind="show" identifier="segueToAddItem" id="Vda-Lh-M66"/>
@@ -228,7 +223,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="VY3-NC-y3Z" id="HJi-oO-UVC"/>
-                        <outlet property="backButton" destination="7Ic-8S-5rq" id="Hda-md-IOB"/>
                         <outlet property="editButton" destination="KxR-dn-us1" id="zMi-zD-FlM"/>
                         <outlet property="tableView" destination="JR5-w7-UxO" id="7mc-cT-7bD"/>
                     </connections>
@@ -345,10 +339,10 @@
             </objects>
             <point key="canvasLocation" x="4317" y="1105"/>
         </scene>
-        <!--Nav List Cost Benefits-->
+        <!--Nav Left Menu-->
         <scene sceneID="Oxe-sH-ACk">
             <objects>
-                <navigationController storyboardIdentifier="leftMenuNavigationController" title="Nav List Cost Benefits" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="leftMenuNavigationController" title="Nav Left Menu" automaticallyAdjustsScrollViewInsets="NO" id="Lyn-FN-jxJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sal-eI-PAl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

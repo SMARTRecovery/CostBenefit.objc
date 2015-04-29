@@ -19,7 +19,6 @@
 
 @property (strong, nonatomic) NSMutableArray *boxes;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -148,11 +147,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
-    if (sender == self.backButton) {
-        SMRLeftMenuViewController *destVC = (SMRLeftMenuViewController *)destNavVC.topViewController;
-        [destVC setContext:self.context];
-    }
-    else if (sender == self.editButton) {
+    if (sender == self.editButton) {
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
