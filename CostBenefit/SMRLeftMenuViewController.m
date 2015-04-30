@@ -124,6 +124,4 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-#pragma mark - Navigation
-
 @end
