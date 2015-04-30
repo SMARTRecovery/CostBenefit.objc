@@ -44,6 +44,8 @@
     leftMenuVC.context = coreDataStack.managedObjectContext;
     [drawerController setLeftDrawerViewController:leftMenuNavVC];
 
+    BOOL savedCostBenefit = NO;
+
     NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:coreDataStack.managedObjectContext];
     UINavigationController *centerController;
     if ([costBenefits count] > 0) {
@@ -51,16 +53,20 @@
         NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
         if (costBenefitURL != nil) {
             NSManagedObjectID *moID = [coreDataStack.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:costBenefitURL];
-            SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
-            centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-            SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
-            [destVC setContext:coreDataStack.managedObjectContext];
-            [destVC setCostBenefit:costBenefit];
-//            [destVC setDrawer:drawerController];
+            NSError *error;
+            if ([coreDataStack.managedObjectContext existingObjectWithID:moID error:&error]) {
+                savedCostBenefit = YES;
+                SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
+                centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+                SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
+                [destVC setContext:coreDataStack.managedObjectContext];
+                [destVC setCostBenefit:costBenefit];
+            }
+
         }
     }
 
-    else {
+    if (!savedCostBenefit) {
         centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
         [destVC setContext:coreDataStack.managedObjectContext];
