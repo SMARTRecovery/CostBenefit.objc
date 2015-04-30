@@ -102,16 +102,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
             [destVC setCostBenefit:self.costBenefits[indexPath.row]];
             [destVC setContext:self.context];
-            [destVC setDrawer:self.drawer];
+//            [destVC setDrawer:self.drawer];
         }
         else {
             destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
             SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
             [destVC setCostBenefit:nil];
             [destVC setContext:self.context];
-            [destVC setDrawer:self.drawer];
+//            [destVC setDrawer:self.drawer];
         }
-        [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+        [self.mm_drawerController setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
     }
     else {
         destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"staticNavVC"];
@@ -123,7 +123,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         else {
             destVC.txtFileName = @"smart";
         }
-        [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+        [self.mm_drawerController setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
     }
 }
 

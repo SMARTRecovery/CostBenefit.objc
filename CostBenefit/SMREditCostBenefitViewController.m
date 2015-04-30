@@ -122,7 +122,7 @@
     return _typeOptions[row];
 }
 
-- (IBAction)saveTapped:(id)sender {
+- (void)saveCostBenefit {
     NSDate *currentDate = [[NSDate alloc] init];
     if ([self.op isEqualToString:@"insert"]) {
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
@@ -133,12 +133,25 @@
     self.costBenefit.dateUpdated = currentDate;
     NSError *error;
     [self.context save:&error];
-    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
-    [costBenefitVC setDrawer:self.drawer];
-    [costBenefitVC setCostBenefit:self.costBenefit];
-    [costBenefitVC setContext:self.context];
-    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+}
+
+- (IBAction)saveTapped:(id)sender {
+//    NSDate *currentDate = [[NSDate alloc] init];
+//    if ([self.op isEqualToString:@"insert"]) {
+//        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.context];
+//        self.costBenefit.dateCreated = currentDate;
+//    }
+//    self.costBenefit.title = self.titleTextField.text;
+//    self.costBenefit.type = self.costBenefitType;
+//    self.costBenefit.dateUpdated = currentDate;
+//    NSError *error;
+//    [self.context save:&error];
+//    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+//    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+//    [costBenefitVC setDrawer:self.drawer];
+//    [costBenefitVC setCostBenefit:self.costBenefit];
+//    [costBenefitVC setContext:self.context];
+//    [self.drawer setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
 
 }
 
@@ -179,6 +192,28 @@
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (sender != self.saveButton) return;
+    [self saveCostBenefit];
+
+    MMDrawerController *drawerController = (MMDrawerController *)[segue destinationViewController];
+
+    UINavigationController *leftNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
+    SMRLeftMenuViewController *leftVC = (SMRLeftMenuViewController *)leftNavVC.topViewController;
+    [leftVC setContext:self.context];
+    [drawerController setLeftDrawerViewController:leftNavVC];
+
+    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+    [costBenefitVC setCostBenefit:self.costBenefit];
+    [costBenefitVC setContext:self.context];
+    [drawerController setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+
+
 }
 
 #pragma mark - Button Handlers

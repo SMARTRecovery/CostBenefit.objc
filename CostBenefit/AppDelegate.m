@@ -37,17 +37,15 @@
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    MMDrawerController *drawerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"drawerController"];
 
     UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
     SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;
     leftMenuVC.context = coreDataStack.managedObjectContext;
-
-    UINavigationController *centerController;
-    MMDrawerController *drawerController = [[MMDrawerController alloc] init];
     [drawerController setLeftDrawerViewController:leftMenuNavVC];
 
     NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:coreDataStack.managedObjectContext];
-
+    UINavigationController *centerController;
     if ([costBenefits count] > 0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
@@ -58,7 +56,7 @@
             SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
             [destVC setContext:coreDataStack.managedObjectContext];
             [destVC setCostBenefit:costBenefit];
-            [destVC setDrawer:drawerController];
+//            [destVC setDrawer:drawerController];
         }
     }
 
@@ -66,7 +64,7 @@
         centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
         [destVC setContext:coreDataStack.managedObjectContext];
-        [destVC setDrawer:drawerController];
+//        [destVC setDrawer:drawerController];
     }
 
     [drawerController setCenterViewController:centerController withFullCloseAnimation:NO completion:nil];
