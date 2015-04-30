@@ -14,7 +14,7 @@
 
 @interface SMRViewControllerHelper : NSObject
 
-+ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context drawer:(MMDrawerController *)drawer;
++ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
 
 + (void)presentHome:(UIViewController *)viewController context:(NSManagedObjectContext *)context;
 

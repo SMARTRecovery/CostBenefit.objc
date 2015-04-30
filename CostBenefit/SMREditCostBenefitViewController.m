@@ -175,9 +175,9 @@
                              SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
                              [destVC setCostBenefit:nil];
                              [destVC setContext:self.context];
-                             [destVC setDrawer:self.drawer];
+
                              // Works, but choppy.
-                             [self.drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+                             [self.mm_drawerController setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"

@@ -12,14 +12,13 @@
 
 @implementation SMRViewControllerHelper
 
-+ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController*)viewController context:(NSManagedObjectContext *)context drawer:(MMDrawerController *)drawer{
++ (void)presentCostBenefit:(SMRCostBenefit *)costBenefit viewController:(UIViewController*)viewController context:(NSManagedObjectContext *)context {
 
     UINavigationController *destNavVC = [viewController.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
     SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)destNavVC.topViewController;
     destVC.context = context;
     destVC.costBenefit = costBenefit;
-    destVC.drawer = drawer;
-    [drawer setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+    [viewController.mm_drawerController setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
 
 }
 
