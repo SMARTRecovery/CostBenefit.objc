@@ -64,7 +64,6 @@
         centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
         [destVC setContext:coreDataStack.managedObjectContext];
-//        [destVC setDrawer:drawerController];
     }
 
     [drawerController setCenterViewController:centerController withFullCloseAnimation:NO completion:nil];

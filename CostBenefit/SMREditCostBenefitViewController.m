@@ -201,6 +201,8 @@
     [self saveCostBenefit];
 
     MMDrawerController *drawerController = (MMDrawerController *)[segue destinationViewController];
+    [drawerController setShowsShadow:YES];
+    [drawerController setShadowRadius:0.9];
 
     UINavigationController *leftNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
     SMRLeftMenuViewController *leftVC = (SMRLeftMenuViewController *)leftNavVC.topViewController;
