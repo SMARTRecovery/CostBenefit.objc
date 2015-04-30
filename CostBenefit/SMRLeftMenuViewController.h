@@ -12,6 +12,5 @@
 @interface SMRLeftMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) MMDrawerController *drawer;
 
 @end

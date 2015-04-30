@@ -17,6 +17,5 @@
 @property (strong, nonatomic) NSString *op;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
-@property (strong, nonatomic) MMDrawerController *drawer;
 
 @end

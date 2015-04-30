@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
-@property (strong, nonatomic) MMDrawerController *drawer;
 
 - (IBAction)unwindToCostBenefit:(UIStoryboardSegue *)segue;
 
