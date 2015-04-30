@@ -8,7 +8,6 @@
 
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
-#import "SMRViewControllerHelper.h"
 #import "SMRCostBenefitViewController.h"
 
 @interface SMRCostBenefitItemViewController ()

@@ -11,7 +11,6 @@
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
 #import "SMREditCostBenefitViewController.h"
-#import "SMRViewControllerHelper.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 
