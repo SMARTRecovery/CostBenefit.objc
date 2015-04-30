@@ -190,10 +190,10 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
                              [self.context deleteObject:self.costBenefitItem];
-                             [SMRViewControllerHelper presentCostBenefit:self.costBenefit viewController:self context:self.context];
                              [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
                              NSError *error;
                              [self.context save:&error];
+                             [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"

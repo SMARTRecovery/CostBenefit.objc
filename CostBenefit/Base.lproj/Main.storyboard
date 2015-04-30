@@ -323,7 +323,7 @@
                     <navigationItem key="navigationItem" id="i4P-X0-ySe">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAs-kr-ZAy">
                             <connections>
-                                <segue destination="5CO-iv-of2" kind="unwind" unwindAction="unwindToCostBenefit:" id="lKt-N2-WHa"/>
+                                <segue destination="5CO-iv-of2" kind="unwind" identifier="segueToCostBenefit" unwindAction="unwindToCostBenefit:" id="lKt-N2-WHa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
