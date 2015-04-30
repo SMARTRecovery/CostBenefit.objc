@@ -170,14 +170,7 @@
                              [self.context deleteObject:self.costBenefit];
                              NSError *error;
                              [self.context save:&error];
-                             // Redirect to New CBA screen.
-                             UINavigationController *destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-                             SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
-                             [destVC setCostBenefit:nil];
-                             [destVC setContext:self.context];
-
-                             // Works, but choppy.
-                             [self.mm_drawerController setCenterViewController:destNavVC withCloseAnimation:YES completion:nil];
+                              [self performSegueWithIdentifier:@"segueToDrawer" sender:self];
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"
@@ -197,8 +190,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender != self.saveButton) return;
-    [self saveCostBenefit];
 
     MMDrawerController *drawerController = (MMDrawerController *)[segue destinationViewController];
     [drawerController setShowsShadow:YES];
@@ -209,13 +200,20 @@
     [leftVC setContext:self.context];
     [drawerController setLeftDrawerViewController:leftNavVC];
 
-    UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-    SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
-    [costBenefitVC setCostBenefit:self.costBenefit];
-    [costBenefitVC setContext:self.context];
-    [drawerController setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
-
-
+    if (sender == self.saveButton) {
+        [self saveCostBenefit];
+        UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
+        SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+        [costBenefitVC setCostBenefit:self.costBenefit];
+        [costBenefitVC setContext:self.context];
+        [drawerController setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
+    }
+    else {
+        UINavigationController *centerNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
+        SMREditCostBenefitViewController *centerVC = (SMREditCostBenefitViewController *)centerNavVC.topViewController;
+        [centerVC setContext:self.context];
+        [drawerController setCenterViewController:centerNavVC withCloseAnimation:YES completion:nil];
+    }
 }
 
 #pragma mark - Button Handlers

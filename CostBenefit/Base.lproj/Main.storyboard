@@ -142,7 +142,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NgT-Mb-fd5">
                             <connections>
                                 <action selector="saveTapped:" destination="8qZ-py-Opz" id="L4o-tP-XnA"/>
-                                <segue destination="jgT-26-Yta" kind="presentation" id="uwY-16-Sco"/>
+                                <segue destination="jgT-26-Yta" kind="presentation" identifier="segueToDrawer" id="uwY-16-Sco"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
