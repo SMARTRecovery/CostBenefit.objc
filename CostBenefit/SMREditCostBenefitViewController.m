@@ -38,6 +38,7 @@
     [super viewDidLoad];
     self.typePicker.dataSource = self;
     self.typePicker.delegate = self;
+    self.titleTextField.delegate = self;
 
     _typeOptions = @[@"The substance", @"The activity"];
 
@@ -84,6 +85,11 @@
     if ([self.titleTextField.text length] < 3) {
         self.saveButton.enabled = NO;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)setHelpText:(NSString *)type {

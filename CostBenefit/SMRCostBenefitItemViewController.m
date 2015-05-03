@@ -33,6 +33,8 @@
     [super viewDidLoad];
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
+    self.titleTextField.delegate = self;
+
     self.textAdvantage = [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:0] isPlural:NO];
     self.textDisadvantage = [self.costBenefit getBoxDescriptor:[NSNumber numberWithInt:1] isPlural:NO];
     self.textLongTerm = @"Long-term";
@@ -109,6 +111,11 @@
     if ([self.titleTextField.text length] < 3) {
         self.saveButton.enabled = NO;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
