@@ -184,7 +184,7 @@
     [leftVC setContext:self.context];
     [drawerController setLeftDrawerViewController:leftNavVC];
 
-    if (sender == self.saveButton) {
+    if ([sender isEqual:self.saveButton]) {
         [self saveCostBenefit];
         UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
         SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
