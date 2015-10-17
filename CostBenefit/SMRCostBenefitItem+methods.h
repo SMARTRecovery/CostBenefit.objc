@@ -13,5 +13,4 @@
 
 + (SMRCostBenefitItem *)createCostBenefitItemInContext:(NSManagedObjectContext *)context;
 
-
 @end

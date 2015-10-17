@@ -11,6 +11,7 @@
 #import <MMMarkdown/MMMarkdown.h>
 
 @interface SMRStaticViewController ()
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -19,19 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView.delegate = self;
 
+    self.webView.delegate = self;
     self.title = @"About SMART Recovery";
     if ([self.txtFileName isEqualToString:@"cba"]) {
         self.title = @"About CBA's";
     }
 
     NSError  *error;
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.txtFileName
-                                                     ofType:@"txt"];
-    NSString *content = [NSString stringWithContentsOfFile:path
-                                                  encoding:NSUTF8StringEncoding
-                                                     error:NULL];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.txtFileName ofType:@"txt"];
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
     NSString *aboutHTML = [NSString stringWithFormat:@"<html> \n"
                                    "<head> \n"
@@ -42,17 +40,12 @@
                                    "<body>%@</body> \n"
                                    "</html>", @"helvetica", [NSNumber numberWithInt:14], htmlString];
     [self.webView loadHTMLString:aboutHTML baseURL:[[NSBundle mainBundle] bundleURL]];
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
-    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+- (BOOL)webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if (inType == UIWebViewNavigationTypeLinkClicked) {
         [[UIApplication sharedApplication] openURL:[inRequest URL]];
         return NO;
     }
@@ -61,7 +54,9 @@
 }
 
 #pragma mark - Button Handlers
--(void)leftDrawerButtonPress:(id)sender{
+
+- (void)leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
 @end

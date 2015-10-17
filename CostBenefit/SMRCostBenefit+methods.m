@@ -11,44 +11,36 @@
 
 @implementation SMRCostBenefit (methods)
 
-+(SMRCostBenefit *)createCostBenefitInContext:(NSManagedObjectContext *)context
-{
++ (SMRCostBenefit *)createCostBenefitInContext:(NSManagedObjectContext *)context {
     return [NSEntityDescription insertNewObjectForEntityForName:@"SMRCostBenefit" inManagedObjectContext:context];
 }
 
-+ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context
-{
++ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefit"
-                                              inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefit" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"dateCreated" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
     NSError *error = nil;
-
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
 
 - (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context {
     NSMutableArray *boxes = [[NSMutableArray alloc] init];
-    for (int i=0; i<4; i++) {
+    for (int i = 0; i < 4; i++) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem"
-                                                  inManagedObjectContext:context];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:context];
         [fetchRequest setEntity:entity];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, [NSNumber numberWithInt:i]];
         [fetchRequest setPredicate:predicate];
-
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                            initWithKey:@"dateCreated" ascending:YES];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
-        NSError *error = nil;
 
+        NSError *error = nil;
         NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
         [boxes addObject:boxItems];
     }
@@ -56,14 +48,10 @@
 }
 
 - (NSString *)getVerb {
-    NSString *verb;
     if ([self.type isEqualToString:@"activity"]) {
-        verb = @"doing";
+        return @"doing";
     }
-    else {
-        verb = @"using";
-    }
-    return verb;
+    return @"using";
 }
 
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
@@ -86,7 +74,7 @@
         action = @"NOT ";
     }
     NSString *descriptor = [self getBoxDescriptor:boxNumber isPlural:isPlural];
-    NSString *text = [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
-    return text;
+    return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
 }
+
 @end

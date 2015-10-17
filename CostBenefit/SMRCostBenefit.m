@@ -8,7 +8,6 @@
 
 #import "SMRCostBenefit.h"
 
-
 @implementation SMRCostBenefit
 
 @dynamic title;
