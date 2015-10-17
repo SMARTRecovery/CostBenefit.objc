@@ -146,7 +146,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *destNavVC = [segue destinationViewController];
-    if (sender == self.editButton) {
+    if ([sender isEqual:self.editButton]) {
         SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
@@ -156,7 +156,7 @@
         [destVC setContext:self.context];
         [destVC setCostBenefit:self.costBenefit];
         [destVC setOp:@"insert"];
-        if (sender != self.addButton) {
+        if (![sender isEqual:self.addButton]) {
             UITableViewCell *cell = (UITableViewCell *)sender;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
             NSMutableArray *boxItems = self.boxes[indexPath.section];
