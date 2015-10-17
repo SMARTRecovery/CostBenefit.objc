@@ -217,7 +217,10 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (sender != self.saveButton) return;
+    if (![sender isEqual:self.saveButton]) {
+        return;
+    }
+
     [self save];
 }
 
