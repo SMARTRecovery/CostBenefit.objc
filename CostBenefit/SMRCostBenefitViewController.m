@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.boxes = [[NSMutableArray alloc] init];
     for (int i=0; i<4; i++) {
         [self.boxes addObject:[[NSMutableArray alloc] init]];
@@ -35,7 +36,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = self.costBenefit.title;
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 
     // Store this costBenefit in NSUserDefaults as the last viewed.
@@ -45,14 +46,14 @@
     [defaults synchronize];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     self.boxes = [self.costBenefit fetchBoxes:self.context];
     [self.tableView reloadData];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
-    NSLog(@"%@",[formatter stringFromDate:self.costBenefit.dateUpdated]);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -60,6 +61,7 @@
     if ([boxItems count] > 0) {
         return [boxItems count];
     }
+
     // Return 1 for empty placeholder cell.
     return 1;
 }
@@ -68,23 +70,19 @@
     return 4;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSNumber *boxNumber = [NSNumber numberWithInteger:section];
     return [self.costBenefit getBoxLabelText:boxNumber isPlural:YES];
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 44;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSNumber *boxNumber = [NSNumber numberWithInteger:section];
-    NSString *title = [self.costBenefit getBoxLabelText:boxNumber isPlural:YES];
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
-
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
-    [label setText:title];
+    label.text = [self.costBenefit getBoxLabelText:[NSNumber numberWithInteger:section] isPlural:YES];
     label.textColor = [UIColor whiteColor];
     [view addSubview:label];
 
@@ -104,8 +102,8 @@
             subtitleText = @"What won't I like about giving up my addiction?";
             break;
     }
-    [subtitle setText:subtitleText];
-    [subtitle setFont:[UIFont systemFontOfSize:11]];
+    subtitle.text = subtitleText;
+    subtitle.font = [UIFont systemFontOfSize:11];
     subtitle.textColor = [UIColor whiteColor];
     [view addSubview:subtitle];
 
@@ -114,7 +112,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitItemCell" forIndexPath:indexPath];
 
     NSMutableArray *boxItems = self.boxes[indexPath.section];
@@ -167,6 +164,7 @@
 }
 
 #pragma mark - Button Handlers
+
 -(void)leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }

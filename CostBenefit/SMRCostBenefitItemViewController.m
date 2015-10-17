@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.boxPicker.dataSource = self;
     self.boxPicker.delegate = self;
     self.titleTextField.delegate = self;
@@ -40,42 +41,32 @@
     self.textLongTerm = @"Long-term";
 
     NSString *verb = [self.costBenefit getVerb];
-    _boxOptions =  @[@[
-                         self.textAdvantage,
-                         self.textDisadvantage
-                         ],
-                     @[
-                         [NSString stringWithFormat:@"of %@", verb],
-                         [NSString stringWithFormat:@"of NOT %@", verb]
-                         ]
-                     ];
+    _boxOptions = @[@[self.textAdvantage, self.textDisadvantage],@[[NSString stringWithFormat:@"of %@", verb],[NSString stringWithFormat:@"of NOT %@", verb]]];
+
     self.longTermLabel.text = @"Long-term advantage";
-    if (self.costBenefitItem != nil) {
+    if (self.costBenefitItem) {
         self.titleTextField.text = self.costBenefitItem.title;
         self.longTermSwitch.on = [self.costBenefitItem.isLongTerm boolValue];
         self.title = @"Edit Item";
         self.boxPicker.hidden = YES;
 
         UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.bounds), 20)];
-        [boxLabel setTextColor:[UIColor blackColor]];
-        [boxLabel setBackgroundColor:[UIColor clearColor]];
-        [boxLabel setTextAlignment:NSTextAlignmentCenter];
-        [boxLabel setText:[self.costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]];
+        boxLabel.textColor = [UIColor blackColor];
+        boxLabel.backgroundColor = [UIColor clearColor];
+        boxLabel.textAlignment = NSTextAlignmentCenter;
+        boxLabel.text = [self.costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO];
         [self.view addSubview:boxLabel];
     }
     else {
         self.navigationController.toolbarHidden = YES;
         self.title = @"Add Item";
         self.saveButton.enabled = NO;
-
         self.costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.context];
         // Set to Box 0 as default.
         self.costBenefitItem.boxNumber = [NSNumber numberWithInt:0];
     }
     [self setLongTermLabelText];
-    [self.titleTextField addTarget:self
-                            action:@selector(editingChanged:)
-                  forControlEvents:UIControlEventEditingChanged];
+    [self.titleTextField addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -102,11 +93,11 @@
     [self setLongTermLabelText];
 }
 
-- (void) setLongTermLabelText {
+- (void)setLongTermLabelText {
     self.longTermLabel.text = [NSString stringWithFormat:@"%@ %@", self.textLongTerm, [self.costBenefit getBoxDescriptor:self.costBenefitItem.boxNumber isPlural:NO]];
 }
 
--(void) editingChanged:(id)sender {
+-(void)editingChanged:(id)sender {
     self.saveButton.enabled = YES;
     if ([self.titleTextField.text length] < 3) {
         self.saveButton.enabled = NO;
@@ -118,7 +109,7 @@
     return YES;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == 0) {
         if (row == 0) {
             self.longTermLabel.text = [NSString stringWithFormat:@"%@ %@", self.textLongTerm, self.textAdvantage];
@@ -137,8 +128,7 @@
     return _boxOptions.count;
 }
 
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return _boxOptions[component][row];
 }
 
@@ -183,32 +173,21 @@
 }
 
 - (IBAction)trashTapped:(id)sender {
-    UIAlertController* view=   [UIAlertController
-                                 alertControllerWithTitle:@"Delete item?"
-                                 message:@"This cannot be undone."
-                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *view = [UIAlertController alertControllerWithTitle:@"Delete item?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleActionSheet];
 
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"Delete"
-                         style:UIAlertActionStyleDestructive
-                         handler:^(UIAlertAction * action)
-                         {
-                             [view dismissViewControllerAnimated:YES completion:nil];
-                             [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
-                             [self.context deleteObject:self.costBenefitItem];
-                             [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
-                             NSError *error;
-                             [self.context save:&error];
-                             [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
-                         }];
-    UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Cancel"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [view dismissViewControllerAnimated:YES completion:nil];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        [view dismissViewControllerAnimated:YES completion:nil];
+        [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+        [self.context deleteObject:self.costBenefitItem];
+        [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
+        NSError *error;
+        [self.context save:&error];
+        [self performSegueWithIdentifier:@"segueToCostBenefit" sender:self];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [view dismissViewControllerAnimated:YES completion:nil];
+    }];
 
-                             }];
     [view addAction:ok];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];

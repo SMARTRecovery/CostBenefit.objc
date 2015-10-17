@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = @"SMART Recovery";
@@ -31,7 +32,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-     self.costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.context];
+
+    self.costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.context];
     [self.tableView reloadData];
 }
 
@@ -39,6 +41,7 @@
     if (section > 0) {
         return 2;
     }
+
     return [self.costBenefits count] + 1;
 }
 
@@ -47,18 +50,13 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title;
     if (section == 0) {
-        title = @"CBA's";
+        return @"CBA's";
     }
-    else {
-        title = @"Info";
-    }
-    return title;
+    return @"Info";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"costBenefitCell" forIndexPath:indexPath];
     NSString *textLabel;
 
@@ -91,10 +89,11 @@
     }
 
     cell.textLabel.text = textLabel;
+
     return cell;
 }
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UINavigationController *destNavVC;
     if (indexPath.section == 0) {
         if (indexPath.row < [self.costBenefits count]) {

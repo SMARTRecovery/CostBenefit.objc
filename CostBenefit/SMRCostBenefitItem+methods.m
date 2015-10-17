@@ -10,8 +10,8 @@
 
 @implementation SMRCostBenefitItem (methods)
 
-+(SMRCostBenefitItem *)createCostBenefitItemInContext:(NSManagedObjectContext *)context
-{
++(SMRCostBenefitItem *)createCostBenefitItemInContext:(NSManagedObjectContext *)context {
     return [NSEntityDescription insertNewObjectForEntityForName:@"SMRCostBenefitItem" inManagedObjectContext:context];
 }
+
 @end

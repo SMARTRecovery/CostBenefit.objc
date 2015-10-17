@@ -13,10 +13,10 @@
 
 @interface SMRCostBenefitItem : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * seq;
-@property (nonatomic, retain) NSNumber * boxNumber;
-@property (nonatomic, retain) NSNumber * isLongTerm;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSNumber *seq;
+@property (nonatomic, retain) NSNumber *boxNumber;
+@property (nonatomic, retain) NSNumber *isLongTerm;
 @property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) SMRCostBenefit *costBenefit;
 

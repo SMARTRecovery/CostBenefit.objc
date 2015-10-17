@@ -20,19 +20,16 @@
 
 @implementation AppDelegate
 
-- (NSURL*)storeURL
-{
+- (NSURL*)storeURL{
     NSURL* documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
     return [documentsDirectory URLByAppendingPathComponent:@"db.sqlite"];
 }
 
-- (NSURL*)modelURL
-{
+- (NSURL*)modelURL{
     return [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
     SMRCoreDataStack *coreDataStack = [[SMRCoreDataStack alloc] initWithStoreURL:[self storeURL] modelURL:[self modelURL]];
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
@@ -62,7 +59,6 @@
                 [destVC setContext:coreDataStack.managedObjectContext];
                 [destVC setCostBenefit:costBenefit];
             }
-
         }
     }
 
