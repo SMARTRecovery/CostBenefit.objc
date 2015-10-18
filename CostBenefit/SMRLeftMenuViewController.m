@@ -28,6 +28,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = @"SMART Recovery";
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
