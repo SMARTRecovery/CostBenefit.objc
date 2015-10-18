@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.typePicker.dataSource = self;
     self.typePicker.delegate = self;
     self.titleTextField.delegate = self;
@@ -66,21 +67,19 @@
         [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     }
     [self setHelpText:self.costBenefitType];
-    [self.titleTextField addTarget:self
-                            action:@selector(editingChanged:)
-                  forControlEvents:UIControlEventEditingChanged];
-
+    [self.titleTextField addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+
     if ([self.costBenefit.type isEqualToString:@"activity"]) {
         [self.typePicker selectRow:1 inComponent:0 animated:YES];
         [self.typePicker reloadComponent:0];
     }
 }
 
--(void) editingChanged:(id)sender {
+- (void)editingChanged:(id)sender {
     self.saveButton.enabled = YES;
     if ([self.titleTextField.text length] < 3) {
         self.saveButton.enabled = NO;
@@ -103,7 +102,7 @@
     }
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (row == 0) {
         self.costBenefitType = @"substance";
     }
@@ -118,11 +117,11 @@
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return _typeOptions.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return _typeOptions[row];
 }
 
@@ -140,31 +139,18 @@
 }
 
 - (IBAction)trashTapped:(id)sender {
-    UIAlertController * view=   [UIAlertController
-                                 alertControllerWithTitle:@"Delete this CBA?"
-                                 message:@"All items will be deleted as well. This cannot be undone."
-                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *view = [UIAlertController alertControllerWithTitle:@"Delete this CBA?" message:@"All items will be deleted as well. This cannot be undone." preferredStyle:UIAlertControllerStyleActionSheet];
 
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"Delete"
-                         style:UIAlertActionStyleDestructive
-                         handler:^(UIAlertAction * action)
-                         {
-                             [view dismissViewControllerAnimated:YES completion:nil];
-                             [self.context deleteObject:self.costBenefit];
-                             NSError *error;
-                             [self.context save:&error];
-                              [self performSegueWithIdentifier:@"segueToDrawer" sender:self];
-                         }];
-    UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Cancel"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [view dismissViewControllerAnimated:YES completion:nil];
-
-                             }];
-
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        [view dismissViewControllerAnimated:YES completion:nil];
+        [self.context deleteObject:self.costBenefit];
+        NSError *error;
+        [self.context save:&error];
+        [self performSegueWithIdentifier:@"segueToDrawer" sender:self];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [view dismissViewControllerAnimated:YES completion:nil];
+    }];
 
     [view addAction:ok];
     [view addAction:cancel];
@@ -174,7 +160,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
     MMDrawerController *drawerController = (MMDrawerController *)[segue destinationViewController];
     [drawerController setShowsShadow:YES];
     [drawerController setShadowRadius:0.9];
@@ -184,7 +169,7 @@
     [leftVC setContext:self.context];
     [drawerController setLeftDrawerViewController:leftNavVC];
 
-    if (sender == self.saveButton) {
+    if ([sender isEqual:self.saveButton]) {
         [self saveCostBenefit];
         UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
         SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
@@ -201,7 +186,9 @@
 }
 
 #pragma mark - Button Handlers
+
 -(void)leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
 @end
