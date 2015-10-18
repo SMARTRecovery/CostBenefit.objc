@@ -76,17 +76,17 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
+    return 54;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, tableView.frame.size.width, 18)];
     label.text = [self.costBenefit getBoxLabelText:[NSNumber numberWithInteger:section] isPlural:YES];
     label.textColor = [UIColor whiteColor];
     [view addSubview:label];
 
-    UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 20)];
+    UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 25)];
     NSString *subtitleText;
     switch (section) {
         case 0:
