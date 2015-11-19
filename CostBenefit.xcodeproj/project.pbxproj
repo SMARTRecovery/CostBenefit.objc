@@ -145,9 +145,9 @@
 			children = (
 				B26BE5B31AC114C2001ABA41 /* AppDelegate.h */,
 				B26BE5B41AC114C2001ABA41 /* AppDelegate.m */,
-				B2EBD0ED1AC9B80400D52E8E /* Model */,
-				B2EBD0EE1AC9B81400D52E8E /* View */,
-				B2EBD0EF1AC9B83200D52E8E /* Controller */,
+				B2EBD0ED1AC9B80400D52E8E /* Models */,
+				B2EBD0EE1AC9B81400D52E8E /* Views */,
+				B2EBD0EF1AC9B83200D52E8E /* Controllers */,
 			);
 			path = CostBenefit;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B2EBD0ED1AC9B80400D52E8E /* Model */ = {
+		B2EBD0ED1AC9B80400D52E8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B2826C2E1AC8F88C005D14BC /* SMRCoreDataStack.h */,
@@ -198,20 +198,20 @@
 				B21989B11ACD83D700B91322 /* SMRCostBenefitItem+methods.h */,
 				B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		B2EBD0EE1AC9B81400D52E8E /* View */ = {
+		B2EBD0EE1AC9B81400D52E8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B26BE5B91AC114C2001ABA41 /* Main.storyboard */,
 				B26BE5BC1AC114C2001ABA41 /* Images.xcassets */,
 				B26BE5BE1AC114C2001ABA41 /* LaunchScreen.xib */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		B2EBD0EF1AC9B83200D52E8E /* Controller */ = {
+		B2EBD0EF1AC9B83200D52E8E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B2C4012E1ACBA8C5002BD3EB /* SMRCostBenefitTableViewController.h */,
@@ -225,7 +225,7 @@
 				B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */,
 				B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */,
 			);
-			name = Controller;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
