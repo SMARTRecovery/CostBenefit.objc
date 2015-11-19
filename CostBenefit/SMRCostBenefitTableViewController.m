@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 smartrecovery.org. All rights reserved.
 //
 
-#import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitTableViewController.h"
 #import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "SMRCostBenefitItem+methods.h"
@@ -14,7 +14,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 
-@interface SMRCostBenefitViewController ()
+@interface SMRCostBenefitTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *boxes;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation SMRCostBenefitViewController
+@implementation SMRCostBenefitTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

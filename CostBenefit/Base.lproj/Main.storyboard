@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -159,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="3505" y="1870"/>
         </scene>
-        <!--Cost Benefit View Controller-->
+        <!--Cost Benefit Table View Controller-->
         <scene sceneID="3nq-0r-FCw">
             <objects>
-                <viewController id="stZ-AG-dKe" customClass="SMRCostBenefitViewController" sceneMemberID="viewController">
+                <viewController id="stZ-AG-dKe" customClass="SMRCostBenefitTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xgF-oP-1y8"/>
                         <viewControllerLayoutGuide type="bottom" id="BLI-Em-MaQ"/>
