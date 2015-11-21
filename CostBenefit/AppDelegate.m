@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
 #import "SMRLeftMenuViewController.h"
-#import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitTableViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import <MMDrawerController.h>
@@ -55,7 +55,7 @@
                 savedCostBenefit = YES;
                 SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
                 centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-                SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)centerController.topViewController;
+                SMRCostBenefitTableViewController *destVC = (SMRCostBenefitTableViewController *)centerController.topViewController;
                 [destVC setContext:coreDataStack.managedObjectContext];
                 [destVC setCostBenefit:costBenefit];
             }

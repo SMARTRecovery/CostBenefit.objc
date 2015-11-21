@@ -8,7 +8,7 @@
 
 #import "SMREditCostBenefitViewController.h"
 #import "SMRLeftMenuViewController.h"
-#import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitTableViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
@@ -172,7 +172,7 @@
     if ([sender isEqual:self.saveButton]) {
         [self saveCostBenefit];
         UINavigationController *costBenefitNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-        SMRCostBenefitViewController *costBenefitVC = ( SMRCostBenefitViewController *)costBenefitNavVC.topViewController;
+        SMRCostBenefitTableViewController *costBenefitVC = ( SMRCostBenefitTableViewController *)costBenefitNavVC.topViewController;
         [costBenefitVC setCostBenefit:self.costBenefit];
         [costBenefitVC setContext:self.context];
         [drawerController setCenterViewController:costBenefitNavVC withCloseAnimation:YES completion:nil];
