@@ -12,6 +12,7 @@
 #import "SMRCostBenefitTableViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitViewController.h"
 #import <MMDrawerController.h>
 
 @interface AppDelegate ()
@@ -42,6 +43,7 @@
     [drawerController setLeftDrawerViewController:leftMenuNavVC];
 
     BOOL savedCostBenefit = NO;
+    SMRCostBenefit *costBenefit;
 
     NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:coreDataStack.managedObjectContext];
     UINavigationController *centerController;
@@ -53,7 +55,7 @@
             NSError *error;
             if ([coreDataStack.managedObjectContext existingObjectWithID:moID error:&error]) {
                 savedCostBenefit = YES;
-                SMRCostBenefit *costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
+                costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
                 centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
                 SMRCostBenefitTableViewController *destVC = (SMRCostBenefitTableViewController *)centerController.topViewController;
                 [destVC setContext:coreDataStack.managedObjectContext];
@@ -68,10 +70,14 @@
         [destVC setContext:coreDataStack.managedObjectContext];
     }
 
+
     [drawerController setCenterViewController:centerController withFullCloseAnimation:NO completion:nil];
     [drawerController setShowsShadow:YES];
     [drawerController setShadowRadius:0.9];
-    self.window.rootViewController = drawerController;
+
+    SMRCostBenefitViewController *costBenefitVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:costBenefit managedObjectContext:coreDataStack.managedObjectContext];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:costBenefitVC];
+    self.window.rootViewController = navVC;
     [self.window makeKeyAndVisible];
     return YES;
 }

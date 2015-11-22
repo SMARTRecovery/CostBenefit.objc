@@ -22,6 +22,9 @@
 		B26BE5D71AC121EF001ABA41 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5D51AC121EF001ABA41 /* Model.xcdatamodeld */; };
 		B2826C301AC8F88C005D14BC /* SMRCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = B2826C2F1AC8F88C005D14BC /* SMRCoreDataStack.m */; };
 		B29DB2071AE342A300C60E56 /* plus-26.png in Resources */ = {isa = PBXBuildFile; fileRef = B29DB2061AE342A300C60E56 /* plus-26.png */; };
+		B2A2C38B1C013F210070CFCE /* SMRCostBenefitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2C38A1C013F210070CFCE /* SMRCostBenefitViewController.m */; };
+		B2A2C38F1C014C980070CFCE /* SMRCostBenefitBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2C38D1C014C980070CFCE /* SMRCostBenefitBoxViewController.m */; };
+		B2A2C3901C014C980070CFCE /* SMRCostBenefitBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A2C38E1C014C980070CFCE /* SMRCostBenefitBoxView.xib */; };
 		B2A54C951AC9714F00DD320D /* SMRCostBenefit.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C941AC9714F00DD320D /* SMRCostBenefit.m */; };
 		B2A54C981AC9715000DD320D /* SMRCostBenefitItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C971AC9715000DD320D /* SMRCostBenefitItem.m */; };
 		B2A54C9B1AC9721500DD320D /* SMRCostBenefit+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C9A1AC9721500DD320D /* SMRCostBenefit+methods.m */; };
@@ -67,6 +70,11 @@
 		B2826C2E1AC8F88C005D14BC /* SMRCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCoreDataStack.h; sourceTree = "<group>"; };
 		B2826C2F1AC8F88C005D14BC /* SMRCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRCoreDataStack.m; sourceTree = "<group>"; };
 		B29DB2061AE342A300C60E56 /* plus-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-26.png"; sourceTree = "<group>"; };
+		B2A2C3891C013F210070CFCE /* SMRCostBenefitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMRCostBenefitViewController.h; path = Controllers/SMRCostBenefitViewController.h; sourceTree = "<group>"; };
+		B2A2C38A1C013F210070CFCE /* SMRCostBenefitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMRCostBenefitViewController.m; path = Controllers/SMRCostBenefitViewController.m; sourceTree = "<group>"; };
+		B2A2C38C1C014C980070CFCE /* SMRCostBenefitBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMRCostBenefitBoxViewController.h; path = Controllers/SMRCostBenefitBoxViewController.h; sourceTree = "<group>"; };
+		B2A2C38D1C014C980070CFCE /* SMRCostBenefitBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMRCostBenefitBoxViewController.m; path = Controllers/SMRCostBenefitBoxViewController.m; sourceTree = "<group>"; };
+		B2A2C38E1C014C980070CFCE /* SMRCostBenefitBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SMRCostBenefitBoxView.xib; path = Views/SMRCostBenefitBoxView.xib; sourceTree = "<group>"; };
 		B2A54C931AC9714F00DD320D /* SMRCostBenefit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefit.h; sourceTree = "<group>"; };
 		B2A54C941AC9714F00DD320D /* SMRCostBenefit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRCostBenefit.m; sourceTree = "<group>"; };
 		B2A54C961AC9715000DD320D /* SMRCostBenefitItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefitItem.h; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 			children = (
 				B26BE5B91AC114C2001ABA41 /* Main.storyboard */,
 				B26BE5BC1AC114C2001ABA41 /* Images.xcassets */,
+				B2A2C38E1C014C980070CFCE /* SMRCostBenefitBoxView.xib */,
 				B26BE5BE1AC114C2001ABA41 /* LaunchScreen.xib */,
 			);
 			name = Views;
@@ -214,6 +223,10 @@
 		B2EBD0EF1AC9B83200D52E8E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2A2C3891C013F210070CFCE /* SMRCostBenefitViewController.h */,
+				B2A2C38A1C013F210070CFCE /* SMRCostBenefitViewController.m */,
+				B2A2C38C1C014C980070CFCE /* SMRCostBenefitBoxViewController.h */,
+				B2A2C38D1C014C980070CFCE /* SMRCostBenefitBoxViewController.m */,
 				B2C4012E1ACBA8C5002BD3EB /* SMRCostBenefitTableViewController.h */,
 				B2C4012F1ACBA8C5002BD3EB /* SMRCostBenefitTableViewController.m */,
 				B242D7BF1ACC182500EC791D /* SMRCostBenefitItemViewController.h */,
@@ -315,6 +328,7 @@
 				B26BE5C01AC114C2001ABA41 /* LaunchScreen.xib in Resources */,
 				B2F340F81AD5927A00600623 /* logo.jpeg in Resources */,
 				B20F628B1AE65A6500D1478F /* smart.txt in Resources */,
+				B2A2C3901C014C980070CFCE /* SMRCostBenefitBoxView.xib in Resources */,
 				B215CD251AE5366800DF8CAA /* cba.txt in Resources */,
 				B26BE5BD1AC114C2001ABA41 /* Images.xcassets in Resources */,
 				B29DB2071AE342A300C60E56 /* plus-26.png in Resources */,
@@ -369,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B242D7C11ACC182500EC791D /* SMRCostBenefitItemViewController.m in Sources */,
+				B2A2C38B1C013F210070CFCE /* SMRCostBenefitViewController.m in Sources */,
 				B2EBD0E91AC9AF7B00D52E8E /* SMRLeftMenuViewController.m in Sources */,
 				B215CD211AE50A2100DF8CAA /* SMRStaticViewController.m in Sources */,
 				B2EBD0EC1AC9AF9A00D52E8E /* SMREditCostBenefitViewController.m in Sources */,
@@ -378,6 +393,7 @@
 				B2C401301ACBA8C5002BD3EB /* SMRCostBenefitTableViewController.m in Sources */,
 				B26BE5B21AC114C2001ABA41 /* main.m in Sources */,
 				B2A54C981AC9715000DD320D /* SMRCostBenefitItem.m in Sources */,
+				B2A2C38F1C014C980070CFCE /* SMRCostBenefitBoxViewController.m in Sources */,
 				B26BE5D71AC121EF001ABA41 /* Model.xcdatamodeld in Sources */,
 				B2826C301AC8F88C005D14BC /* SMRCoreDataStack.m in Sources */,
 				B2A54C951AC9714F00DD320D /* SMRCostBenefit.m in Sources */,
