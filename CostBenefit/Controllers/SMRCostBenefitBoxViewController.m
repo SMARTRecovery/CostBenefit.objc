@@ -10,16 +10,20 @@
 
 @interface SMRCostBenefitBoxViewController ()
 
+@property (strong, nonatomic, readwrite) NSNumber *boxNumber;
+@property (strong, nonatomic, readwrite) SMRCostBenefit *costBenefit;
+
 @property (weak, nonatomic) IBOutlet UILabel *boxHeaderLabel;
 
 @end
 
 @implementation SMRCostBenefitBoxViewController
 
-- (instancetype)initWithBoxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+- (instancetype)initWithCostBenefit:(SMRCostBenefit *)costBenefit boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     self = [super initWithNibName:@"SMRCostBenefitBoxView" bundle:nil];
 
     if (self) {
+        _costBenefit = costBenefit;
         _boxNumber = boxNumber;
         _costBenefitItems = costBenefitItems;
         _managedObjectContext = managedObjectContext;
@@ -32,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.boxHeaderLabel.text = [NSString stringWithFormat:@"Box number %@", self.boxNumber];
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
 }
 
 - (void)didReceiveMemoryWarning {
