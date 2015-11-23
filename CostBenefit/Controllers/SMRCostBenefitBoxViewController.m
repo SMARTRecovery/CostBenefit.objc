@@ -7,17 +7,21 @@
 //
 
 #import "SMRCostBenefitBoxViewController.h"
+#import "SMRCostBenefitItem+methods.h"
 
-@interface SMRCostBenefitBoxViewController ()
+@interface SMRCostBenefitBoxViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic, readwrite) NSNumber *boxNumber;
 @property (strong, nonatomic, readwrite) SMRCostBenefit *costBenefit;
 
 @property (weak, nonatomic) IBOutlet UILabel *boxHeaderLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation SMRCostBenefitBoxViewController
+
+#pragma mark - NSObject
 
 - (instancetype)initWithCostBenefit:(SMRCostBenefit *)costBenefit boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     self = [super initWithNibName:@"SMRCostBenefitBoxView" bundle:nil];
@@ -33,15 +37,29 @@
 
 }
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return self.costBenefitItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
+    cell.textLabel.text = costBenefitItem.title;
+    return cell;
 }
 
 @end

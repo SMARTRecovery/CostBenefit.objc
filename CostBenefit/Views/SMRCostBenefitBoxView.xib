@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRCostBenefitBoxViewController">
             <connections>
                 <outlet property="boxHeaderLabel" destination="ddR-zL-XbB" id="vlp-Fp-yFS"/>
+                <outlet property="tableView" destination="sNc-06-9Bw" id="m36-5j-q2Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,6 +29,10 @@
                     <rect key="frame" x="8" y="107" width="584" height="485"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
+                        <outlet property="delegate" destination="-1" id="9RR-Gn-hZk"/>
+                    </connections>
                 </tableView>
             </subviews>
             <animations/>
