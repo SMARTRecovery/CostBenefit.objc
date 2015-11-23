@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRCostbenefitBoxViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRCostBenefitBoxViewController">
             <connections>
+                <outlet property="boxHeaderLabel" destination="ddR-zL-XbB" id="vlp-Fp-yFS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,14 +17,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
-                    <rect key="frame" x="0.0" y="8" width="600" height="21"/>
+                    <rect key="frame" x="8" y="66" width="584" height="21"/>
                     <animations/>
+                    <color key="backgroundColor" red="0.94928778700000005" green="1" blue="0.20466949309999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
-                    <rect key="frame" x="8" y="49" width="584" height="543"/>
+                    <rect key="frame" x="8" y="107" width="584" height="485"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -34,9 +36,9 @@
                 <constraint firstAttribute="trailing" secondItem="sNc-06-9Bw" secondAttribute="trailing" constant="8" id="7rp-To-coI"/>
                 <constraint firstItem="sNc-06-9Bw" firstAttribute="top" secondItem="ddR-zL-XbB" secondAttribute="bottom" constant="20" id="9OK-Lk-sWs"/>
                 <constraint firstItem="sNc-06-9Bw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="RwF-eN-fxM"/>
-                <constraint firstAttribute="trailing" secondItem="ddR-zL-XbB" secondAttribute="trailing" id="SOa-sF-nHT"/>
-                <constraint firstItem="ddR-zL-XbB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="fOP-QB-oNi"/>
-                <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="irX-1N-vLy"/>
+                <constraint firstAttribute="trailing" secondItem="ddR-zL-XbB" secondAttribute="trailing" constant="8" id="SOa-sF-nHT"/>
+                <constraint firstItem="ddR-zL-XbB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="fOP-QB-oNi"/>
+                <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="irX-1N-vLy"/>
                 <constraint firstAttribute="bottom" secondItem="sNc-06-9Bw" secondAttribute="bottom" constant="8" id="skW-dY-f7n"/>
             </constraints>
         </view>
