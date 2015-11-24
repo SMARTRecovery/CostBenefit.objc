@@ -16,6 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *boxHeaderLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addItemButton;
+
+- (IBAction)addItemButtonTouchUpInside:(id)sender;
 
 @end
 
@@ -45,6 +48,12 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+}
+
+#pragma mark - SMRCostBenefitBoxViewController
+
+- (IBAction)addItemButtonTouchUpInside:(id)sender {
+    NSLog(@"Tappy");
 }
 
 #pragma mark - UITableViewDataSource
