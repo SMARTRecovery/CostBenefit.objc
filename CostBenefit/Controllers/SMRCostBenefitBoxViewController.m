@@ -8,6 +8,7 @@
 
 #import "SMRCostBenefitBoxViewController.h"
 #import "SMRCostBenefitItem+methods.h"
+#import "SMREditCostBenefitItemViewController.h"
 
 @interface SMRCostBenefitBoxViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -54,6 +55,8 @@
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
     NSLog(@"Tappy");
+    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithNibName:@"SMRTEditCostbenefitView.xib" bundle:nil];
+    [self.navigationController pushViewController:addItemVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
