@@ -30,7 +30,7 @@
         int i = 0;
         _boxViewControllers = [[NSMutableArray alloc] init];
         for (NSArray *boxItems in [self.costBenefit fetchBoxes:self.managedObjectContext]) {
-            SMRCostBenefitBoxViewController *boxVC = [[SMRCostBenefitBoxViewController alloc] initWithCostBenefit:self.costBenefit boxNumber:[NSNumber numberWithInt:i] costBenefitItems:boxItems managedObjectContext:self.managedObjectContext];
+            SMRCostBenefitBoxViewController *boxVC = [[SMRCostBenefitBoxViewController alloc] initWithCostBenefitViewController:self boxNumber:[NSNumber numberWithInt:i] costBenefitItems:boxItems managedObjectContext:self.managedObjectContext];
             i++;
             [_boxViewControllers addObject:boxVC];
         }

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SMRCostBenefit+methods.h"
+#import "SMRCostBenefitViewController.h"
 
 @interface SMRCostBenefitBoxViewController : UIViewController
 
@@ -15,7 +16,8 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic, readonly) NSNumber *boxNumber;
 @property (strong, nonatomic, readonly) SMRCostBenefit *costBenefit;
+@property (strong, nonatomic, readonly) SMRCostBenefitViewController *costBenefitViewController;
 
-- (instancetype)initWithCostBenefit:(SMRCostBenefit *)costBenefit boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end

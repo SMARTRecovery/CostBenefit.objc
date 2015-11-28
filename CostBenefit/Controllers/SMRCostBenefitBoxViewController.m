@@ -27,11 +27,12 @@
 
 #pragma mark - NSObject
 
-- (instancetype)initWithCostBenefit:(SMRCostBenefit *)costBenefit boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     self = [super initWithNibName:@"SMRCostBenefitBoxView" bundle:nil];
 
     if (self) {
-        _costBenefit = costBenefit;
+        _costBenefitViewController = costBenefitViewController;
+        _costBenefit = costBenefitViewController.costBenefit;
         _boxNumber = boxNumber;
         _costBenefitItems = costBenefitItems;
         _managedObjectContext = managedObjectContext;
@@ -55,8 +56,9 @@
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
     NSLog(@"Tappy");
-    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithNibName:@"SMRTEditCostbenefitView.xib" bundle:nil];
-    [self.navigationController pushViewController:addItemVC animated:YES];
+    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithNibName:@"SMREditCostBenefitItemView" bundle:nil];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
+    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource

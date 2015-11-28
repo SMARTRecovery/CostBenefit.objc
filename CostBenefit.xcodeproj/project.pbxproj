@@ -13,7 +13,7 @@
 		B215CD251AE5366800DF8CAA /* cba.txt in Resources */ = {isa = PBXBuildFile; fileRef = B215CD241AE5366800DF8CAA /* cba.txt */; };
 		B21989B31ACD83D700B91322 /* SMRCostBenefitItem+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */; };
 		B21F37A11C0433B3001179A0 /* SMREditCostBenefitItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21F37A01C0433B3001179A0 /* SMREditCostBenefitItemViewController.m */; };
-		B21F37A31C0433DF001179A0 /* SMREditCostBenefitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21F37A21C0433DF001179A0 /* SMREditCostBenefitView.xib */; };
+		B21F37A31C0433DF001179A0 /* SMREditCostBenefitItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21F37A21C0433DF001179A0 /* SMREditCostBenefitItemView.xib */; };
 		B242D7C11ACC182500EC791D /* SMRCostBenefitItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */; };
 		B26BE5B21AC114C2001ABA41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5B11AC114C2001ABA41 /* main.m */; };
 		B26BE5B51AC114C2001ABA41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BE5B41AC114C2001ABA41 /* AppDelegate.m */; };
@@ -57,7 +57,7 @@
 		B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRCostBenefitItem+methods.m"; sourceTree = "<group>"; };
 		B21F379F1C0433B3001179A0 /* SMREditCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMREditCostBenefitItemViewController.h; path = Controllers/SMREditCostBenefitItemViewController.h; sourceTree = "<group>"; };
 		B21F37A01C0433B3001179A0 /* SMREditCostBenefitItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMREditCostBenefitItemViewController.m; path = Controllers/SMREditCostBenefitItemViewController.m; sourceTree = "<group>"; };
-		B21F37A21C0433DF001179A0 /* SMREditCostBenefitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SMREditCostBenefitView.xib; path = Views/SMREditCostBenefitView.xib; sourceTree = "<group>"; };
+		B21F37A21C0433DF001179A0 /* SMREditCostBenefitItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SMREditCostBenefitItemView.xib; path = Views/SMREditCostBenefitItemView.xib; sourceTree = "<group>"; };
 		B242D7BF1ACC182500EC791D /* SMRCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRCostBenefitItemViewController.h; sourceTree = "<group>"; };
 		B242D7C01ACC182500EC791D /* SMRCostBenefitItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRCostBenefitItemViewController.m; sourceTree = "<group>"; };
 		B26BE5AC1AC114C2001ABA41 /* costbenefit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = costbenefit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +220,7 @@
 				B26BE5B91AC114C2001ABA41 /* Main.storyboard */,
 				B26BE5BC1AC114C2001ABA41 /* Images.xcassets */,
 				B2A2C38E1C014C980070CFCE /* SMRCostBenefitBoxView.xib */,
-				B21F37A21C0433DF001179A0 /* SMREditCostBenefitView.xib */,
+				B21F37A21C0433DF001179A0 /* SMREditCostBenefitItemView.xib */,
 				B26BE5BE1AC114C2001ABA41 /* LaunchScreen.xib */,
 			);
 			name = Views;
@@ -340,7 +340,7 @@
 				B215CD251AE5366800DF8CAA /* cba.txt in Resources */,
 				B26BE5BD1AC114C2001ABA41 /* Images.xcassets in Resources */,
 				B29DB2071AE342A300C60E56 /* plus-26.png in Resources */,
-				B21F37A31C0433DF001179A0 /* SMREditCostBenefitView.xib in Resources */,
+				B21F37A31C0433DF001179A0 /* SMREditCostBenefitItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
