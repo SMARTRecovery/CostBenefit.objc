@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMREditCostBenefitItemViewController">
             <connections>
+                <outlet property="boxDescriptionLabel" destination="dxa-Fy-ccz" id="5Rn-HM-aRZ"/>
+                <outlet property="costBenefitItemTitleField" destination="XIp-FU-VQY" id="1qP-bA-CVf"/>
+                <outlet property="saveButton" destination="ZFs-mS-P73" id="YIw-eQ-end"/>
                 <outlet property="view" destination="iN0-l3-epB" id="HJw-FA-RBH"/>
             </connections>
         </placeholder>
@@ -15,17 +18,37 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfD-87-8cC">
-                    <rect key="frame" x="283" y="285" width="35" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-Fy-ccz">
+                    <rect key="frame" x="8" y="88" width="584" height="21"/>
                     <animations/>
-                    <state key="normal" title="Hello"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XIp-FU-VQY">
+                    <rect key="frame" x="8" y="117" width="584" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFs-mS-P73">
+                    <rect key="frame" x="8" y="171" width="584" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Save"/>
                 </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="pfD-87-8cC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZYH-ml-4qe"/>
-                <constraint firstItem="pfD-87-8cC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hM4-qa-aKk"/>
+                <constraint firstItem="ZFs-mS-P73" firstAttribute="top" secondItem="XIp-FU-VQY" secondAttribute="bottom" constant="24" id="5Tb-mU-3H5"/>
+                <constraint firstAttribute="trailing" secondItem="dxa-Fy-ccz" secondAttribute="trailing" constant="8" id="CQo-63-VyG"/>
+                <constraint firstItem="ZFs-mS-P73" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Heg-Pt-Y0Z"/>
+                <constraint firstAttribute="trailing" secondItem="XIp-FU-VQY" secondAttribute="trailing" constant="8" id="REy-0W-dUI"/>
+                <constraint firstItem="XIp-FU-VQY" firstAttribute="top" secondItem="dxa-Fy-ccz" secondAttribute="bottom" constant="8" id="RRV-Ba-i8X"/>
+                <constraint firstAttribute="trailing" secondItem="ZFs-mS-P73" secondAttribute="trailing" constant="8" id="Sbe-Ti-vQj"/>
+                <constraint firstItem="XIp-FU-VQY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Yr3-jJ-BoI"/>
+                <constraint firstItem="dxa-Fy-ccz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dmu-7m-iwp"/>
+                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="rat-5t-1Wl"/>
             </constraints>
         </view>
     </objects>
