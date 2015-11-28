@@ -8,6 +8,8 @@
 
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxViewController.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface SMRCostBenefitViewController () <UIPageViewControllerDataSource>
 
@@ -53,7 +55,18 @@
     [self.pageViewController addChildViewController:self.boxViewControllers[0]];
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
+
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+
 }
+
+#pragma mark - SMRCostBenefitViewController
+
+- (void)leftDrawerButtonPress:(id)sender {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
 
 #pragma mark - UIPageViewControllerDataSource
 

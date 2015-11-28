@@ -56,10 +56,9 @@
             if ([coreDataStack.managedObjectContext existingObjectWithID:moID error:&error]) {
                 savedCostBenefit = YES;
                 costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
-                centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-                SMRCostBenefitTableViewController *destVC = (SMRCostBenefitTableViewController *)centerController.topViewController;
-                [destVC setContext:coreDataStack.managedObjectContext];
-                [destVC setCostBenefit:costBenefit];
+                SMRCostBenefitViewController *costBenefitVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:costBenefit managedObjectContext:coreDataStack.managedObjectContext];
+                UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:costBenefitVC];
+                centerController = navVC;
             }
         }
     }
@@ -75,9 +74,8 @@
     [drawerController setShowsShadow:YES];
     [drawerController setShadowRadius:0.9];
 
-    SMRCostBenefitViewController *costBenefitVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:costBenefit managedObjectContext:coreDataStack.managedObjectContext];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:costBenefitVC];
-    self.window.rootViewController = navVC;
+
+    self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
     return YES;
 }
