@@ -44,6 +44,7 @@
         NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
         [boxes addObject:boxItems];
     }
+
     return boxes;
 }
 

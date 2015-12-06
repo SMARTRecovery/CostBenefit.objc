@@ -16,4 +16,6 @@
 
 - (instancetype)initWithCostBenefit:(SMRCostBenefit *)costBenefit managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
+- (void)loadItems;
+
 @end

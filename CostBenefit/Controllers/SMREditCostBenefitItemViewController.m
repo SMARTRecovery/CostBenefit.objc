@@ -7,6 +7,8 @@
 //
 
 #import "SMREditCostBenefitItemViewController.h"
+#import "SMRCostBenefitViewController.h"
+#import "MMDrawerController.h"
 
 @interface SMREditCostBenefitItemViewController ()
 
@@ -50,8 +52,13 @@
 #pragma mark - SMREditCostBenefitItemViewController
 
 - (void)dismiss:(id)sender {
-    NSLog(@"presentingVC %@", self.presentingViewController.class);
+    MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
+    NSLog(@"test %@", navVC.topViewController.class);
+    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController.class;
+//    NSLog(@"presentingVC %@", self.presentingViewController.class);
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (IBAction)saveButtonTouchUpInside:(id)sender {
@@ -64,7 +71,13 @@
     [self.costBenefitItem.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
     NSError *error;
     [self.managedObjectContext save:&error];
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
+    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
+    [rootVC dismissViewControllerAnimated:YES completion:^{
+        [costBenefitVC loadItems];
+        NSLog(@"dismissVC");
+    }];
 }
 
 @end

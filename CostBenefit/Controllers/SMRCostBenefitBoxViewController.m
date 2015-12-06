@@ -54,6 +54,11 @@
 
 #pragma mark - SMRCostBenefitBoxViewController
 
+- (void)reloadData {
+    [self.tableView reloadData];
+    NSLog(@"reloadData %@ -- count %li", self.boxNumber, self.costBenefitItems.count);
+}
+
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
     costBenefitItem.boxNumber = self.boxNumber;
@@ -67,6 +72,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
+    NSInteger count = self.costBenefitItems.count;
+//    NSLog(@"count = %li", (long)count);
     return self.costBenefitItems.count;
 }
 
