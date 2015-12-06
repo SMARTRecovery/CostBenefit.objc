@@ -74,8 +74,8 @@
     MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
     UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
     SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
+    costBenefitVC.managedObjectContext = self.managedObjectContext;
     [rootVC dismissViewControllerAnimated:YES completion:^{
-        [costBenefitVC loadItems];
         NSLog(@"dismissVC");
     }];
 }

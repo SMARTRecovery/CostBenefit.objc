@@ -57,31 +57,32 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
-
-    [self loadItems];
-}
 
 #pragma mark - SMRCostBenefitViewController
 
 - (void)loadItems {
-    int i = 0;
     NSLog(@"loadItems");
     _boxViewControllers = [[NSMutableArray alloc] init];
-    for (NSArray *boxItems in [self.costBenefit fetchBoxes:self.managedObjectContext]) {
-        SMRCostBenefitBoxViewController *boxVC = [[SMRCostBenefitBoxViewController alloc] initWithCostBenefitViewController:self boxNumber:[NSNumber numberWithInt:i] costBenefitItems:boxItems managedObjectContext:self.managedObjectContext];
-        NSLog(@"boxNumber %li count %li", (long)i, boxItems.count);
-        i++;
+    for (int i = 0; i < 4; i++) {
+        NSLog(@"loadItems %li", (long)i);
+        SMRCostBenefitBoxViewController *boxVC = [[SMRCostBenefitBoxViewController alloc] initWithCostBenefitViewController:self boxNumber:[NSNumber numberWithInt:i] managedObjectContext:self.managedObjectContext];
         [_boxViewControllers addObject:boxVC];
+        [boxVC reloadData];
     }
-    [self.currentBoxViewController reloadData];
 }
 
 - (void)leftDrawerButtonPress:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+    _managedObjectContext = managedObjectContext;
+    for (int i=0; i < 4; i++) {
+        SMRCostBenefitBoxViewController *boxVC = self.boxViewControllers[i];
+        boxVC.managedObjectContext = managedObjectContext;
+        [boxVC reloadData];
+    }
+}
 
 #pragma mark - UIPageViewControllerDataSource
 

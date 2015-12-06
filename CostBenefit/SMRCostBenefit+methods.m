@@ -48,6 +48,21 @@
     return boxes;
 }
 
+- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, boxNumber];
+    [fetchRequest setPredicate:predicate];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+    NSError *error = nil;
+    return (NSMutableArray *)[managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
 - (NSString *)getVerb {
     if ([self.type isEqualToString:@"activity"]) {
         return @"doing";

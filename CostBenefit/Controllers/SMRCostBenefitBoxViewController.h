@@ -18,7 +18,7 @@
 @property (strong, nonatomic, readonly) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic, readonly) SMRCostBenefitViewController *costBenefitViewController;
 
-- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 - (void)reloadData;
 

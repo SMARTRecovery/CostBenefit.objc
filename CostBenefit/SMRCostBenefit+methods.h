@@ -15,6 +15,8 @@
 + (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context;
 - (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context;
 
+- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
 // Returns "Advantage" or "Disadvantage", based on boxNumber.
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural;
 

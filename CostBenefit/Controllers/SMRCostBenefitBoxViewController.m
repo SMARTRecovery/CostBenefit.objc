@@ -27,14 +27,13 @@
 
 #pragma mark - NSObject
 
-- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber costBenefitItems:(NSArray *)costBenefitItems managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+- (instancetype)initWithCostBenefitViewController:(SMRCostBenefitViewController *)costBenefitViewController boxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     self = [super initWithNibName:@"SMRCostBenefitBoxView" bundle:nil];
 
     if (self) {
         _costBenefitViewController = costBenefitViewController;
         _costBenefit = costBenefitViewController.costBenefit;
         _boxNumber = boxNumber;
-        _costBenefitItems = costBenefitItems;
         _managedObjectContext = managedObjectContext;
     }
 
@@ -49,14 +48,20 @@
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
+    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
 }
 
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
-    [self.tableView reloadData];
-    NSLog(@"reloadData %@ -- count %li", self.boxNumber, self.costBenefitItems.count);
+    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        NSLog(@"reloadData %@ -- count %li", self.boxNumber, self.costBenefitItems.count);
+    });
 }
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
