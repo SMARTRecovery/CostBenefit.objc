@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (instancetype)initWithCostBenefitItem:(SMRCostBenefitItem *)costBenefitItem managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (instancetype)initWithCostBenefitItem:(SMRCostBenefitItem *)costBenefitItem isNew:(BOOL)isNew managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end

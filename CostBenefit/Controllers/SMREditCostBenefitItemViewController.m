@@ -12,6 +12,7 @@
 
 @interface SMREditCostBenefitItemViewController ()
 
+@property (assign, nonatomic) BOOL isNew;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -26,11 +27,12 @@
 
 #pragma mark - NSObject
 
-- (instancetype)initWithCostBenefitItem:(SMRCostBenefitItem *)costBenefitItem managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+- (instancetype)initWithCostBenefitItem:(SMRCostBenefitItem *)costBenefitItem isNew:(BOOL)isNew managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     self = [super initWithNibName:@"SMREditCostBenefitItemView" bundle:nil];
 
     if (self) {
         _costBenefitItem = costBenefitItem;
+        _isNew = isNew;
         _managedObjectContext = managedObjectContext;
     }
 
@@ -42,7 +44,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"Add Item";
+    if (self.isNew) {
+        self.title = @"Add Item";
+    }
+    else {
+        self.title = @"Edit Item";
+        self.costBenefitItemTitleField.text = self.costBenefitItem.title;
+    }
+
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
     self.navigationItem.rightBarButtonItem = cancelButton;
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
@@ -52,11 +61,6 @@
 #pragma mark - SMREditCostBenefitItemViewController
 
 - (void)dismiss:(id)sender {
-    MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
-    NSLog(@"test %@", navVC.topViewController.class);
-    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController.class;
-//    NSLog(@"presentingVC %@", self.presentingViewController.class);
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -66,18 +70,18 @@
     // Hardcode for now.
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
-    self.costBenefitItem.dateCreated = [[NSDate alloc] init];
     self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
-    [self.costBenefitItem.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+    if (self.isNew) {
+        self.costBenefitItem.dateCreated = [[NSDate alloc] init];
+        [self.costBenefitItem.costBenefit addCostBenefitItemsObject:(NSManagedObject *)self.costBenefitItem];
+    }
     NSError *error;
     [self.managedObjectContext save:&error];
     MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
     UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
     SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
     costBenefitVC.managedObjectContext = self.managedObjectContext;
-    [rootVC dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"dismissVC");
-    }];
+    [rootVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

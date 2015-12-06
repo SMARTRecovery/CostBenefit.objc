@@ -68,7 +68,7 @@
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
     costBenefitItem.boxNumber = self.boxNumber;
     costBenefitItem.costBenefit = self.costBenefit;
-    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem managedObjectContext:self.managedObjectContext];
+    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
 }
@@ -77,8 +77,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = self.costBenefitItems.count;
-//    NSLog(@"count = %li", (long)count);
     return self.costBenefitItems.count;
 }
 
@@ -88,6 +86,16 @@
     SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
     cell.textLabel.text = costBenefitItem.title;
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
+    SMREditCostBenefitItemViewController *destVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:NO managedObjectContext:self.managedObjectContext];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:destVC];
+    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
 }
 
 @end
