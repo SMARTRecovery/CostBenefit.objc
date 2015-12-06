@@ -59,7 +59,8 @@
 
 - (void)reloadData {
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
-    [self.tableView reloadData];}
+    [self.tableView reloadData];
+}
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
@@ -102,6 +103,19 @@
 - (BOOL)tableView:(UITableView *)tableView
 canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
+        [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)costBenefitItem];
+        [self.managedObjectContext deleteObject:costBenefitItem];
+        [self.costBenefit setDateUpdated:[[NSDate alloc] init]];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
