@@ -12,6 +12,7 @@
 
 @interface SMRCostBenefitBoxViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (assign, nonatomic) BOOL didEditBox;
 @property (strong, nonatomic, readwrite) NSNumber *boxNumber;
 @property (strong, nonatomic, readwrite) SMRCostBenefit *costBenefit;
 
@@ -52,7 +53,15 @@
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
-//    [self.tableView setEditing:YES animated:YES];
+    self.didEditBox = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    if (self.tableView.editing) {
+        [self finishEditing];
+    }
 }
 
 #pragma mark - SMRCostBenefitBoxViewController
@@ -78,11 +87,16 @@
         self.addItemButton.hidden = YES;
     }
     else {
-        [self.tableView setEditing:NO animated:YES];
-        [self.editBoxButton setTitle:@"Edit" forState:UIControlStateNormal];
-        self.addItemButton.hidden = NO;
+        [self finishEditing];
     }
+}
 
+- (void)finishEditing {
+    [self.tableView setEditing:NO animated:YES];
+    [self.editBoxButton setTitle:@"Edit" forState:UIControlStateNormal];
+    self.addItemButton.hidden = NO;
+    // @todo: If didEditBox, re-save the seq for all CostBenefitItems.
+    self.didEditBox = NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -107,6 +121,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        self.didEditBox = YES;
         SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
         [self.costBenefit removeCostBenefitItemsObject:(NSManagedObject *)costBenefitItem];
         [self.managedObjectContext deleteObject:costBenefitItem];
@@ -123,7 +138,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    //Even if the method is empty you should be seeing both rearrangement icon and animation.
+    self.didEditBox = YES;
 }
 
 #pragma mark - UITableViewDelegate
