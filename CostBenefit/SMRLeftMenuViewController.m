@@ -9,7 +9,7 @@
 #import "SMRLeftMenuViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefit+methods.h"
-#import "SMRCostBenefitTableViewController.h"
+#import "SMRCostBenefitViewController.h"
 #import "SMRStaticViewController.h"
 #import "MMDrawerBarButtonItem.h"
 
@@ -98,10 +98,9 @@
     UINavigationController *destNavVC;
     if (indexPath.section == 0) {
         if (indexPath.row < [self.costBenefits count]) {
-            destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"costBenefitNavigationController"];
-            SMRCostBenefitTableViewController *destVC = (SMRCostBenefitTableViewController *)destNavVC.topViewController;
-            [destVC setCostBenefit:self.costBenefits[indexPath.row]];
-            [destVC setContext:self.context];
+            SMRCostBenefit *costBenefit = self.costBenefits[indexPath.row];
+            SMRCostBenefitViewController *costBenefitVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:costBenefit managedObjectContext:self.context];
+            destNavVC = [[UINavigationController alloc] initWithRootViewController:costBenefitVC];
         }
         else {
             destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
