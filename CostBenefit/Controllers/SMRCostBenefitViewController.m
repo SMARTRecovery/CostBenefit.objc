@@ -69,10 +69,8 @@
 }
 
 - (void)loadItems {
-    NSLog(@"loadItems");
     _boxViewControllers = [[NSMutableArray alloc] init];
     for (int i = 0; i < 4; i++) {
-        NSLog(@"loadItems %li", (long)i);
         SMRCostBenefitBoxViewController *boxVC = [[SMRCostBenefitBoxViewController alloc] initWithCostBenefitViewController:self boxNumber:[NSNumber numberWithInt:i] managedObjectContext:self.managedObjectContext];
         [_boxViewControllers addObject:boxVC];
         [boxVC reloadData];

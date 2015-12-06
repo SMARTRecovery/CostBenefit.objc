@@ -18,9 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *boxHeaderLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addItemButton;
+@property (weak, nonatomic) IBOutlet UIButton *editBoxButton;
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender;
-
+- (IBAction)editBoxButtonTouchUpInside:(id)sender;
 @end
 
 @implementation SMRCostBenefitBoxViewController
@@ -51,18 +52,14 @@
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+//    [self.tableView setEditing:YES animated:YES];
 }
 
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        NSLog(@"reloadData %@ -- count %li", self.boxNumber, self.costBenefitItems.count);
-    });
-}
+    [self.tableView reloadData];}
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
@@ -71,6 +68,20 @@
     SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
+}
+
+- (IBAction)editBoxButtonTouchUpInside:(id)sender {
+    if (!self.tableView.editing) {
+        [self.tableView setEditing:YES animated:YES];
+        [self.editBoxButton setTitle:@"Done" forState:UIControlStateNormal];
+        self.addItemButton.hidden = YES;
+    }
+    else {
+        [self.tableView setEditing:NO animated:YES];
+        [self.editBoxButton setTitle:@"Edit" forState:UIControlStateNormal];
+        self.addItemButton.hidden = NO;
+    }
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -86,6 +97,19 @@
     SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
     cell.textLabel.text = costBenefitItem.title;
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    //Even if the method is empty you should be seeing both rearrangement icon and animation.
 }
 
 #pragma mark - UITableViewDelegate
