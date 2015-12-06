@@ -55,8 +55,10 @@
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
-    NSLog(@"Tappy");
-    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithNibName:@"SMREditCostBenefitItemView" bundle:nil];
+    SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
+    costBenefitItem.boxNumber = self.boxNumber;
+    costBenefitItem.costBenefit = self.costBenefit;
+    SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
 }

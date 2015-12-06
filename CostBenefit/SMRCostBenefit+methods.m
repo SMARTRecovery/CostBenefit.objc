@@ -57,14 +57,23 @@
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
     NSString *descriptor;
     if ([boxNumber intValue] % 2 == 0) {
-        descriptor = @"Advantage";
+        if (isPlural) {
+            descriptor = @"Advantages";
+        }
+        else {
+            descriptor = @"An advantage";
+        }
+
     }
     else {
-        descriptor = @"Disadvantage";
+        if (isPlural) {
+            descriptor = @"Disadvantages";
+        }
+        else {
+            descriptor = @"A disadvantage";
+        }
     }
-    if (isPlural) {
-        descriptor = [NSString stringWithFormat:@"%@s", descriptor];
-    }
+
     return descriptor;
 }
 
