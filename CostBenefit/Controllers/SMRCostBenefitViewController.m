@@ -54,11 +54,19 @@
 
     MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    [self styleView];
 
 }
 
 
 #pragma mark - SMRCostBenefitViewController
+
+- (void)styleView {
+    self.pageViewController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+}
 
 - (void)loadItems {
     NSLog(@"loadItems");
