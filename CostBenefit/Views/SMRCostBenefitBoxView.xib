@@ -20,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxl-hz-wjy" userLabel="Header Container View">
-                    <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="66"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="128-Qo-N6E" userLabel="Edit Button">
-                            <rect key="frame" x="554" y="4" width="30" height="37"/>
+                            <rect key="frame" x="554" y="4" width="30" height="59"/>
                             <animations/>
                             <state key="normal" title="Edit"/>
                             <connections>
@@ -31,7 +31,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
-                            <rect key="frame" x="16" y="8" width="584" height="28"/>
+                            <rect key="frame" x="16" y="8" width="584" height="50"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,7 +44,7 @@
                         <constraint firstAttribute="bottom" secondItem="128-Qo-N6E" secondAttribute="bottom" constant="3" id="20u-8c-bKL"/>
                         <constraint firstAttribute="trailing" secondItem="128-Qo-N6E" secondAttribute="trailing" constant="16" id="JmG-Hv-V7u"/>
                         <constraint firstItem="ddR-zL-XbB" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="top" constant="8" id="SBs-oj-BV7"/>
-                        <constraint firstAttribute="height" constant="44" id="W9P-Nc-KB7"/>
+                        <constraint firstAttribute="height" constant="66" id="W9P-Nc-KB7"/>
                         <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="16" id="iNt-Za-TIA"/>
                         <constraint firstAttribute="bottom" secondItem="ddR-zL-XbB" secondAttribute="bottom" constant="8" id="jOx-Bz-AMY"/>
                         <constraint firstAttribute="trailing" secondItem="ddR-zL-XbB" secondAttribute="trailing" id="lru-14-aHR"/>
@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
-                    <rect key="frame" x="8" y="116" width="584" height="375"/>
+                    <rect key="frame" x="8" y="138" width="584" height="353"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>

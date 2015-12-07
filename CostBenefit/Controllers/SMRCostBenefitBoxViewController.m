@@ -57,8 +57,19 @@
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
     self.didEditBox = NO;
+    self.tableView.editing = NO;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (self.costBenefitItems.count == 0) {
+        self.editBoxButton.hidden = YES;
+    }
+    else {
+        self.editBoxButton.hidden = NO;
+    }
+}
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
@@ -95,13 +106,18 @@
 }
 
 - (void)finishEditing {
+  if (self.didEditBox) {
+        for (int i = 0; i < self.costBenefitItems.count; i++) {
+            NSIndexPath *indexPath =[NSIndexPath indexPathForRow:i inSection:0];
+            SMRCostBenefitBoxTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            cell.costBenefitItem.seq = [NSNumber numberWithInt:i];
+        }
+        NSError *error;
+        [self.managedObjectContext save:&error];
+    }
     [self.tableView setEditing:NO animated:YES];
     [self.editBoxButton setTitle:@"Edit" forState:UIControlStateNormal];
     self.addItemButton.hidden = NO;
-    // @todo: If didEditBox, re-save the seq for all CostBenefitItems.
-    for (int i = 0; i < self.costBenefitItems.count; i++) {
-        NSLog(@"Updating %li", (long)i);
-    }
     self.didEditBox = NO;
 }
 

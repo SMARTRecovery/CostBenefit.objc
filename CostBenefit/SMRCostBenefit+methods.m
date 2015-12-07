@@ -56,7 +56,7 @@
     [fetchRequest setEntity:entity];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, boxNumber];
     [fetchRequest setPredicate:predicate];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"seq" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
     NSError *error = nil;
