@@ -8,6 +8,7 @@
 
 #import "SMRCostBenefitBoxViewController.h"
 #import "SMRCostBenefitItem+methods.h"
+#import "SMRCostBenefitBoxTableViewCell.h"
 #import "SMREditCostBenefitItemViewController.h"
 
 @interface SMRCostBenefitBoxViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -48,7 +49,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SMRCostBenefitBoxTableViewCell" bundle:nil] forCellReuseIdentifier:@"rowCell"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
 
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
@@ -96,6 +99,9 @@
     [self.editBoxButton setTitle:@"Edit" forState:UIControlStateNormal];
     self.addItemButton.hidden = NO;
     // @todo: If didEditBox, re-save the seq for all CostBenefitItems.
+    for (int i = 0; i < self.costBenefitItems.count; i++) {
+        NSLog(@"Updating %li", (long)i);
+    }
     self.didEditBox = NO;
 }
 
@@ -108,9 +114,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    SMRCostBenefitBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
     SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
-    cell.textLabel.text = costBenefitItem.title;
+    cell.costBenefitItem = costBenefitItem;
+    cell.titleLabelText = costBenefitItem.title;
     return cell;
 }
 
