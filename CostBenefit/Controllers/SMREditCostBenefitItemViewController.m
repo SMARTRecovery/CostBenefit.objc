@@ -51,9 +51,13 @@
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
     }
+    self.saveButton.hidden = YES;
 
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
-    self.navigationItem.rightBarButtonItem = cancelButton;
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
+
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
     self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO], costBenefit.title.lowercaseString];
 }
