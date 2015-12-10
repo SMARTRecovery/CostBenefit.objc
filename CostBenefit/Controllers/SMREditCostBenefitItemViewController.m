@@ -10,16 +10,17 @@
 #import "SMRCostBenefitViewController.h"
 #import "MMDrawerController.h"
 
-@interface SMREditCostBenefitItemViewController ()
+@interface SMREditCostBenefitItemViewController () <UITextFieldDelegate>
 
 @property (assign, nonatomic) BOOL isNew;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
+@property (strong, nonatomic) UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) UIBarButtonItem *saveButton;
 
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *boxDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *costBenefitItemTitleField;
 
-- (IBAction)saveButtonTouchUpInside:(id)sender;
+- (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
 
 @end
 
@@ -44,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.costBenefitItemTitleField.delegate = self;
     if (self.isNew) {
         self.title = @"Add Item";
     }
@@ -51,12 +53,12 @@
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
     }
-    self.saveButton.hidden = YES;
 
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
-    self.navigationItem.rightBarButtonItem = saveButton;
+    self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
+    self.navigationItem.leftBarButtonItem  = self.cancelButton;
+    self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
+    self.navigationItem.rightBarButtonItem = self.saveButton;
+    self.saveButton.enabled = NO;
 
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
     self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO], costBenefit.title.lowercaseString];
@@ -69,7 +71,7 @@
 
 }
 
-- (IBAction)saveButtonTouchUpInside:(id)sender {
+- (void)saveButtonTouchUpInside:(id)sender {
     self.costBenefitItem.title = self.costBenefitItemTitleField.text;
     // Hardcode for now.
     self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
@@ -86,6 +88,22 @@
     SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
     costBenefitVC.managedObjectContext = self.managedObjectContext;
     [rootVC dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender {
+    if ([self.costBenefitItemTitleField.text length] < 2) {
+        self.saveButton.enabled = NO;
+    }
+    else {
+        self.saveButton.enabled = YES;
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
