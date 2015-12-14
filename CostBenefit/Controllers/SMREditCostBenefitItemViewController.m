@@ -8,9 +8,10 @@
 
 #import "SMREditCostBenefitItemViewController.h"
 #import "SMRCostBenefitViewController.h"
+#import "SMRCostBenefitBoxTableViewCell.h"
 #import "MMDrawerController.h"
 
-@interface SMREditCostBenefitItemViewController () <UITextFieldDelegate>
+@interface SMREditCostBenefitItemViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) BOOL isNew;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
@@ -19,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *boxDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *costBenefitItemTitleField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
 
@@ -46,6 +48,9 @@
     [super viewDidLoad];
 
     self.costBenefitItemTitleField.delegate = self;
+    [self.tableView registerNib:[UINib nibWithNibName:@"SMRCostBenefitBoxTableViewCell" bundle:nil] forCellReuseIdentifier:@"rowCell"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     if (self.isNew) {
         self.title = @"Add Item";
     }
@@ -104,6 +109,52 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SMRCostBenefitBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row == 0) {
+        cell.titleLabelText = @"Long-term";
+        if (self.costBenefitItem.isLongTerm) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else {
+        cell.titleLabelText = @"Short-term";
+        if (self.costBenefitItem.isLongTerm) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        self.costBenefitItem.isLongTerm = [NSNumber numberWithInt:1];
+    }
+    else {
+        self.costBenefitItem.isLongTerm = [NSNumber numberWithInt:0];
+    }
+    [self.tableView reloadData];
 }
 
 @end
