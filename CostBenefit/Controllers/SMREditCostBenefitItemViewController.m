@@ -73,13 +73,10 @@
 
 - (void)dismiss:(id)sender {
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
     self.costBenefitItem.title = self.costBenefitItemTitleField.text;
-    // Hardcode for now.
-    self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
     self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
     if (self.isNew) {
@@ -124,7 +121,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 0) {
         cell.titleLabelText = @"Long-term";
-        if (self.costBenefitItem.isLongTerm) {
+        if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
@@ -133,7 +130,7 @@
     }
     else {
         cell.titleLabelText = @"Short-term";
-        if (self.costBenefitItem.isLongTerm) {
+        if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else {
@@ -149,11 +146,12 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        self.costBenefitItem.isLongTerm = [NSNumber numberWithInt:1];
+        self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
     }
     else {
-        self.costBenefitItem.isLongTerm = [NSNumber numberWithInt:0];
+        self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:NO];
     }
+    self.saveButton.enabled = YES;
     [self.tableView reloadData];
 }
 

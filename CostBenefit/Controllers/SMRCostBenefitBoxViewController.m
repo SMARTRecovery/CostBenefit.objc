@@ -89,6 +89,7 @@
     SMRCostBenefitItem *costBenefitItem = [SMRCostBenefitItem createCostBenefitItemInContext:self.managedObjectContext];
     costBenefitItem.boxNumber = self.boxNumber;
     costBenefitItem.costBenefit = self.costBenefit;
+    costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
     SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
