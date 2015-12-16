@@ -48,8 +48,8 @@
     [super viewDidLoad];
 
     self.costBenefitItemTitleField.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"SMRCostBenefitBoxTableViewCell" bundle:nil] forCellReuseIdentifier:@"rowCell"];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
+    self.tableView.backgroundColor = nil;
 
     if (self.isNew) {
         self.title = @"Add Item";
@@ -118,10 +118,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SMRCostBenefitBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+
     if (indexPath.row == 0) {
-        cell.titleLabelText = @"Long-term";
+        cell.textLabel.text = @"Long-term";
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -130,7 +132,7 @@
         }
     }
     else {
-        cell.titleLabelText = @"Short-term";
+        cell.textLabel.text = @"Short-term";
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }

@@ -52,6 +52,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"SMRCostBenefitBoxTableViewCell" bundle:nil] forCellReuseIdentifier:@"rowCell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 66;
 
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
@@ -132,9 +134,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SMRCostBenefitBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
     cell.costBenefitItem = costBenefitItem;
     cell.titleLabelText = costBenefitItem.title;
+    if ([costBenefitItem.isLongTerm boolValue]) {
+        cell.longTermLabelText = @"Long-term".uppercaseString;
+    }
+    else {
+        cell.longTermLabelText = @"Short-term".uppercaseString;
+    }
+
     return cell;
 }
 

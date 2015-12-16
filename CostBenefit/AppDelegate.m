@@ -36,6 +36,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     MMDrawerController *drawerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"drawerController"];
+    drawerController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
 
     UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
     SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;

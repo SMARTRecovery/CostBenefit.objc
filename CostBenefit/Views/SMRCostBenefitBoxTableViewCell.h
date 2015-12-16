@@ -11,6 +11,7 @@
 
 @interface SMRCostBenefitBoxTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) NSString *longTermLabelText;
 @property (strong, nonatomic) NSString *titleLabelText;
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRCostBenefitBoxViewController">
@@ -24,7 +24,6 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="128-Qo-N6E" userLabel="Edit Button">
                             <rect key="frame" x="554" y="4" width="30" height="59"/>
-                            <animations/>
                             <state key="normal" title="Edit"/>
                             <connections>
                                 <action selector="editBoxButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="BXQ-iU-mAE"/>
@@ -32,13 +31,11 @@
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
                             <rect key="frame" x="16" y="8" width="584" height="50"/>
-                            <animations/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="128-Qo-N6E" secondAttribute="bottom" constant="3" id="20u-8c-bKL"/>
                         <constraint firstAttribute="trailing" secondItem="128-Qo-N6E" secondAttribute="trailing" constant="16" id="JmG-Hv-V7u"/>
@@ -52,7 +49,6 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
                     <rect key="frame" x="8" y="138" width="584" height="353"/>
-                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
@@ -61,14 +57,12 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0R-Fe-QZg" userLabel="Add Item">
                     <rect key="frame" x="8" y="550" width="584" height="30"/>
-                    <animations/>
                     <state key="normal" title="Add Item"/>
                     <connections>
                         <action selector="addItemButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="8IE-fH-GxU"/>
                     </connections>
                 </button>
             </subviews>
-            <animations/>
             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="B0R-Fe-QZg" secondAttribute="trailing" constant="8" id="4kJ-PO-dM0"/>

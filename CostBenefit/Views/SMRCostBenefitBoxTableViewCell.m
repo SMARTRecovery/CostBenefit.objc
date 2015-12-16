@@ -10,6 +10,7 @@
 
 @interface SMRCostBenefitBoxTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
 
 @end
 
@@ -22,6 +23,10 @@
 
 - (void)setTitleLabelText:(NSString *)titleLabelText {
     self.titleLabel.text = titleLabelText;
+}
+
+- (void)setLongTermLabelText:(NSString *)longTermLabelText {
+    self.longTermLabel.text = longTermLabelText;
 }
 
 @end
