@@ -59,7 +59,7 @@
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
     }
 
-    self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
+    self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
     self.navigationItem.leftBarButtonItem  = self.cancelButton;
     self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
     self.navigationItem.rightBarButtonItem = self.saveButton;
@@ -71,7 +71,8 @@
 
 #pragma mark - SMREditCostBenefitItemViewController
 
-- (void)dismiss:(id)sender {
+- (void)cancelButtonTapped:(id)sender {
+    [self.managedObjectContext rollback];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
