@@ -32,7 +32,7 @@
                         <action selector="CostBenefitItemTitleFieldEditingChanged:" destination="-1" eventType="editingChanged" id="KgA-Ra-pxm"/>
                     </connections>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
                     <rect key="frame" x="8" y="159" width="584" height="433"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
