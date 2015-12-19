@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMREditCostBenefitViewController">
             <connections>
                 <outlet property="titleTextField" destination="nvq-ZQ-VYG" id="V4e-wR-PKh"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Wlu-ru-Iwj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nvq-ZQ-VYG">
-                    <rect key="frame" x="8" y="60" width="584" height="30"/>
+                    <rect key="frame" x="8" y="88" width="584" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -25,7 +26,7 @@
             <constraints>
                 <constraint firstItem="nvq-ZQ-VYG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="5Kc-Fl-fOC"/>
                 <constraint firstAttribute="trailing" secondItem="nvq-ZQ-VYG" secondAttribute="trailing" constant="8" id="Ghd-Jq-eNo"/>
-                <constraint firstItem="nvq-ZQ-VYG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="OXe-yS-BjB"/>
+                <constraint firstItem="nvq-ZQ-VYG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="OXe-yS-BjB"/>
             </constraints>
         </view>
     </objects>

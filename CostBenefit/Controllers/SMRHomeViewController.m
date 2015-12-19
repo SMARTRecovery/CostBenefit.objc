@@ -10,6 +10,7 @@
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRStaticViewController.h"
+#import "SMREditCostBenefitViewController.h"
 
 @interface SMRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -43,6 +44,7 @@
 
     self.title = @"CBA's";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
@@ -51,6 +53,12 @@
 }
 
 #pragma mark - SMRHomeViewController
+
+- (void)addButtonTapped:(id)sender {
+    SMREditCostBenefitViewController *addCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:nil isNew:YES managedObjectContext:self.managedObjectContext];
+    UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:addCostBenefitViewController];
+    [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
+}
 
 - (IBAction)aboutCBAButtonTouchUpInside:(id)sender {
     SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"cba"];

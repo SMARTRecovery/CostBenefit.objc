@@ -24,7 +24,7 @@
 #pragma mark - NSObject
 
 - (instancetype)initWithCostBenefitItem:(SMRCostBenefit *)costBenefit isNew:(BOOL)isNew managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
-    self = [super initWithNibName:@"SMREditCostBenefitItemView" bundle:nil];
+    self = [super initWithNibName:@"SMREditCostBenefitView" bundle:nil];
 
     if (self) {
         _costBenefit = costBenefit;
@@ -50,7 +50,7 @@
 
 - (void)cancelButtonTapped:(id)sender {
     [self.managedObjectContext rollback];
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
@@ -61,7 +61,7 @@
     self.costBenefit.type = @"substance";
     NSError *error;
     [self.managedObjectContext save:&error];
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
