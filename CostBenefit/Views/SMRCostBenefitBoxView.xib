@@ -48,7 +48,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
-                    <rect key="frame" x="8" y="138" width="584" height="353"/>
+                    <rect key="frame" x="8" y="138" width="584" height="396"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
@@ -73,7 +73,7 @@
                 <constraint firstItem="sNc-06-9Bw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="RwF-eN-fxM"/>
                 <constraint firstItem="sNc-06-9Bw" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="bottom" constant="8" id="dIs-vH-gD8"/>
                 <constraint firstItem="dxl-hz-wjy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fIl-K5-hJ7"/>
-                <constraint firstItem="B0R-Fe-QZg" firstAttribute="top" secondItem="sNc-06-9Bw" secondAttribute="bottom" constant="59" id="rWI-p2-o0r"/>
+                <constraint firstItem="B0R-Fe-QZg" firstAttribute="top" secondItem="sNc-06-9Bw" secondAttribute="bottom" constant="16" id="rWI-p2-o0r"/>
                 <constraint firstItem="B0R-Fe-QZg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="scR-9v-Rmp"/>
                 <constraint firstAttribute="bottom" secondItem="sNc-06-9Bw" secondAttribute="bottom" constant="8" id="skW-dY-f7n"/>
             </constraints>
