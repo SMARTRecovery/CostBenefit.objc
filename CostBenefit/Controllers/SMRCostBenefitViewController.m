@@ -51,6 +51,8 @@
     [self.pageViewController addChildViewController:self.boxViewControllers[0]];
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setRightBarButtonItem:leftDrawerButton animated:YES];
 
     [self styleView];
 }

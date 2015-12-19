@@ -11,6 +11,8 @@
 
 @interface SMRStaticViewController : UIViewController <UIWebViewDelegate>
 
-@property (strong, nonatomic) NSString *txtFileName;
+@property (strong, nonatomic) NSString *contentFileName;
 
+- (instancetype)initWithContentFileName:(NSString *)contentFileName;
+    
 @end

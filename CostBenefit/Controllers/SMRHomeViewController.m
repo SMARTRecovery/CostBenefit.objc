@@ -9,6 +9,7 @@
 #import "SMRHomeViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
+#import "SMRStaticViewController.h"
 
 @interface SMRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -52,9 +53,13 @@
 #pragma mark - SMRHomeViewController
 
 - (IBAction)aboutCBAButtonTouchUpInside:(id)sender {
+    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"cba"];
+    [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
 - (IBAction)aboutSMARTButtonTouchUpInside:(id)sender {
+    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"smart"];
+    [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

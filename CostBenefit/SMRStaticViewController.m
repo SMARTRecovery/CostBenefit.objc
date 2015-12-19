@@ -12,23 +12,37 @@
 
 @interface SMRStaticViewController ()
 
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
 @implementation SMRStaticViewController
 
+#pragma mark - NSObject
+
+- (instancetype)initWithContentFileName:(NSString *)contentFileName {
+    self = [super initWithNibName:@"SMRWebView" bundle:nil];
+
+    if (self) {
+        _contentFileName = contentFileName;
+    }
+
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.webView.delegate = self;
     self.title = @"About SMART Recovery";
-    if ([self.txtFileName isEqualToString:@"cba"]) {
-        self.title = @"About CBA's";
+    if ([self.contentFileName isEqualToString:@"cba"]) {
+        self.title = @"Cost Benefit Analysis";
     }
 
     NSError  *error;
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.txtFileName ofType:@"txt"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.contentFileName ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
     NSString *aboutHTML = [NSString stringWithFormat:@"<html> \n"
@@ -40,8 +54,6 @@
                                    "<body>%@</body> \n"
                                    "</html>", @"helvetica", [NSNumber numberWithInt:14], htmlString];
     [self.webView loadHTMLString:aboutHTML baseURL:[[NSBundle mainBundle] bundleURL]];
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 - (BOOL)webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
