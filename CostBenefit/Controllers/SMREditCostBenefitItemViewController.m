@@ -86,11 +86,14 @@
     }
     NSError *error;
     [self.managedObjectContext save:&error];
-    MMDrawerController *rootVC = (MMDrawerController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    UINavigationController *navVC = (UINavigationController *)rootVC.centerViewController;
-    SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
-    costBenefitVC.managedObjectContext = self.managedObjectContext;
-    [rootVC dismissViewControllerAnimated:YES completion:nil];
+
+    if ([self.presentingViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navVC = (UINavigationController *)self.presentingViewController;
+        // @todo sanity check topViewController isKindOfClass
+        SMRCostBenefitViewController *costBenefitVC = (SMRCostBenefitViewController *)navVC.topViewController;
+        costBenefitVC.managedObjectContext = self.managedObjectContext;
+    }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender {

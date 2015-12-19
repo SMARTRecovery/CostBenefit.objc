@@ -8,12 +8,6 @@
 
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
-#import "SMRLeftMenuViewController.h"
-#import "SMRCostBenefitTableViewController.h"
-#import "SMREditCostBenefitViewControllerOld.h"
-#import "SMRCostBenefit+methods.h"
-#import "SMRCostBenefitViewController.h"
-#import <MMDrawerController.h>
 #import "SMRHomeViewController.h"
 
 @interface AppDelegate ()
@@ -38,52 +32,6 @@
     SMRHomeViewController *homeViewController = [[SMRHomeViewController alloc] initWithManagedObjectContext:coreDataStack.managedObjectContext];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
-    return YES;
-
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    MMDrawerController *drawerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"drawerController"];
-    drawerController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
-
-    UINavigationController *leftMenuNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenuNavigationController"];
-    SMRLeftMenuViewController *leftMenuVC = (SMRLeftMenuViewController *)leftMenuNavVC.topViewController;
-    leftMenuVC.context = coreDataStack.managedObjectContext;
-    [drawerController setLeftDrawerViewController:leftMenuNavVC];
-
-    BOOL savedCostBenefit = NO;
-    SMRCostBenefit *costBenefit;
-
-    NSMutableArray *costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:coreDataStack.managedObjectContext];
-    UINavigationController *centerController;
-    if ([costBenefits count] > 0) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSURL *costBenefitURL = [defaults URLForKey:@"SMRLastViewedCostBenefit"];
-        if (costBenefitURL != nil) {
-            NSManagedObjectID *moID = [coreDataStack.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:costBenefitURL];
-            NSError *error;
-            if ([coreDataStack.managedObjectContext existingObjectWithID:moID error:&error]) {
-                savedCostBenefit = YES;
-                costBenefit = (SMRCostBenefit *)[coreDataStack.managedObjectContext objectWithID:moID];
-                SMRCostBenefitViewController *costBenefitVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:costBenefit managedObjectContext:coreDataStack.managedObjectContext];
-                UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:costBenefitVC];
-                centerController = navVC;
-            }
-        }
-    }
-
-    if (!savedCostBenefit) {
-        centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-        SMREditCostBenefitViewControllerOld *destVC = (SMREditCostBenefitViewControllerOld *)centerController.topViewController;
-        [destVC setContext:coreDataStack.managedObjectContext];
-    }
-
-
-    [drawerController setCenterViewController:centerController withFullCloseAnimation:NO completion:nil];
-    [drawerController setShowsShadow:YES];
-    [drawerController setShadowRadius:0.9];
-
-
-    self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
     return YES;
 }
