@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
+- (IBAction)titleTextFieldEditingChanged:(id)sender;
+
 @end
 
 @implementation SMREditCostBenefitViewController
@@ -39,6 +41,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    if (self.isNew) {
+        self.title = @"Add CBA";
+    }
+    else {
+        self.title = @"Edit CBA";
+    }
+
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
     self.navigationItem.leftBarButtonItem  = self.cancelButton;
     self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
@@ -54,7 +63,10 @@
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
-    self.costBenefit.dateCreated = [[NSDate alloc] init];
+    if (self.isNew) {
+        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.managedObjectContext];
+        self.costBenefit.dateCreated = [[NSDate alloc] init];;
+    }
     self.costBenefit.dateUpdated = [[NSDate alloc] init];
     self.costBenefit.title = self.titleTextField.text;
     // Hardcode for now
@@ -62,6 +74,15 @@
     NSError *error;
     [self.managedObjectContext save:&error];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)titleTextFieldEditingChanged:(id)sender {
+    if ([self.titleTextField.text length] < 2) {
+        self.saveButton.enabled = NO;
+    }
+    else {
+        self.saveButton.enabled = YES;
+    }
 }
 
 @end

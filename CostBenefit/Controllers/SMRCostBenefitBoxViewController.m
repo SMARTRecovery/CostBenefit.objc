@@ -60,6 +60,7 @@
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
     self.didEditBox = NO;
     self.tableView.editing = NO;
+    self.editBoxButton.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
