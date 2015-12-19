@@ -40,8 +40,8 @@
     }
 
     return self;
-    
 }
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {

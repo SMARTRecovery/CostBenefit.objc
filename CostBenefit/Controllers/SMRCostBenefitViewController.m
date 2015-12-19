@@ -52,10 +52,7 @@
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
 
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     [self styleView];
-
 }
 
 

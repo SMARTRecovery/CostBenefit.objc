@@ -7,7 +7,7 @@
 //
 
 #import "SMRLeftMenuViewController.h"
-#import "SMREditCostBenefitViewController.h"
+#import "SMREditCostBenefitViewControllerOld.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRStaticViewController.h"
@@ -104,7 +104,7 @@
         }
         else {
             destNavVC= [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-            SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)destNavVC.topViewController;
+            SMREditCostBenefitViewControllerOld *destVC = (SMREditCostBenefitViewControllerOld *)destNavVC.topViewController;
             [destVC setCostBenefit:nil];
             [destVC setContext:self.context];
         }

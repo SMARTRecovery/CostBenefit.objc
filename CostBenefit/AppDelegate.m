@@ -10,10 +10,11 @@
 #import "SMRCoreDataStack.h"
 #import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitTableViewController.h"
-#import "SMREditCostBenefitViewController.h"
+#import "SMREditCostBenefitViewControllerOld.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
 #import <MMDrawerController.h>
+#import "SMRHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -34,6 +35,12 @@
     SMRCoreDataStack *coreDataStack = [[SMRCoreDataStack alloc] initWithStoreURL:[self storeURL] modelURL:[self modelURL]];
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    SMRHomeViewController *homeViewController = [[SMRHomeViewController alloc] initWithManagedObjectContext:coreDataStack.managedObjectContext];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+    return YES;
+
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     MMDrawerController *drawerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"drawerController"];
     drawerController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
@@ -66,7 +73,7 @@
 
     if (!savedCostBenefit) {
         centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-        SMREditCostBenefitViewController *destVC = (SMREditCostBenefitViewController *)centerController.topViewController;
+        SMREditCostBenefitViewControllerOld *destVC = (SMREditCostBenefitViewControllerOld *)centerController.topViewController;
         [destVC setContext:coreDataStack.managedObjectContext];
     }
 

@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 smartrecovery.org. All rights reserved.
 //
 
-#import "SMREditCostBenefitViewController.h"
+#import "SMREditCostBenefitViewControllerOld.h"
 #import "SMRLeftMenuViewController.h"
 #import "SMRCostBenefitTableViewController.h"
 #import "SMRCostBenefitItemViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 
-@interface SMREditCostBenefitViewController ()
+@interface SMREditCostBenefitViewControllerOld ()
 
 @property (strong, nonatomic) NSArray *typeOptions;
 @property (strong, nonatomic) NSString *costBenefitType;
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation SMREditCostBenefitViewController
+@implementation SMREditCostBenefitViewControllerOld
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -179,7 +179,7 @@
     }
     else {
         UINavigationController *centerNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"editCostBenefitNavVC"];
-        SMREditCostBenefitViewController *centerVC = (SMREditCostBenefitViewController *)centerNavVC.topViewController;
+        SMREditCostBenefitViewControllerOld *centerVC = (SMREditCostBenefitViewControllerOld *)centerNavVC.topViewController;
         [centerVC setContext:self.context];
         [drawerController setCenterViewController:centerNavVC withCloseAnimation:YES completion:nil];
     }
