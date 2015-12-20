@@ -9,7 +9,6 @@
 #import "SMREditCostBenefitItemViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxTableViewCell.h"
-#import "MMDrawerController.h"
 
 @interface SMREditCostBenefitItemViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 

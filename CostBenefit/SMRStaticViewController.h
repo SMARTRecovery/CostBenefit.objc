@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MMDrawerController/UIViewController+MMDrawerController.h>
 
 @interface SMRStaticViewController : UIViewController <UIWebViewDelegate>
 

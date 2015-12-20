@@ -8,8 +8,6 @@
 
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxViewController.h"
-#import "UIViewController+MMDrawerController.h"
-#import "MMDrawerBarButtonItem.h"
 
 @interface SMRCostBenefitViewController () <UIPageViewControllerDataSource>
 
@@ -51,8 +49,8 @@
     [self.pageViewController addChildViewController:self.boxViewControllers[0]];
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setRightBarButtonItem:leftDrawerButton animated:YES];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuButtonTapped:)];
 
     [self styleView];
 }
@@ -76,8 +74,26 @@
     }
 }
 
-- (void)leftDrawerButtonPress:(id)sender {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+- (void)menuButtonTapped:(id)sender {
+    UIAlertController *menuAlertController = [UIAlertController alertControllerWithTitle:nil message:nil                                                              preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *editAlertAction = [UIAlertAction actionWithTitle:@"Edit CBA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        NSLog(@"tappy 1");
+    }];
+
+
+    UIAlertAction *deleteAlertAction = [UIAlertAction actionWithTitle:@"Delete CBA" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
+        NSLog(@"tappy 2");
+    }];
+
+    UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        [menuAlertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    [menuAlertController addAction:editAlertAction];
+    [menuAlertController addAction:deleteAlertAction];
+    [menuAlertController addAction:cancelAlertAction];
+    [self presentViewController:menuAlertController animated:YES completion:nil];
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {

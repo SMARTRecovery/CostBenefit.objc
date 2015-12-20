@@ -7,7 +7,6 @@
 //
 
 #import "SMRStaticViewController.h"
-#import "MMDrawerBarButtonItem.h"
 #import <MMMarkdown/MMMarkdown.h>
 
 @interface SMRStaticViewController ()
@@ -63,12 +62,6 @@
     }
 
     return YES;
-}
-
-#pragma mark - Button Handlers
-
-- (void)leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 @end

@@ -265,6 +265,7 @@
 				B26BE5A91AC114C2001ABA41 /* Frameworks */,
 				B26BE5AA1AC114C2001ABA41 /* Resources */,
 				1B7FA003529BCC83E1E6D96C /* Copy Pods Resources */,
+				78A4C7F00C88E296BABB9FEE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +375,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78A4C7F00C88E296BABB9FEE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D8243A8E45D669C16CB605CD /* Check Pods Manifest.lock */ = {
