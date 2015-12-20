@@ -52,9 +52,7 @@
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
 
-    UIColor *tintColor = self.view.tintColor;
-    UIImage *menuImage = [IonIcons imageWithIcon:@"\uf20e" size:22.0f color:tintColor];
-    NSLog(@"color %@", tintColor);
+    UIImage *menuImage = [IonIcons imageWithIcon:@"\uf46a" size:22.0f color:self.view.tintColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped:)];
 
     [self styleView];

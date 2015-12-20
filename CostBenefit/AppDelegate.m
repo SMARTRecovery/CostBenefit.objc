@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SMRCoreDataStack.h"
 #import "SMRHomeViewController.h"
+#import <IonIcons.h>
 
 @interface AppDelegate ()
 
@@ -33,6 +34,10 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    UIImage *closeImage = [IonIcons imageWithIcon:@"\uf404" size:22.0f color:homeViewController.view.tintColor];
+    [[UINavigationBar appearance] setBackIndicatorImage:closeImage];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:closeImage];
+
     return YES;
 }
 
