@@ -9,6 +9,7 @@
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxViewController.h"
 #import "SMREditCostBenefitViewController.h"
+#import <IonIcons.h>
 
 @interface SMRCostBenefitViewController () <UIPageViewControllerDataSource>
 
@@ -51,7 +52,10 @@
     [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuButtonTapped:)];
+    UIColor *tintColor = self.view.tintColor;
+    UIImage *menuImage = [IonIcons imageWithIcon:@"\uf20e" size:22.0f color:tintColor];
+    NSLog(@"color %@", tintColor);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped:)];
 
     [self styleView];
 }

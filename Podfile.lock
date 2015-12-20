@@ -1,10 +1,13 @@
 PODS:
+  - ionicons (2.0.3)
   - MMMarkdown (0.5.1)
 
 DEPENDENCIES:
+  - ionicons
   - MMMarkdown (~> 0.4)
 
 SPEC CHECKSUMS:
+  ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
   MMMarkdown: 06f7989e0350d10a7de50516af6c812402ce554b
 
 COCOAPODS: 0.39.0
