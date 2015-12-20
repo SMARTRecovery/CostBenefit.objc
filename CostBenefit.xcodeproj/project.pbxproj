@@ -245,10 +245,10 @@
 				B25355BA1C25F960002C02FC /* SMREditCostBenefitViewController.m */,
 				B21F379F1C0433B3001179A0 /* SMREditCostBenefitItemViewController.h */,
 				B21F37A01C0433B3001179A0 /* SMREditCostBenefitItemViewController.m */,
-				B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */,
-				B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */,
 				B25355BE1C2604A3002C02FC /* SMRHomeViewController.h */,
 				B25355BF1C2604A3002C02FC /* SMRHomeViewController.m */,
+				B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */,
+				B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

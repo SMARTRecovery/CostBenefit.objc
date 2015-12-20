@@ -8,6 +8,7 @@
 
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxViewController.h"
+#import "SMREditCostBenefitViewController.h"
 
 @interface SMRCostBenefitViewController () <UIPageViewControllerDataSource>
 
@@ -78,12 +79,28 @@
     UIAlertController *menuAlertController = [UIAlertController alertControllerWithTitle:nil message:nil                                                              preferredStyle:UIAlertControllerStyleActionSheet];
 
     UIAlertAction *editAlertAction = [UIAlertAction actionWithTitle:@"Edit CBA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-        NSLog(@"tappy 1");
+        SMREditCostBenefitViewController *editCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:self.costBenefit isNew:NO managedObjectContext:self.managedObjectContext];
+        UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:editCostBenefitViewController];
+        [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
     }];
 
 
     UIAlertAction *deleteAlertAction = [UIAlertAction actionWithTitle:@"Delete CBA" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
-        NSLog(@"tappy 2");
+
+        UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this CBA?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+            [self.managedObjectContext deleteObject:self.costBenefit];
+            NSError *error;
+            [self.managedObjectContext save:&error];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        }];
+        [confirmDeleteAlertController addAction:cancelAction];
+        [confirmDeleteAlertController addAction:deleteAction];
+
+        [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
     }];
 
     UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {

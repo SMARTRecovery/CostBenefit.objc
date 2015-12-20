@@ -46,6 +46,7 @@
     }
     else {
         self.title = @"Edit CBA";
+        self.titleTextField.text = self.costBenefit.title;
     }
 
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
