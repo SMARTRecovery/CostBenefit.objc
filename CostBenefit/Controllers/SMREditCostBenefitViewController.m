@@ -7,6 +7,7 @@
 //
 
 #import "SMREditCostBenefitViewController.h"
+#import "SMRCostBenefitViewController.h"
 
 @interface SMREditCostBenefitViewController ()
 
@@ -74,7 +75,14 @@
     self.costBenefit.type = @"substance";
     NSError *error;
     [self.managedObjectContext save:&error];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
+    UINavigationController *navVC = (UINavigationController *)self.presentingViewController;
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.isNew) {
+            SMRCostBenefitViewController *destVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:self.costBenefit managedObjectContext:self.managedObjectContext];
+            [navVC pushViewController:destVC animated:YES];
+        }
+    }];
 }
 
 - (IBAction)titleTextFieldEditingChanged:(id)sender {
