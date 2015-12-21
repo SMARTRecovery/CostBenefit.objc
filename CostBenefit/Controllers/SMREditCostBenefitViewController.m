@@ -43,7 +43,7 @@
     [super viewDidLoad];
 
     if (self.isNew) {
-        self.title = @"Add CBA";
+        self.title = @"New CBA";
     }
     else {
         self.title = @"Edit CBA";

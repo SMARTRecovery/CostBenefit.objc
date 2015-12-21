@@ -51,7 +51,7 @@
     self.tableView.backgroundColor = nil;
 
     if (self.isNew) {
-        self.title = @"Add Item";
+        self.title = @"New Item";
     }
     else {
         self.title = @"Edit Item";

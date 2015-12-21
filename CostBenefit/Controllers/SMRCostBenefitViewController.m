@@ -65,7 +65,7 @@
     self.pageViewController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+    pageControl.currentPageIndicatorTintColor = self.view.tintColor;
 }
 
 - (void)loadItems {
