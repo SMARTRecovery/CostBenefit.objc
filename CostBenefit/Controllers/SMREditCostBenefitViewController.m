@@ -9,12 +9,13 @@
 #import "SMREditCostBenefitViewController.h"
 #import "SMRCostBenefitViewController.h"
 
-@interface SMREditCostBenefitViewController ()
+@interface SMREditCostBenefitViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) BOOL isNew;
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
@@ -44,11 +45,15 @@
 
     if (self.isNew) {
         self.title = @"New CBA";
+        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.managedObjectContext];
+        self.costBenefit.dateCreated = [[NSDate alloc] init];
+        self.costBenefit.type = @"substance";
     }
     else {
         self.title = @"Edit CBA";
         self.titleTextField.text = self.costBenefit.title;
     }
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
     self.navigationItem.leftBarButtonItem  = self.cancelButton;
@@ -65,14 +70,8 @@
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
-    if (self.isNew) {
-        self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.managedObjectContext];
-        self.costBenefit.dateCreated = [[NSDate alloc] init];;
-    }
     self.costBenefit.dateUpdated = [[NSDate alloc] init];
     self.costBenefit.title = self.titleTextField.text;
-    // Hardcode for now
-    self.costBenefit.type = @"substance";
     NSError *error;
     [self.managedObjectContext save:&error];
 
@@ -92,6 +91,56 @@
     else {
         self.saveButton.enabled = YES;
     }
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"The substance";
+        if ([self.costBenefit.type isEqualToString:@"substance"]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else {
+        cell.textLabel.text = @"The activity";
+        if ([self.costBenefit.type isEqualToString:@"activity"]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+
+    return cell;
+}
+
+#pragma mark = UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        self.costBenefit.type = @"substance";
+    }
+    else {
+        self.costBenefit.type = @"activity";
+    }
+    if (self.titleTextField.text.length > 2) {
+        self.saveButton.enabled = YES;
+    }
+    [self.tableView reloadData];
 }
 
 @end
