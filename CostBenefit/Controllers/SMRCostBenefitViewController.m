@@ -99,8 +99,8 @@
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         }];
-        [confirmDeleteAlertController addAction:cancelAction];
         [confirmDeleteAlertController addAction:deleteAction];
+        [confirmDeleteAlertController addAction:cancelAction];
 
         [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
     }];
