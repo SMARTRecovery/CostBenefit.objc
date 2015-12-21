@@ -9,6 +9,7 @@
 #import "SMREditCostBenefitItemViewController.h"
 #import "SMRCostBenefitViewController.h"
 #import "SMRCostBenefitBoxTableViewCell.h"
+#import <IonIcons.h>
 
 @interface SMREditCostBenefitItemViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -57,8 +58,8 @@
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
     }
-
-    self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
+    UIImage *closeImage = [IonIcons imageWithIcon:@"\uf404" size:22.0f color:self.view.tintColor];
+    self.cancelButton = [[UIBarButtonItem alloc] initWithImage:closeImage style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped:)];
     self.navigationItem.leftBarButtonItem  = self.cancelButton;
     self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
     self.navigationItem.rightBarButtonItem = self.saveButton;
