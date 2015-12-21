@@ -65,7 +65,7 @@
     self.saveButton.enabled = NO;
 
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
-    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO], costBenefit.title.lowercaseString];
+    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]];
 }
 
 #pragma mark - SMREditCostBenefitItemViewController
@@ -142,6 +142,14 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
+    NSString *descriptor;
+    if ([self.costBenefitItem.boxNumber intValue] % 2) {
+        descriptor = @"disadvantage";
+    }
+    else {
+        descriptor = @"advantage";
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", cell.textLabel.text, descriptor];
 
     return cell;
 }
