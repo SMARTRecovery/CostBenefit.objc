@@ -44,7 +44,23 @@
         NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
         [boxes addObject:boxItems];
     }
+
     return boxes;
+}
+
+- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, boxNumber];
+    [fetchRequest setPredicate:predicate];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"seq" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+    NSError *error = nil;
+    return (NSMutableArray *)[managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 - (NSString *)getVerb {
@@ -57,14 +73,23 @@
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
     NSString *descriptor;
     if ([boxNumber intValue] % 2 == 0) {
-        descriptor = @"Advantage";
+        if (isPlural) {
+            descriptor = @"Advantages";
+        }
+        else {
+            descriptor = @"An advantage";
+        }
+
     }
     else {
-        descriptor = @"Disadvantage";
+        if (isPlural) {
+            descriptor = @"Disadvantages";
+        }
+        else {
+            descriptor = @"A disadvantage";
+        }
     }
-    if (isPlural) {
-        descriptor = [NSString stringWithFormat:@"%@s", descriptor];
-    }
+
     return descriptor;
 }
 

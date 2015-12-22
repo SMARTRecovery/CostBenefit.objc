@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRCostBenefitBoxViewController">
+            <connections>
+                <outlet property="addItemButton" destination="B0R-Fe-QZg" id="meQ-2M-ta7"/>
+                <outlet property="boxHeaderLabel" destination="ddR-zL-XbB" id="vlp-Fp-yFS"/>
+                <outlet property="editBoxButton" destination="128-Qo-N6E" id="40R-qq-AnK"/>
+                <outlet property="tableView" destination="sNc-06-9Bw" id="m36-5j-q2Y"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxl-hz-wjy" userLabel="Container View">
+                    <rect key="frame" x="16" y="84" width="568" height="508"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
+                            <rect key="frame" x="16" y="8" width="552" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="128-Qo-N6E" userLabel="Edit Button">
+                            <rect key="frame" x="530" y="4" width="30" height="30"/>
+                            <state key="normal" title="Edit"/>
+                            <connections>
+                                <action selector="editBoxButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="BXQ-iU-mAE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0R-Fe-QZg" userLabel="Add Item">
+                            <rect key="frame" x="8" y="470" width="552" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Add Item"/>
+                            <connections>
+                                <action selector="addItemButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="8IE-fH-GxU"/>
+                            </connections>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
+                            <rect key="frame" x="4" y="45" width="560" height="416"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
+                                <outlet property="delegate" destination="-1" id="9RR-Gn-hZk"/>
+                            </connections>
+                        </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-Sc-jkI" userLabel="Bottom border">
+                            <rect key="frame" x="0.0" y="507" width="568" height="1"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="5cb-ig-k7Z"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="sNc-06-9Bw" firstAttribute="top" secondItem="ddR-zL-XbB" secondAttribute="bottom" constant="16" id="1P9-Rd-rea"/>
+                        <constraint firstAttribute="trailing" secondItem="B0R-Fe-QZg" secondAttribute="trailing" constant="8" id="6ea-Sp-ubW"/>
+                        <constraint firstAttribute="trailing" secondItem="4gg-Sc-jkI" secondAttribute="trailing" id="Ble-Af-90k"/>
+                        <constraint firstItem="4gg-Sc-jkI" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" id="EG5-st-gMq"/>
+                        <constraint firstAttribute="bottom" secondItem="B0R-Fe-QZg" secondAttribute="bottom" constant="8" id="Inl-Vu-QqH"/>
+                        <constraint firstItem="B0R-Fe-QZg" firstAttribute="top" secondItem="sNc-06-9Bw" secondAttribute="bottom" constant="9" id="Jtj-3P-QIK"/>
+                        <constraint firstItem="B0R-Fe-QZg" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="8" id="Lbk-J9-ZkF"/>
+                        <constraint firstItem="ddR-zL-XbB" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="top" constant="8" id="SBs-oj-BV7"/>
+                        <constraint firstItem="sNc-06-9Bw" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="4" id="fnE-jR-zcg"/>
+                        <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="16" id="iNt-Za-TIA"/>
+                        <constraint firstAttribute="trailing" secondItem="ddR-zL-XbB" secondAttribute="trailing" id="lru-14-aHR"/>
+                        <constraint firstItem="128-Qo-N6E" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="top" constant="4" id="m4h-Ce-Ryy"/>
+                        <constraint firstAttribute="bottom" secondItem="4gg-Sc-jkI" secondAttribute="bottom" id="oNC-29-0h1"/>
+                        <constraint firstAttribute="trailing" secondItem="sNc-06-9Bw" secondAttribute="trailing" constant="4" id="vcu-Lo-Ahf"/>
+                        <constraint firstAttribute="trailing" secondItem="128-Qo-N6E" secondAttribute="trailing" constant="8" id="wt7-fj-7vI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="dxl-hz-wjy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="Mho-nS-j9V"/>
+                <constraint firstAttribute="trailing" secondItem="dxl-hz-wjy" secondAttribute="trailing" constant="16" id="MmC-tr-CDY"/>
+                <constraint firstAttribute="bottom" secondItem="dxl-hz-wjy" secondAttribute="bottom" constant="8" id="aZf-OB-MBN"/>
+                <constraint firstItem="dxl-hz-wjy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="fIl-K5-hJ7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

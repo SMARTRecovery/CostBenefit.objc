@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MMDrawerController/UIViewController+MMDrawerController.h>
 
 @interface SMRStaticViewController : UIViewController <UIWebViewDelegate>
 
-@property (strong, nonatomic) NSString *txtFileName;
+@property (strong, nonatomic) NSString *contentFileName;
 
+- (instancetype)initWithContentFileName:(NSString *)contentFileName;
+    
 @end

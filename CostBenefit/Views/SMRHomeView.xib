@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRHomeViewController">
+            <connections>
+                <outlet property="tableView" destination="apa-eI-6Ch" id="4kd-rz-X20"/>
+                <outlet property="view" destination="iN0-l3-epB" id="OuN-ee-I9d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="apa-eI-6Ch">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="IKR-AO-96R"/>
+                        <outlet property="delegate" destination="-1" id="U9D-fZ-9td"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-Uo-WNo">
+                    <rect key="frame" x="0.0" y="554" width="600" height="30"/>
+                    <state key="normal" title="About SMART Recovery"/>
+                    <connections>
+                        <action selector="aboutSMARTButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="2ND-cj-y6W"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkR-ms-v8u">
+                    <rect key="frame" x="0.0" y="508" width="600" height="30"/>
+                    <state key="normal" title="About Cost Benefit Analysis (CBA)"/>
+                    <connections>
+                        <action selector="aboutCBAButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="f0A-SO-Jkr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="apa-eI-6Ch" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3yh-v3-qEz"/>
+                <constraint firstAttribute="trailing" secondItem="apa-eI-6Ch" secondAttribute="trailing" id="Dtk-Lk-zHY"/>
+                <constraint firstItem="CkR-ms-v8u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KZe-lv-XeH"/>
+                <constraint firstAttribute="trailing" secondItem="CkR-ms-v8u" secondAttribute="trailing" id="QzV-kM-5oM"/>
+                <constraint firstItem="nf7-Uo-WNo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bRw-or-ptU"/>
+                <constraint firstItem="apa-eI-6Ch" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gD4-uf-x2p"/>
+                <constraint firstItem="CkR-ms-v8u" firstAttribute="top" secondItem="apa-eI-6Ch" secondAttribute="bottom" constant="16" id="gsT-TM-v4W"/>
+                <constraint firstItem="nf7-Uo-WNo" firstAttribute="top" secondItem="CkR-ms-v8u" secondAttribute="bottom" constant="16" id="k5d-Ld-AW7"/>
+                <constraint firstAttribute="bottom" secondItem="nf7-Uo-WNo" secondAttribute="bottom" constant="16" id="qCy-Ar-fTQ"/>
+                <constraint firstAttribute="trailing" secondItem="nf7-Uo-WNo" secondAttribute="trailing" id="utL-af-LTk"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
