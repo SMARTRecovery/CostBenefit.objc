@@ -50,10 +50,10 @@
 /* Begin PBXFileReference section */
 		2DAC313174CD7F2645247608 /* Pods-CostBenefit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostBenefit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit.debug.xcconfig"; sourceTree = "<group>"; };
 		81B53DB601E3EFC59289E99B /* libPods-CostBenefit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostBenefit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B20F628A1AE65A6500D1478F /* smart.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smart.txt; sourceTree = "<group>"; };
+		B20F628A1AE65A6500D1478F /* smart.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = smart.txt; path = Resources/smart.txt; sourceTree = "<group>"; };
 		B215CD1F1AE50A2100DF8CAA /* SMRStaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMRStaticViewController.h; path = Controllers/SMRStaticViewController.h; sourceTree = "<group>"; };
 		B215CD201AE50A2100DF8CAA /* SMRStaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMRStaticViewController.m; path = Controllers/SMRStaticViewController.m; sourceTree = "<group>"; };
-		B215CD241AE5366800DF8CAA /* cba.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cba.txt; sourceTree = "<group>"; };
+		B215CD241AE5366800DF8CAA /* cba.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cba.txt; path = Resources/cba.txt; sourceTree = "<group>"; };
 		B21989B11ACD83D700B91322 /* SMRCostBenefitItem+methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SMRCostBenefitItem+methods.h"; path = "Models/SMRCostBenefitItem+methods.h"; sourceTree = "<group>"; };
 		B21989B21ACD83D700B91322 /* SMRCostBenefitItem+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SMRCostBenefitItem+methods.m"; path = "Models/SMRCostBenefitItem+methods.m"; sourceTree = "<group>"; };
 		B21F379F1C0433B3001179A0 /* SMREditCostBenefitItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMREditCostBenefitItemViewController.h; path = Controllers/SMREditCostBenefitItemViewController.h; sourceTree = "<group>"; };
@@ -133,6 +133,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B25A80DC1C292E22003E66BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B215CD241AE5366800DF8CAA /* cba.txt */,
+				B20F628A1AE65A6500D1478F /* smart.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		B26BE5A31AC114C2001ABA41 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +171,7 @@
 				B2EBD0ED1AC9B80400D52E8E /* Models */,
 				B2EBD0EE1AC9B81400D52E8E /* Views */,
 				B2EBD0EF1AC9B83200D52E8E /* Controllers */,
+				B25A80DC1C292E22003E66BF /* Resources */,
 			);
 			path = CostBenefit;
 			sourceTree = "<group>";
@@ -169,8 +179,6 @@
 		B26BE5AF1AC114C2001ABA41 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B215CD241AE5366800DF8CAA /* cba.txt */,
-				B20F628A1AE65A6500D1478F /* smart.txt */,
 				B2F340F71AD5927A00600623 /* logo.jpeg */,
 				B26BE5B01AC114C2001ABA41 /* Info.plist */,
 				B26BE5B11AC114C2001ABA41 /* main.m */,
