@@ -35,6 +35,8 @@
     [super viewDidLoad];
 
     self.webView.delegate = self;
+    self.webView.backgroundColor = UIColor.whiteColor;
+
     self.title = @"About SMART Recovery";
     if ([self.contentFileName isEqualToString:@"cba"]) {
         self.title = @"Cost Benefit Analysis";
