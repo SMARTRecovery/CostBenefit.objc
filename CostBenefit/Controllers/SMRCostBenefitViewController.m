@@ -62,7 +62,7 @@
 #pragma mark - SMRCostBenefitViewController
 
 - (void)styleView {
-    self.pageViewController.view.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1.0];
+    self.pageViewController.view.backgroundColor = UIColor.whiteColor;
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = self.view.tintColor;
