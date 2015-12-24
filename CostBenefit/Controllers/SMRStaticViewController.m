@@ -46,14 +46,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:self.contentFileName ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
-    NSString *aboutHTML = [NSString stringWithFormat:@"<html> \n"
-                                   "<head> \n"
-                                   "<style type=\"text/css\"> \n"
-                                   "body {font-family: \"%@\"; font-size: %@;}\n"
-                                   "</style> \n"
-                                   "</head> \n"
-                                   "<body>%@</body> \n"
-                                   "</html>", @"helvetica", [NSNumber numberWithInt:14], htmlString];
+    UIFont *systemFont = [UIFont systemFontOfSize:14];
+    NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\"; font-size: %@;}</style></head><body>%@</body></html>", systemFont.familyName, [NSNumber numberWithInt:14], htmlString];
     [self.webView loadHTMLString:aboutHTML baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
