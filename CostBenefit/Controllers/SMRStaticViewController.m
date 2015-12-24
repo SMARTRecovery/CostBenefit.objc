@@ -47,7 +47,7 @@
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
     UIFont *systemFont = [UIFont systemFontOfSize:14];
-    NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\"; font-size: %@;}</style></head><body>%@</body></html>", systemFont.familyName, [NSNumber numberWithInt:14], htmlString];
+    NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\";}</style></head><body>%@</body></html>", systemFont.familyName, htmlString];
     [self.webView loadHTMLString:aboutHTML baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
