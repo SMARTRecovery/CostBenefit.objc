@@ -11,6 +11,7 @@
 #import "SMRCostBenefitViewController.h"
 #import "SMRStaticViewController.h"
 #import "SMREditCostBenefitViewController.h"
+#import "SMRAboutSmartRecoveryViewController.h"
 
 @interface SMRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -70,7 +71,7 @@
 }
 
 - (IBAction)aboutSMARTButtonTouchUpInside:(id)sender {
-    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"smart"];
+    SMRAboutSmartRecoveryViewController *destinationViewController = [[SMRAboutSmartRecoveryViewController alloc] initWithNibName:@"SMRAboutSmartRecoveryView" bundle:nil];
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
