@@ -9,7 +9,7 @@
 #import "SMRHomeViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
-#import "SMRStaticViewController.h"
+#import "SMRAboutCostBenefitViewController.h"
 #import "SMREditCostBenefitViewController.h"
 #import "SMRAboutSmartRecoveryViewController.h"
 
@@ -67,7 +67,7 @@
 }
 
 - (IBAction)aboutCBAButtonTouchUpInside:(id)sender {
-    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"cba"];
+    SMRAboutCostBenefitViewController *destinationViewController = [[SMRAboutCostBenefitViewController alloc] initWithNibName:@"SMRAboutCostBenefitView" bundle:nil];
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
