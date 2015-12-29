@@ -9,8 +9,9 @@
 #import "SMRHomeViewController.h"
 #import "SMRCostBenefit+methods.h"
 #import "SMRCostBenefitViewController.h"
-#import "SMRStaticViewController.h"
+#import "SMRAboutCostBenefitViewController.h"
 #import "SMREditCostBenefitViewController.h"
+#import "SMRAboutSmartRecoveryViewController.h"
 
 @interface SMRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -61,16 +62,17 @@
 - (void)addButtonTapped:(id)sender {
     SMREditCostBenefitViewController *addCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:nil isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:addCostBenefitViewController];
+    destNavVC.navigationBar.translucent = NO;
     [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
 }
 
 - (IBAction)aboutCBAButtonTouchUpInside:(id)sender {
-    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"cba"];
+    SMRAboutCostBenefitViewController *destinationViewController = [[SMRAboutCostBenefitViewController alloc] initWithNibName:@"SMRAboutCostBenefitView" bundle:nil];
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
 - (IBAction)aboutSMARTButtonTouchUpInside:(id)sender {
-    SMRStaticViewController *destinationViewController = [[SMRStaticViewController alloc] initWithContentFileName:@"smart"];
+    SMRAboutSmartRecoveryViewController *destinationViewController = [[SMRAboutSmartRecoveryViewController alloc] initWithNibName:@"SMRAboutSmartRecoveryView" bundle:nil];
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 

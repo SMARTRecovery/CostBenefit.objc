@@ -32,6 +32,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     SMRHomeViewController *homeViewController = [[SMRHomeViewController alloc] initWithManagedObjectContext:coreDataStack.managedObjectContext];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    navigationController.navigationBar.translucent = NO;
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     UIImage *closeImage = [IonIcons imageWithIcon:@"\uf404" size:22.0f color:homeViewController.view.tintColor];

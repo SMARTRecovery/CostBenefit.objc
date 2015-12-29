@@ -19,13 +19,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-Fy-ccz">
-                    <rect key="frame" x="8" y="88" width="584" height="21"/>
+                    <rect key="frame" x="8" y="16" width="584" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XIp-FU-VQY">
-                    <rect key="frame" x="8" y="117" width="584" height="30"/>
+                    <rect key="frame" x="8" y="45" width="584" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -33,7 +33,7 @@
                     </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
-                    <rect key="frame" x="8" y="163" width="584" height="429"/>
+                    <rect key="frame" x="8" y="83" width="584" height="509"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="wuQ-2n-0Iu"/>
@@ -51,8 +51,8 @@
                 <constraint firstItem="dxa-Fy-ccz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dmu-7m-iwp"/>
                 <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="8" id="g3k-cq-Qp2"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iWR-vN-Soj"/>
-                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="rat-5t-1Wl"/>
-                <constraint firstItem="8Rm-aZ-6tV" firstAttribute="top" secondItem="XIp-FU-VQY" secondAttribute="bottom" constant="16" id="u4V-Yb-7aE"/>
+                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="rat-5t-1Wl"/>
+                <constraint firstItem="8Rm-aZ-6tV" firstAttribute="top" secondItem="XIp-FU-VQY" secondAttribute="bottom" constant="8" id="u4V-Yb-7aE"/>
             </constraints>
         </view>
     </objects>

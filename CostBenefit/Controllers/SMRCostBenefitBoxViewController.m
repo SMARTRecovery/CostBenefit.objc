@@ -95,6 +95,7 @@
     costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
     SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
+    navVC.navigationBar.translucent = NO;
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];
 }
 
@@ -183,6 +184,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SMRCostBenefitItem *costBenefitItem = (SMRCostBenefitItem *)self.costBenefitItems[indexPath.row];
     SMREditCostBenefitItemViewController *destVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:NO managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:destVC];
+    navVC.navigationBar.translucent = NO;
     // Fixes weird delay - http://stackoverflow.com/a/28215125/1470725
     dispatch_async(dispatch_get_main_queue(), ^{
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navVC animated:YES completion:nil];

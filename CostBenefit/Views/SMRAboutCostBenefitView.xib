@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRStaticViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRAboutCostBenefitViewController">
             <connections>
                 <outlet property="view" destination="iN0-l3-epB" id="LWJ-hi-ojn"/>
                 <outlet property="webView" destination="j7m-YB-yMZ" id="VzA-R1-hsS"/>
