@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *websiteButton;
 - (IBAction)appStoreButtonTouchUpInside:(id)sender;
 - (IBAction)websiteButtonTouchUpInside:(id)sender;
+- (IBAction)facebookButtonTouchUpInside:(id)sender;
+- (IBAction)twitterButtonTouchUpInside:(id)sender;
 
 @end
 
@@ -46,6 +48,14 @@
 
 - (IBAction)websiteButtonTouchUpInside:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.smartrecovery.org"]];
+}
+
+- (IBAction)facebookButtonTouchUpInside:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.facebook.com/smartrecoveryUSA"]];
+}
+
+- (IBAction)twitterButtonTouchUpInside:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.twitter.com/smartrecovery"]];
 }
 
 @end
