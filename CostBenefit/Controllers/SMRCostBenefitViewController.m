@@ -83,6 +83,7 @@
     UIAlertAction *editAlertAction = [UIAlertAction actionWithTitle:@"Edit CBA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
         SMREditCostBenefitViewController *editCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:self.costBenefit isNew:NO managedObjectContext:self.managedObjectContext];
         UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:editCostBenefitViewController];
+        destNavVC.navigationBar.translucent = NO;
         [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
     }];
 

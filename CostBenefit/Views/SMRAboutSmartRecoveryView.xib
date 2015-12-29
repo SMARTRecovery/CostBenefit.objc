@@ -8,10 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMRAboutSmartRecoveryViewController">
             <connections>
                 <outlet property="appStoreButton" destination="JNT-ta-oNF" id="X38-pp-U9V"/>
-                <outlet property="contentLabel" destination="2rz-5o-OvL" id="JVR-f7-hYm"/>
                 <outlet property="facebookButton" destination="f5w-ij-l0V" id="4Gg-2w-Smx"/>
                 <outlet property="twitterButton" destination="gho-W3-Y6U" id="OOu-Ds-bUt"/>
                 <outlet property="view" destination="iN0-l3-epB" id="q96-aq-dsQ"/>
+                <outlet property="webView" destination="CYB-gg-OrD" id="QgF-rV-vr2"/>
                 <outlet property="websiteButton" destination="NqV-zv-mDu" id="TYk-jJ-YCp"/>
             </connections>
         </placeholder>
@@ -20,14 +20,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rz-5o-OvL">
-                    <rect key="frame" x="8" y="8" width="584" height="422"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYB-gg-OrD">
+                    <rect key="frame" x="8" y="8" width="584" height="446"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqV-zv-mDu">
-                    <rect key="frame" x="8" y="446" width="584" height="30"/>
+                    <rect key="frame" x="8" y="462" width="584" height="30"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Visit smartrecovery.org on the web"/>
                     <connections>
@@ -35,7 +33,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNT-ta-oNF">
-                    <rect key="frame" x="8" y="538" width="584" height="30"/>
+                    <rect key="frame" x="8" y="554" width="584" height="30"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Rate us on the App Store"/>
                     <connections>
@@ -43,7 +41,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5w-ij-l0V">
-                    <rect key="frame" x="8" y="492" width="284" height="30"/>
+                    <rect key="frame" x="8" y="508" width="284" height="30"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Facebook"/>
                     <connections>
@@ -51,7 +49,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gho-W3-Y6U">
-                    <rect key="frame" x="308" y="492" width="284" height="30"/>
+                    <rect key="frame" x="308" y="508" width="284" height="30"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Twitter"/>
                     <connections>
@@ -63,21 +61,21 @@
             <constraints>
                 <constraint firstItem="f5w-ij-l0V" firstAttribute="top" secondItem="NqV-zv-mDu" secondAttribute="bottom" constant="16" id="0Yk-Uw-mYe"/>
                 <constraint firstItem="gho-W3-Y6U" firstAttribute="top" secondItem="NqV-zv-mDu" secondAttribute="bottom" constant="16" id="4Z4-dB-pim"/>
-                <constraint firstItem="2rz-5o-OvL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="E9Q-yv-aUG"/>
+                <constraint firstItem="CYB-gg-OrD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="6M4-MY-oEZ"/>
+                <constraint firstAttribute="trailing" secondItem="CYB-gg-OrD" secondAttribute="trailing" constant="8" id="Aor-Yf-0lE"/>
                 <constraint firstAttribute="trailing" secondItem="JNT-ta-oNF" secondAttribute="trailing" constant="8" id="EyA-nd-heI"/>
-                <constraint firstAttribute="bottom" secondItem="JNT-ta-oNF" secondAttribute="bottom" constant="32" id="GF7-5b-kJa"/>
+                <constraint firstAttribute="bottom" secondItem="JNT-ta-oNF" secondAttribute="bottom" constant="16" id="GF7-5b-kJa"/>
+                <constraint firstItem="CYB-gg-OrD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Hmw-Ub-Xgl"/>
                 <constraint firstAttribute="trailing" secondItem="gho-W3-Y6U" secondAttribute="trailing" constant="8" id="Nxw-Fg-qaf"/>
+                <constraint firstItem="NqV-zv-mDu" firstAttribute="top" secondItem="CYB-gg-OrD" secondAttribute="bottom" constant="8" id="Qn2-V0-0kk"/>
                 <constraint firstAttribute="trailing" secondItem="NqV-zv-mDu" secondAttribute="trailing" constant="8" id="RAa-ev-lFw"/>
                 <constraint firstItem="JNT-ta-oNF" firstAttribute="top" secondItem="gho-W3-Y6U" secondAttribute="bottom" constant="16" id="Unv-J9-BMb"/>
                 <constraint firstItem="gho-W3-Y6U" firstAttribute="width" secondItem="f5w-ij-l0V" secondAttribute="width" id="W12-ng-31R"/>
                 <constraint firstItem="JNT-ta-oNF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="aLA-Yt-mC0"/>
                 <constraint firstItem="f5w-ij-l0V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="aoh-gr-iRr"/>
                 <constraint firstItem="JNT-ta-oNF" firstAttribute="top" secondItem="f5w-ij-l0V" secondAttribute="bottom" constant="16" id="dd7-5S-LDh"/>
-                <constraint firstAttribute="trailing" secondItem="2rz-5o-OvL" secondAttribute="trailing" constant="8" id="gNl-rx-lzl"/>
-                <constraint firstItem="2rz-5o-OvL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ged-qj-GxY"/>
                 <constraint firstItem="NqV-zv-mDu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="mgC-an-EFD"/>
                 <constraint firstItem="gho-W3-Y6U" firstAttribute="leading" secondItem="f5w-ij-l0V" secondAttribute="trailing" constant="16" id="mhD-CM-rwh"/>
-                <constraint firstItem="NqV-zv-mDu" firstAttribute="top" secondItem="2rz-5o-OvL" secondAttribute="bottom" constant="16" id="t8r-Tv-Oe2"/>
             </constraints>
             <point key="canvasLocation" x="226" y="472"/>
         </view>

@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxl-hz-wjy" userLabel="Container View">
-                    <rect key="frame" x="16" y="84" width="568" height="508"/>
+                    <rect key="frame" x="16" y="8" width="568" height="584"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
                             <rect key="frame" x="16" y="8" width="552" height="21"/>
@@ -36,7 +36,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0R-Fe-QZg" userLabel="Add Item">
-                            <rect key="frame" x="8" y="470" width="552" height="30"/>
+                            <rect key="frame" x="8" y="546" width="552" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Add Item"/>
                             <connections>
@@ -44,7 +44,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
-                            <rect key="frame" x="4" y="45" width="560" height="416"/>
+                            <rect key="frame" x="4" y="45" width="560" height="492"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
@@ -52,7 +52,7 @@
                             </connections>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-Sc-jkI" userLabel="Bottom border">
-                            <rect key="frame" x="0.0" y="507" width="568" height="1"/>
+                            <rect key="frame" x="0.0" y="583" width="568" height="1"/>
                             <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="5cb-ig-k7Z"/>
@@ -81,7 +81,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="dxl-hz-wjy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="Mho-nS-j9V"/>
+                <constraint firstItem="dxl-hz-wjy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Mho-nS-j9V"/>
                 <constraint firstAttribute="trailing" secondItem="dxl-hz-wjy" secondAttribute="trailing" constant="16" id="MmC-tr-CDY"/>
                 <constraint firstAttribute="bottom" secondItem="dxl-hz-wjy" secondAttribute="bottom" constant="8" id="aZf-OB-MBN"/>
                 <constraint firstItem="dxl-hz-wjy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="fIl-K5-hJ7"/>

@@ -62,6 +62,7 @@
 - (void)addButtonTapped:(id)sender {
     SMREditCostBenefitViewController *addCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:nil isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:addCostBenefitViewController];
+    destNavVC.navigationBar.translucent = NO;
     [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
 }
 
