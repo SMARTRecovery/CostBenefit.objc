@@ -177,6 +177,50 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     self.didEditBox = YES;
 }
 
+- (UIView *)tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section {
+    if (self.costBenefitItems.count > 0) {
+        return nil;
+    }
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width - 16, 144)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = UIColor.grayColor;
+    titleLabel.numberOfLines = 0;
+    UILabel *copyLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 144, tableView.frame.size.width - 16, 144)];
+    copyLabel.numberOfLines = 0;
+    copyLabel.font = [UIFont systemFontOfSize:14];
+    switch ([self.boxNumber intValue]) {
+        case 0:
+            titleLabel.text = @"What do I enjoy about my addiction?";
+            copyLabel.text = @"List as many specific things as you can that you liked about whatever you are/were addicted to.";
+            break;
+        case 1:
+            titleLabel.text = @"What do I hate about my addiction?";
+            copyLabel.text = @"List as many specific examples of the bad, undesirable results of your addiction as you can.";
+            break;
+        case 2:
+            titleLabel.text = @"What will I like about giving up my addiction?";
+            copyLabel.text = @"List what good things you think/fantasize will happen when you stop your addiction.";
+            break;
+        case 3:
+            titleLabel.text = @"What won't I like about giving up my addiction?";
+            copyLabel.text = @"List what you think you are going to hate, dread or merely dislike about living without your addiction.";
+            break;
+    }
+    [footerView addSubview:titleLabel];
+    [footerView addSubview:copyLabel];
+
+    return footerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (self.costBenefitItems.count > 0) {
+        return 0;
+    }
+    return 200;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView
