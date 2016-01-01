@@ -84,6 +84,7 @@
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
 }

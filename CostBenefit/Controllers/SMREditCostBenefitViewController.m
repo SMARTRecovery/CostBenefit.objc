@@ -76,6 +76,11 @@
     [self.managedObjectContext save:&error];
 
     UINavigationController *navVC = (UINavigationController *)self.presentingViewController;
+
+    if (!self.isNew) {
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)navVC.topViewController;
+        destVC.managedObjectContext = self.managedObjectContext;
+    }
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         if (self.isNew) {
             SMRCostBenefitViewController *destVC = [[SMRCostBenefitViewController alloc] initWithCostBenefit:self.costBenefit managedObjectContext:self.managedObjectContext];
