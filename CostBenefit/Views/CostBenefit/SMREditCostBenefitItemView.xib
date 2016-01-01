@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-Fy-ccz">
-                    <rect key="frame" x="8" y="16" width="584" height="17"/>
+                    <rect key="frame" x="8" y="44" width="584" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XIp-FU-VQY">
-                    <rect key="frame" x="8" y="41" width="584" height="30"/>
+                    <rect key="frame" x="8" y="69" width="584" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
@@ -34,7 +34,7 @@
                     </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
-                    <rect key="frame" x="8" y="79" width="584" height="403"/>
+                    <rect key="frame" x="8" y="107" width="584" height="375"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="wuQ-2n-0Iu"/>
@@ -63,7 +63,7 @@
                 <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="8" id="g3k-cq-Qp2"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iWR-vN-Soj"/>
                 <constraint firstAttribute="bottom" secondItem="hea-jx-lX5" secondAttribute="bottom" constant="44" id="pUS-Ty-qZ4"/>
-                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="rat-5t-1Wl"/>
+                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="rat-5t-1Wl"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="top" secondItem="XIp-FU-VQY" secondAttribute="bottom" constant="8" id="u4V-Yb-7aE"/>
                 <constraint firstItem="hea-jx-lX5" firstAttribute="top" secondItem="8Rm-aZ-6tV" secondAttribute="bottom" constant="44" id="ubV-Yw-pi2"/>
             </constraints>

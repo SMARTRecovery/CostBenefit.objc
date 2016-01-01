@@ -178,11 +178,11 @@ viewForFooterInSection:(NSInteger)section {
         return nil;
     }
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width - 16, 144)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, tableView.frame.size.width - 16, 144)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = UIColor.grayColor;
     titleLabel.numberOfLines = 0;
-    UILabel *copyLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 144, tableView.frame.size.width - 16, 144)];
+    UILabel *copyLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 144, tableView.frame.size.width - 16, 72)];
     copyLabel.numberOfLines = 0;
     copyLabel.font = [UIFont systemFontOfSize:14];
     switch ([self.boxNumber intValue]) {
