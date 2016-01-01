@@ -118,6 +118,7 @@
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     _managedObjectContext = managedObjectContext;
+    self.title = self.costBenefit.title;
     for (int i=0; i < 4; i++) {
         SMRCostBenefitBoxViewController *boxVC = self.boxViewControllers[i];
         boxVC.managedObjectContext = managedObjectContext;
