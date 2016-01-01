@@ -16,12 +16,15 @@
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *boxDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *costBenefitItemTitleField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
+- (IBAction)deleteButtonTouchUpInside:(id)sender;
+
 
 @end
 
@@ -52,10 +55,12 @@
 
     if (self.isNew) {
         self.title = @"New Item";
+        self.deleteButton.hidden = YES;
     }
     else {
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
+        self.deleteButton.hidden = NO;
     }
 
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
@@ -102,6 +107,27 @@
     else {
         self.saveButton.enabled = YES;
     }
+}
+
+- (IBAction)deleteButtonTouchUpInside:(id)sender {
+    UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this item?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        [self.costBenefitItem.costBenefit setDateCreated:[[NSDate alloc] init]];
+        [self.costBenefitItem.costBenefit removeCostBenefitItemsObject:self.costBenefitItem];
+        [self.managedObjectContext deleteObject:self.costBenefitItem];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        UINavigationController *presentingVC = (UINavigationController *)self.presentingViewController;
+        SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)presentingVC.topViewController;
+        destVC.managedObjectContext = self.managedObjectContext;
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    }];
+    [confirmDeleteAlertController addAction:deleteAction];
+    [confirmDeleteAlertController addAction:cancelAction];
+
+     [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate
