@@ -43,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.titleTextField.delegate = self;
     if (self.isNew) {
         self.title = @"New CBA";
         self.costBenefit = [SMRCostBenefit createCostBenefitInContext:self.managedObjectContext];
@@ -96,6 +97,13 @@
     else {
         self.saveButton.enabled = YES;
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - UITableViewDataSource
