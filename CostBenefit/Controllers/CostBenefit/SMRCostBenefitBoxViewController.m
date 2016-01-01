@@ -57,7 +57,7 @@
 
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
-    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.didEditBox = NO;
     self.tableView.editing = NO;
     self.editBoxButton.hidden = YES;
@@ -84,7 +84,7 @@
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
-    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
 }

@@ -70,7 +70,7 @@
     self.saveButton.enabled = NO;
 
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
-    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]];
+    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]].uppercaseString;
 }
 
 #pragma mark - SMREditCostBenefitItemViewController
@@ -148,10 +148,11 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+    cell.textLabel.textColor = UIColor.darkGrayColor;
 
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Long-term";
+        cell.textLabel.text = @"Long-term".uppercaseString;
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -160,7 +161,7 @@
         }
     }
     else {
-        cell.textLabel.text = @"Short-term";
+        cell.textLabel.text = @"Short-term".uppercaseString;
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
@@ -168,14 +169,6 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    NSString *descriptor;
-    if ([self.costBenefitItem.boxNumber intValue] % 2) {
-        descriptor = @"disadvantage";
-    }
-    else {
-        descriptor = @"advantage";
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", cell.textLabel.text, descriptor];
 
     return cell;
 }
