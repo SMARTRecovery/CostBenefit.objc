@@ -190,7 +190,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     else {
         self.costBenefitItem.isLongTerm = [NSNumber numberWithBool:NO];
     }
-    self.saveButton.enabled = YES;
+    if (self.costBenefitItemTitleField.text.length > 2) {
+        self.saveButton.enabled = YES;
+    }
     [self.tableView reloadData];
 }
 
