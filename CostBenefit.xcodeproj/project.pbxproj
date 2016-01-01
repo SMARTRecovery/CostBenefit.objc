@@ -321,7 +321,7 @@
 		B26BE5A41AC114C2001ABA41 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = smartrecovery.org;
 				TargetAttributes = {
 					B26BE5AB1AC114C2001ABA41 = {
@@ -504,6 +504,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -519,7 +520,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = CostBenefit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
@@ -557,7 +558,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = CostBenefit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
 				PRODUCT_NAME = "SMART Recovery CBA";
@@ -574,6 +575,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CostBenefit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.smartrecovery.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = costbenefit;
 			};
 			name = Debug;
@@ -586,6 +588,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CostBenefit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.smartrecovery.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = costbenefit;
 			};
 			name = Release;
@@ -604,6 +607,7 @@
 				);
 				INFOPLIST_FILE = CostBenefitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.smartrecovery.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CostBenefitTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CostBenefit.app/CostBenefit";
 			};
@@ -619,6 +623,7 @@
 				);
 				INFOPLIST_FILE = CostBenefitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.smartrecovery.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CostBenefitTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CostBenefit.app/CostBenefit";
 			};
