@@ -22,60 +22,88 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVU-9W-jtc">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="16" width="600" height="584"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJZ-AA-M8j">
-                            <rect key="frame" x="8" y="8" width="239" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PF-Hf-zag">
-                            <rect key="frame" x="8" y="29" width="239" height="30"/>
-                            <state key="normal" title="Visit smartrecovery.org on the web"/>
-                            <connections>
-                                <action selector="websiteButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="LzO-Xb-4Q0"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAk-GN-Ele">
-                            <rect key="frame" x="8" y="81" width="113" height="30"/>
-                            <state key="normal" title="Facebook"/>
-                            <connections>
-                                <action selector="facebookButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="5qq-em-JAg"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-7M-kb8">
-                            <rect key="frame" x="134" y="81" width="113" height="30"/>
-                            <state key="normal" title="Twitter"/>
-                            <connections>
-                                <action selector="twitterButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="Bl8-eE-Y8Y"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9G-Md-msC">
-                            <rect key="frame" x="8" y="133" width="239" height="30"/>
-                            <state key="normal" title="Rate us on the App Store"/>
-                            <connections>
-                                <action selector="appStoreButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="PRV-GH-Qc4"/>
-                            </connections>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94m-gT-qiR">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJZ-AA-M8j">
+                                    <rect key="frame" x="8" y="0.0" width="584" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9G-Md-msC">
+                                    <rect key="frame" x="8" y="103" width="584" height="30"/>
+                                    <state key="normal" title="Rate us on the App Store"/>
+                                    <connections>
+                                        <action selector="appStoreButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="PRV-GH-Qc4"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuX-RI-AhG" userLabel="Links Container View">
+                                    <rect key="frame" x="232" y="29" width="136" height="30"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAk-GN-Ele">
+                                            <rect key="frame" x="48" y="0.0" width="40" height="30"/>
+                                            <state key="normal" title="Facebook"/>
+                                            <connections>
+                                                <action selector="facebookButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="5qq-em-JAg"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-7M-kb8">
+                                            <rect key="frame" x="96" y="0.0" width="40" height="30"/>
+                                            <state key="normal" title="Twitter"/>
+                                            <connections>
+                                                <action selector="twitterButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="Bl8-eE-Y8Y"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PF-Hf-zag">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="pR3-tT-kiA"/>
+                                            </constraints>
+                                            <state key="normal" title="Web"/>
+                                            <connections>
+                                                <action selector="websiteButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="LzO-Xb-4Q0"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RAk-GN-Ele" firstAttribute="width" secondItem="5PF-Hf-zag" secondAttribute="width" id="6gY-cd-OdR"/>
+                                        <constraint firstAttribute="bottom" secondItem="5PF-Hf-zag" secondAttribute="bottom" id="Ha1-2q-2Su"/>
+                                        <constraint firstItem="RAk-GN-Ele" firstAttribute="top" secondItem="CuX-RI-AhG" secondAttribute="top" id="JGy-wa-4Cf"/>
+                                        <constraint firstItem="5PF-Hf-zag" firstAttribute="leading" secondItem="CuX-RI-AhG" secondAttribute="leading" id="JrJ-ce-FlQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="ndp-7M-kb8" secondAttribute="trailing" id="RK6-Ng-2F0"/>
+                                        <constraint firstItem="RAk-GN-Ele" firstAttribute="leading" secondItem="5PF-Hf-zag" secondAttribute="trailing" constant="8" id="SCv-D6-AQu"/>
+                                        <constraint firstAttribute="bottom" secondItem="ndp-7M-kb8" secondAttribute="bottom" id="WE7-kD-uL7"/>
+                                        <constraint firstItem="ndp-7M-kb8" firstAttribute="leading" secondItem="RAk-GN-Ele" secondAttribute="trailing" constant="8" id="bco-1j-l18"/>
+                                        <constraint firstAttribute="bottom" secondItem="RAk-GN-Ele" secondAttribute="bottom" id="chb-5V-3RS"/>
+                                        <constraint firstItem="5PF-Hf-zag" firstAttribute="top" secondItem="CuX-RI-AhG" secondAttribute="top" id="rea-bV-Rbs"/>
+                                        <constraint firstItem="ndp-7M-kb8" firstAttribute="top" secondItem="CuX-RI-AhG" secondAttribute="top" id="rqp-SI-9On"/>
+                                        <constraint firstItem="ndp-7M-kb8" firstAttribute="width" secondItem="5PF-Hf-zag" secondAttribute="width" id="uD9-Dj-U51"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="h9G-Md-msC" firstAttribute="leading" secondItem="94m-gT-qiR" secondAttribute="leading" constant="8" id="4CJ-cq-q1X"/>
+                                <constraint firstItem="h9G-Md-msC" firstAttribute="top" secondItem="CuX-RI-AhG" secondAttribute="bottom" constant="44" id="Axf-dD-1X4"/>
+                                <constraint firstItem="sJZ-AA-M8j" firstAttribute="leading" secondItem="94m-gT-qiR" secondAttribute="leading" constant="8" id="Ezu-gM-fac"/>
+                                <constraint firstItem="CuX-RI-AhG" firstAttribute="centerX" secondItem="94m-gT-qiR" secondAttribute="centerX" id="UWk-LJ-G88"/>
+                                <constraint firstAttribute="trailing" secondItem="sJZ-AA-M8j" secondAttribute="trailing" constant="8" id="bRY-FQ-CjF"/>
+                                <constraint firstItem="sJZ-AA-M8j" firstAttribute="top" secondItem="94m-gT-qiR" secondAttribute="top" id="kPr-2P-i7g"/>
+                                <constraint firstItem="CuX-RI-AhG" firstAttribute="top" secondItem="sJZ-AA-M8j" secondAttribute="bottom" constant="8" id="lJG-l7-tFv"/>
+                                <constraint firstAttribute="trailing" secondItem="h9G-Md-msC" secondAttribute="trailing" constant="8" id="mG9-rk-i4n"/>
+                                <constraint firstAttribute="bottom" secondItem="h9G-Md-msC" secondAttribute="bottom" constant="22" id="zQF-4L-GGl"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="sJZ-AA-M8j" secondAttribute="trailing" constant="8" id="52Y-Vn-Pyc"/>
-                        <constraint firstItem="h9G-Md-msC" firstAttribute="top" secondItem="RAk-GN-Ele" secondAttribute="bottom" constant="22" id="61d-V9-pLc"/>
-                        <constraint firstItem="ndp-7M-kb8" firstAttribute="width" secondItem="RAk-GN-Ele" secondAttribute="width" id="74z-3D-DMn"/>
-                        <constraint firstItem="RAk-GN-Ele" firstAttribute="leading" secondItem="TVU-9W-jtc" secondAttribute="leading" constant="8" id="E8d-nc-a1M"/>
-                        <constraint firstItem="5PF-Hf-zag" firstAttribute="leading" secondItem="TVU-9W-jtc" secondAttribute="leading" constant="8" id="HHe-br-rd3"/>
-                        <constraint firstItem="5PF-Hf-zag" firstAttribute="top" secondItem="sJZ-AA-M8j" secondAttribute="bottom" id="Ncr-E6-RL5"/>
-                        <constraint firstAttribute="trailing" secondItem="5PF-Hf-zag" secondAttribute="trailing" constant="8" id="PfS-8d-svq"/>
-                        <constraint firstAttribute="trailing" secondItem="h9G-Md-msC" secondAttribute="trailing" constant="8" id="XF0-lb-Nhm"/>
-                        <constraint firstItem="ndp-7M-kb8" firstAttribute="leading" secondItem="RAk-GN-Ele" secondAttribute="trailing" constant="13" id="XfE-bU-25K"/>
-                        <constraint firstAttribute="trailing" secondItem="ndp-7M-kb8" secondAttribute="trailing" constant="8" id="aAD-KU-8Mv"/>
-                        <constraint firstItem="sJZ-AA-M8j" firstAttribute="leading" secondItem="TVU-9W-jtc" secondAttribute="leading" constant="8" id="ccA-eP-3S5"/>
-                        <constraint firstAttribute="bottom" secondItem="h9G-Md-msC" secondAttribute="bottom" constant="8" id="e0d-kd-ffE"/>
-                        <constraint firstItem="h9G-Md-msC" firstAttribute="leading" secondItem="TVU-9W-jtc" secondAttribute="leading" constant="8" id="inu-rq-ikV"/>
-                        <constraint firstItem="ndp-7M-kb8" firstAttribute="top" secondItem="5PF-Hf-zag" secondAttribute="bottom" constant="22" id="ivr-I5-YtV"/>
-                        <constraint firstItem="sJZ-AA-M8j" firstAttribute="top" secondItem="TVU-9W-jtc" secondAttribute="top" constant="8" id="pyM-sD-dB0"/>
-                        <constraint firstItem="RAk-GN-Ele" firstAttribute="top" secondItem="5PF-Hf-zag" secondAttribute="bottom" constant="22" id="rYB-Ja-Eqd"/>
+                        <constraint firstAttribute="trailing" secondItem="94m-gT-qiR" secondAttribute="trailing" id="6Ru-z2-I30"/>
+                        <constraint firstItem="94m-gT-qiR" firstAttribute="top" secondItem="TVU-9W-jtc" secondAttribute="top" id="WbQ-o9-ebA"/>
+                        <constraint firstItem="94m-gT-qiR" firstAttribute="width" secondItem="TVU-9W-jtc" secondAttribute="width" id="bxL-Lo-kbp"/>
+                        <constraint firstItem="94m-gT-qiR" firstAttribute="leading" secondItem="TVU-9W-jtc" secondAttribute="leading" id="hNR-8X-V43"/>
+                        <constraint firstAttribute="bottom" secondItem="94m-gT-qiR" secondAttribute="bottom" id="hVB-XU-zMG"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="H5u-M0-5LS"/>
@@ -85,7 +113,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="TVU-9W-jtc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G3A-AR-cQV"/>
-                <constraint firstItem="TVU-9W-jtc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XIy-kK-jgN"/>
+                <constraint firstItem="TVU-9W-jtc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="XIy-kK-jgN"/>
                 <constraint firstAttribute="bottom" secondItem="TVU-9W-jtc" secondAttribute="bottom" id="eNx-eg-kiy"/>
                 <constraint firstAttribute="trailing" secondItem="TVU-9W-jtc" secondAttribute="trailing" id="g91-UZ-uUW"/>
             </constraints>
