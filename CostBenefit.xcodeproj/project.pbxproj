@@ -36,7 +36,6 @@
 		B2A54C951AC9714F00DD320D /* SMRCostBenefit.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C941AC9714F00DD320D /* SMRCostBenefit.m */; };
 		B2A54C981AC9715000DD320D /* SMRCostBenefitItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C971AC9715000DD320D /* SMRCostBenefitItem.m */; };
 		B2A54C9B1AC9721500DD320D /* SMRCostBenefit+methods.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A54C9A1AC9721500DD320D /* SMRCostBenefit+methods.m */; };
-		B2F340F81AD5927A00600623 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B2F340F71AD5927A00600623 /* logo.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +97,6 @@
 		B2A54C971AC9715000DD320D /* SMRCostBenefitItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMRCostBenefitItem.m; path = Models/SMRCostBenefitItem.m; sourceTree = "<group>"; };
 		B2A54C991AC9721500DD320D /* SMRCostBenefit+methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SMRCostBenefit+methods.h"; path = "Models/SMRCostBenefit+methods.h"; sourceTree = "<group>"; };
 		B2A54C9A1AC9721500DD320D /* SMRCostBenefit+methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SMRCostBenefit+methods.m"; path = "Models/SMRCostBenefit+methods.m"; sourceTree = "<group>"; };
-		B2F340F71AD5927A00600623 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
 		CEED01310E18BA6CDD968909 /* Pods-CostBenefit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostBenefit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CostBenefit/Pods-CostBenefit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,7 +192,6 @@
 		B26BE5AF1AC114C2001ABA41 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B2F340F71AD5927A00600623 /* logo.jpeg */,
 				B26BE5B01AC114C2001ABA41 /* Info.plist */,
 				B26BE5B11AC114C2001ABA41 /* main.m */,
 			);
@@ -407,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26BE5C01AC114C2001ABA41 /* LaunchScreen.xib in Resources */,
-				B2F340F81AD5927A00600623 /* logo.jpeg in Resources */,
 				B25355B81C25F3EB002C02FC /* SMREditCostBenefitView.xib in Resources */,
 				B258E4BC1C14F36D00281E81 /* SMRCostBenefitBoxTableViewCell.xib in Resources */,
 				B20F628B1AE65A6500D1478F /* smart.txt in Resources */,
