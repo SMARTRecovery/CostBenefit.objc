@@ -15,8 +15,13 @@
 @property (strong, nonatomic) SMRCostBenefit *costBenefit;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
+@property (nonatomic, readwrite) BOOL keyboardVisible;
+@property (nonatomic, readwrite) CGRect keyboardFrameInWindowCoordinates;
+@property (nonatomic, readwrite) CGRect keyboardFrameInViewCoordinates;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *titleTextFieldLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
@@ -44,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self startListeningForNotifications];
     self.titleTextField.delegate = self;
     if (self.isNew) {
         self.title = @"New CBA";
@@ -63,11 +69,73 @@
     self.navigationItem.rightBarButtonItem = self.saveButton;
     self.saveButton.enabled = NO;
     self.titleTextFieldLabel.text = @"to consider is:".uppercaseString;
+    self.titleTextFieldLabel.preferredMaxLayoutWidth = 100;
     [self setPlaceholderText];
 
 }
 
 #pragma mark - SMREditCostBenefitItemViewController
+
+- (void)startListeningForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)stopListeningForNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)handleKeyboardWillShowNotification:(NSNotification *)notification {
+    self.keyboardVisible = YES;
+    self.keyboardFrameInWindowCoordinates = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.keyboardFrameInViewCoordinates = [self keyboardFrameInViewCoordinates:self.view];
+
+    NSTimeInterval animationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve animationCurve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    UIViewAnimationOptions animationOptions = animationCurve << 16;
+
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        // Scrollview scroll area adjusts to fit keyboard
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, self.view.frame.size.height - self.keyboardFrameInViewCoordinates.origin.y, 0);
+        self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset;
+    } completion:nil];
+}
+
+
+- (CGRect)keyboardFrameInViewCoordinates:(UIView *)view {
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+
+    // Per http://www.cocoanetics.com/2011/07/calculating-area-covered-by-keyboard/
+    CGRect keyboardFrame = self.keyboardFrameInWindowCoordinates;
+
+    // convert own frame to window coordinates, frame is in superview's coordinates
+    CGRect ownFrame = [window convertRect:view.frame fromView:view];
+
+    // calculate the area of own frame that is covered by keyboard
+    CGRect coveredFrame = CGRectIntersection(ownFrame, keyboardFrame);
+
+    // now this might be rotated, so convert it back
+    coveredFrame = [window convertRect:coveredFrame toView:view];
+
+    return coveredFrame;
+}
+
+- (void)handleKeyboardWillHideNotification:(NSNotification *)notification {
+    self.keyboardVisible = NO;
+    self.keyboardFrameInWindowCoordinates = CGRectZero;
+    self.keyboardFrameInViewCoordinates = CGRectZero;
+
+    NSTimeInterval animationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve animationCurve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    UIViewAnimationOptions animationOptions = animationCurve << 16;
+
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        // Scrollview scroll area goes back to full-size
+        self.scrollView.contentInset =  UIEdgeInsetsMake(0, 0, self.bottomLayoutGuide.length, 0);
+        self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset;
+    } completion:nil];
+}
 
 - (void)setPlaceholderText {
     if ([self.costBenefit.type isEqualToString:@"substance"]) {
