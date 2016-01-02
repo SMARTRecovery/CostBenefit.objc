@@ -66,7 +66,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
+    self.tableView.bounces = YES;
     if (self.costBenefitItems.count < 2) {
+        if (self.costBenefitItems.count == 0) {
+            self.tableView.bounces = NO;
+        }
         self.editBoxButton.hidden = YES;
     }
     else {
