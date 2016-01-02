@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,43 +11,56 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMART Recovery" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="0.0" y="320" width="480" height="22"/>
-                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpeg" highlightedImage="a " translatesAutoresizingMaskIntoConstraints="NO" id="pvC-0u-ZAZ">
-                    <rect key="frame" x="140" y="100" width="200" height="200"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5MX-bQ-w81">
+                    <rect key="frame" x="120" y="210" width="240" height="60"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMART Recovery" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                            <rect key="frame" x="68" y="0.0" width="172" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPoints" highlightedImage="a " translatesAutoresizingMaskIntoConstraints="NO" id="pvC-0u-ZAZ">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="GoB-jH-IXS"/>
+                                <constraint firstAttribute="height" constant="60" id="bW8-QQ-Eur"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="VHf-de-LL8"/>
-                        <constraint firstAttribute="height" constant="200" id="bYk-RU-Bko"/>
+                        <constraint firstAttribute="width" constant="240" id="FIK-N6-QzT"/>
+                        <constraint firstItem="pvC-0u-ZAZ" firstAttribute="top" secondItem="5MX-bQ-w81" secondAttribute="top" id="GG1-1Z-uY6"/>
+                        <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="pvC-0u-ZAZ" secondAttribute="trailing" constant="8" id="Gnh-I2-haR"/>
+                        <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="5MX-bQ-w81" secondAttribute="top" id="Lt6-co-7SV"/>
+                        <constraint firstAttribute="bottom" secondItem="pvC-0u-ZAZ" secondAttribute="bottom" id="OXB-uH-yQY"/>
+                        <constraint firstAttribute="bottom" secondItem="kId-c2-rCX" secondAttribute="bottom" id="USk-Ls-Rri"/>
+                        <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" id="gAS-XH-Lbn"/>
+                        <constraint firstItem="pvC-0u-ZAZ" firstAttribute="leading" secondItem="5MX-bQ-w81" secondAttribute="leading" id="qYM-Ry-nLw"/>
                     </constraints>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="www.smartrecovery.org" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LdM-3i-ty5"/>
-                <constraint firstAttribute="centerX" secondItem="pvC-0u-ZAZ" secondAttribute="centerX" id="SbA-bx-keM"/>
-                <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" id="VzA-5N-shN"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="pvC-0u-ZAZ" secondAttribute="bottom" constant="20" id="XU9-Qt-rAW"/>
-                <constraint firstItem="pvC-0u-ZAZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="qsd-Gf-2Kd"/>
-                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="tl0-OB-INC"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="y8x-GE-Fai"/>
+                <constraint firstItem="5MX-bQ-w81" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BSa-u8-6CO"/>
+                <constraint firstItem="5MX-bQ-w81" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QR9-dc-OYP"/>
+                <constraint firstItem="5MX-bQ-w81" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gWO-0Y-3pn"/>
+                <constraint firstAttribute="trailing" secondItem="5MX-bQ-w81" secondAttribute="trailing" id="jak-uC-i7a"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BSa-u8-6CO"/>
+                    <exclude reference="jak-uC-i7a"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
     <resources>
+        <image name="FourPoints" width="100" height="100"/>
         <image name="a " width="16" height="16"/>
-        <image name="logo.jpeg" width="400" height="400"/>
     </resources>
 </document>

@@ -55,6 +55,12 @@
 
     self.costBenefits = [SMRCostBenefit fetchAllCostBenefitsInContext:self.managedObjectContext];
     [self.tableView reloadData];
+    if (self.costBenefits.count > 0) {
+        self.tableView.bounces = YES;
+    }
+    else {
+        self.tableView.bounces = NO;
+    }
 }
 
 #pragma mark - SMRHomeViewController
@@ -95,6 +101,28 @@
     cell.textLabel.text = textLabel;
 
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section {
+    if (self.costBenefits.count > 0) {
+        return nil;
+    }
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width - 32, 44)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, tableView.frame.size.width - 32, 144)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = UIColor.grayColor;
+    titleLabel.numberOfLines = 0;
+    titleLabel.text = @"A Cost Benefit Analysis (CBA) is a tool for exploring the short-term vs. long-term benefits associated with continuing or discontinuing an addictive behavior.";
+    [footerView addSubview:titleLabel];
+    return footerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (self.costBenefits.count > 0) {
+        return 0;
+    }
+    return 200;
 }
 
 #pragma mark - UITableViewDelegate
