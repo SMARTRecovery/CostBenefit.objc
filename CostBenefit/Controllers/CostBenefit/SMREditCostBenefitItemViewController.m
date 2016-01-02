@@ -16,14 +16,12 @@
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *boxDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *costBenefitItemTitleField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
-- (IBAction)deleteButtonTouchUpInside:(id)sender;
 
 
 @end
@@ -55,12 +53,14 @@
 
     if (self.isNew) {
         self.title = @"New Item";
-        self.deleteButton.hidden = YES;
     }
     else {
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
-        self.deleteButton.hidden = NO;
+        self.navigationController.toolbarHidden = NO;
+        UIBarButtonItem *trashBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteButtonTouchUpInside:)];
+        NSArray *items = [NSArray arrayWithObjects:trashBarButtonItem, nil];
+        self.toolbarItems = items;
     }
 
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
