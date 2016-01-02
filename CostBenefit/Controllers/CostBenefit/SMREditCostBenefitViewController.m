@@ -74,6 +74,14 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (self.isNew) {
+        [self.titleTextField becomeFirstResponder];
+    }
+}
+
 #pragma mark - SMREditCostBenefitItemViewController
 
 - (void)startListeningForNotifications {
@@ -153,7 +161,8 @@
 
 - (void)saveButtonTouchUpInside:(id)sender {
     self.costBenefit.dateUpdated = [[NSDate alloc] init];
-    self.costBenefit.title = self.titleTextField.text;
+    self.costBenefit.title = [self.titleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
     NSError *error;
     [self.managedObjectContext save:&error];
 

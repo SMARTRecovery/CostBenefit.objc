@@ -73,6 +73,14 @@
     self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]].uppercaseString;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (self.isNew) {
+        [self.costBenefitItemTitleField becomeFirstResponder];
+    }
+}
+
 #pragma mark - SMREditCostBenefitItemViewController
 
 - (void)cancelButtonTapped:(id)sender {
@@ -81,7 +89,8 @@
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
-    self.costBenefitItem.title = self.costBenefitItemTitleField.text;
+    self.costBenefitItem.title = [self.costBenefitItemTitleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // @todo: This should be calculated to go to the end... or first
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
     self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
     if (self.isNew) {
