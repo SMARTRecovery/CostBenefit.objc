@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="co7-pZ-8e0">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="248"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cjr-t8-2g4">
                                     <rect key="frame" x="0.0" y="22" width="592" height="88"/>
@@ -43,7 +43,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nvq-ZQ-VYG">
-                                    <rect key="frame" x="8" y="164" width="584" height="30"/>
+                                    <rect key="frame" x="8" y="164" width="584" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="D4X-Xl-NXb"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                     <connections>

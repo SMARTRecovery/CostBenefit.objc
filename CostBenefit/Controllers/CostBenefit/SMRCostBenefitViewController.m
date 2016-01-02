@@ -64,7 +64,7 @@
 - (void)styleView {
     self.pageViewController.view.backgroundColor = UIColor.whiteColor;
     UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.867 green:0.867 blue:0.867 alpha:1];
     pageControl.currentPageIndicatorTintColor = self.view.tintColor;
 }
 
