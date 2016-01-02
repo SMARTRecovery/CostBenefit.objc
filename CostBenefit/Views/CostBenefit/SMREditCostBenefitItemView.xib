@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="boxDescriptionLabel" destination="dxa-Fy-ccz" id="5Rn-HM-aRZ"/>
                 <outlet property="costBenefitItemTitleField" destination="XIp-FU-VQY" id="1qP-bA-CVf"/>
-                <outlet property="deleteButton" destination="hea-jx-lX5" id="Wxd-2L-37s"/>
                 <outlet property="tableView" destination="8Rm-aZ-6tV" id="C4t-C8-ext"/>
                 <outlet property="view" destination="iN0-l3-epB" id="HJw-FA-RBH"/>
             </connections>
@@ -19,53 +18,44 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-Fy-ccz">
-                    <rect key="frame" x="8" y="16" width="584" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-Fy-ccz">
+                    <rect key="frame" x="8" y="44" width="584" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XIp-FU-VQY">
-                    <rect key="frame" x="8" y="45" width="584" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XIp-FU-VQY">
+                    <rect key="frame" x="8" y="69" width="584" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="2OP-Xf-uPk"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                     <connections>
                         <action selector="CostBenefitItemTitleFieldEditingChanged:" destination="-1" eventType="editingChanged" id="KgA-Ra-pxm"/>
                     </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
-                    <rect key="frame" x="8" y="83" width="584" height="399"/>
+                    <rect key="frame" x="8" y="127" width="568" height="473"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="wuQ-2n-0Iu"/>
                         <outlet property="delegate" destination="-1" id="tZp-Ik-byE"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hea-jx-lX5">
-                    <rect key="frame" x="8" y="526" width="584" height="30"/>
-                    <state key="normal" title="Delete Item">
-                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="deleteButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="L2r-Ux-OHg"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="hea-jx-lX5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="AYz-Kl-1qH"/>
                 <constraint firstAttribute="trailing" secondItem="dxa-Fy-ccz" secondAttribute="trailing" constant="8" id="CQo-63-VyG"/>
+                <constraint firstAttribute="bottom" secondItem="8Rm-aZ-6tV" secondAttribute="bottom" id="Nr4-EO-dmy"/>
                 <constraint firstAttribute="trailing" secondItem="XIp-FU-VQY" secondAttribute="trailing" constant="8" id="REy-0W-dUI"/>
                 <constraint firstItem="XIp-FU-VQY" firstAttribute="top" secondItem="dxa-Fy-ccz" secondAttribute="bottom" constant="8" id="RRV-Ba-i8X"/>
                 <constraint firstItem="XIp-FU-VQY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Yr3-jJ-BoI"/>
-                <constraint firstAttribute="trailing" secondItem="hea-jx-lX5" secondAttribute="trailing" constant="8" id="ZZz-5U-vof"/>
                 <constraint firstItem="dxa-Fy-ccz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dmu-7m-iwp"/>
-                <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="8" id="g3k-cq-Qp2"/>
+                <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="24" id="g3k-cq-Qp2"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iWR-vN-Soj"/>
-                <constraint firstAttribute="bottom" secondItem="hea-jx-lX5" secondAttribute="bottom" constant="44" id="pUS-Ty-qZ4"/>
-                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="rat-5t-1Wl"/>
+                <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="rat-5t-1Wl"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="top" secondItem="XIp-FU-VQY" secondAttribute="bottom" constant="8" id="u4V-Yb-7aE"/>
-                <constraint firstItem="hea-jx-lX5" firstAttribute="top" secondItem="8Rm-aZ-6tV" secondAttribute="bottom" constant="44" id="ubV-Yw-pi2"/>
             </constraints>
         </view>
     </objects>

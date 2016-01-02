@@ -41,8 +41,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"smart" ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:content error:&error];
-    UIFont *systemFont = [UIFont systemFontOfSize:14];
-    NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\";font-size: %f;}</style></head><body>%@</body></html>", systemFont.familyName, 17.0f, htmlString];
+    UIFont *systemFont = [UIFont systemFontOfSize:15];
+    NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\";font-size: %f;}</style></head><body>%@</body></html>", systemFont.familyName, 15.0f, htmlString];
     NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     self.aboutCopyLabel.attributedText = [[NSAttributedString alloc] initWithData:[aboutHTML dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:nil error:&error];
 }

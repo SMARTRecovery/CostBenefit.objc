@@ -65,10 +65,11 @@
 
 - (NSString *)getVerb {
     if ([self.type isEqualToString:@"activity"]) {
-        return @"doing";
+        return @"doing it";
     }
     return @"using";
 }
+
 
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
     NSString *descriptor;
@@ -99,7 +100,18 @@
         action = @"NOT ";
     }
     NSString *descriptor = [self getBoxDescriptor:boxNumber isPlural:isPlural];
-    return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
+    if (isPlural) {
+        return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
+    }
+    NSString *singularVerbString;
+    if ([self.type isEqualToString:@"activity"]) {
+        singularVerbString = self.title;
+    }
+    else {
+        singularVerbString = [NSString stringWithFormat:@"%@ %@", self.getVerb, self.title];
+    }
+    return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, singularVerbString];
+
 }
 
 @end

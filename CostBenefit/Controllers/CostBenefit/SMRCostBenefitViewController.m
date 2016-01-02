@@ -64,7 +64,7 @@
 - (void)styleView {
     self.pageViewController.view.backgroundColor = UIColor.whiteColor;
     UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.867 green:0.867 blue:0.867 alpha:1];
     pageControl.currentPageIndicatorTintColor = self.view.tintColor;
 }
 
@@ -87,31 +87,11 @@
         [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
     }];
 
-
-    UIAlertAction *deleteAlertAction = [UIAlertAction actionWithTitle:@"Delete CBA" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
-
-        UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this CBA?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-            [self.managedObjectContext deleteObject:self.costBenefit];
-            NSError *error;
-            [self.managedObjectContext save:&error];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        }];
-        [confirmDeleteAlertController addAction:deleteAction];
-        [confirmDeleteAlertController addAction:cancelAction];
-
-        [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
-    }];
-
     UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [menuAlertController dismissViewControllerAnimated:YES completion:nil];
     }];
 
     [menuAlertController addAction:editAlertAction];
-    [menuAlertController addAction:deleteAlertAction];
     [menuAlertController addAction:cancelAlertAction];
     [self presentViewController:menuAlertController animated:YES completion:nil];
 }

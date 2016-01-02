@@ -16,14 +16,12 @@
 @property (strong, nonatomic) SMRCostBenefitItem *costBenefitItem;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *boxDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *costBenefitItemTitleField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
-- (IBAction)deleteButtonTouchUpInside:(id)sender;
 
 
 @end
@@ -55,12 +53,14 @@
 
     if (self.isNew) {
         self.title = @"New Item";
-        self.deleteButton.hidden = YES;
     }
     else {
         self.title = @"Edit Item";
         self.costBenefitItemTitleField.text = self.costBenefitItem.title;
-        self.deleteButton.hidden = NO;
+        self.navigationController.toolbarHidden = NO;
+        UIBarButtonItem *trashBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteButtonTouchUpInside:)];
+        NSArray *items = [NSArray arrayWithObjects:trashBarButtonItem, nil];
+        self.toolbarItems = items;
     }
 
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
@@ -70,7 +70,15 @@
     self.saveButton.enabled = NO;
 
     SMRCostBenefit *costBenefit = self.costBenefitItem.costBenefit;
-    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]];
+    self.boxDescriptionLabel.text = [NSString stringWithFormat:@"%@ is:", [costBenefit getBoxLabelText:self.costBenefitItem.boxNumber isPlural:NO]].uppercaseString;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (self.isNew) {
+        [self.costBenefitItemTitleField becomeFirstResponder];
+    }
 }
 
 #pragma mark - SMREditCostBenefitItemViewController
@@ -81,7 +89,8 @@
 }
 
 - (void)saveButtonTouchUpInside:(id)sender {
-    self.costBenefitItem.title = self.costBenefitItemTitleField.text;
+    self.costBenefitItem.title = [self.costBenefitItemTitleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // @todo: This should be calculated to go to the end... or first
     self.costBenefitItem.seq = [NSNumber numberWithInt:10];
     self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
     if (self.isNew) {
@@ -126,8 +135,7 @@
     }];
     [confirmDeleteAlertController addAction:deleteAction];
     [confirmDeleteAlertController addAction:cancelAction];
-
-     [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
+    [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -148,10 +156,11 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rowCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+    cell.textLabel.textColor = UIColor.darkGrayColor;
 
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Long-term";
+        cell.textLabel.text = @"Long-term".uppercaseString;
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -160,7 +169,7 @@
         }
     }
     else {
-        cell.textLabel.text = @"Short-term";
+        cell.textLabel.text = @"Short-term".uppercaseString;
         if ([self.costBenefitItem.isLongTerm boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
@@ -168,14 +177,6 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    NSString *descriptor;
-    if ([self.costBenefitItem.boxNumber intValue] % 2) {
-        descriptor = @"disadvantage";
-    }
-    else {
-        descriptor = @"advantage";
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", cell.textLabel.text, descriptor];
 
     return cell;
 }

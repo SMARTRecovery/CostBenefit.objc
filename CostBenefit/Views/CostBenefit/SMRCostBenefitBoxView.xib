@@ -23,13 +23,14 @@
                     <rect key="frame" x="16" y="8" width="568" height="584"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-zL-XbB">
-                            <rect key="frame" x="16" y="8" width="552" height="21"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="8" y="8" width="560" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="128-Qo-N6E" userLabel="Edit Button">
-                            <rect key="frame" x="530" y="4" width="30" height="30"/>
+                            <rect key="frame" x="530" y="4" width="30" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="Edit"/>
                             <connections>
                                 <action selector="editBoxButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="BXQ-iU-mAE"/>
@@ -44,7 +45,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-06-9Bw">
-                            <rect key="frame" x="4" y="45" width="560" height="492"/>
+                            <rect key="frame" x="4" y="41" width="560" height="496"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="XPk-4B-owj"/>
@@ -70,7 +71,7 @@
                         <constraint firstItem="B0R-Fe-QZg" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="8" id="Lbk-J9-ZkF"/>
                         <constraint firstItem="ddR-zL-XbB" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="top" constant="8" id="SBs-oj-BV7"/>
                         <constraint firstItem="sNc-06-9Bw" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="4" id="fnE-jR-zcg"/>
-                        <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="16" id="iNt-Za-TIA"/>
+                        <constraint firstItem="ddR-zL-XbB" firstAttribute="leading" secondItem="dxl-hz-wjy" secondAttribute="leading" constant="8" id="iNt-Za-TIA"/>
                         <constraint firstAttribute="trailing" secondItem="ddR-zL-XbB" secondAttribute="trailing" id="lru-14-aHR"/>
                         <constraint firstItem="128-Qo-N6E" firstAttribute="top" secondItem="dxl-hz-wjy" secondAttribute="top" constant="4" id="m4h-Ce-Ryy"/>
                         <constraint firstAttribute="bottom" secondItem="4gg-Sc-jkI" secondAttribute="bottom" id="oNC-29-0h1"/>

@@ -57,7 +57,7 @@
 
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
-    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.didEditBox = NO;
     self.tableView.editing = NO;
     self.editBoxButton.hidden = YES;
@@ -66,7 +66,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
+    self.tableView.bounces = YES;
     if (self.costBenefitItems.count < 2) {
+        if (self.costBenefitItems.count == 0) {
+            self.tableView.bounces = NO;
+        }
         self.editBoxButton.hidden = YES;
     }
     else {
@@ -84,7 +88,7 @@
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
-    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES];
+    self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
 }
@@ -178,11 +182,11 @@ viewForFooterInSection:(NSInteger)section {
         return nil;
     }
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width - 16, 144)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, tableView.frame.size.width - 16, 144)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = UIColor.grayColor;
     titleLabel.numberOfLines = 0;
-    UILabel *copyLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 144, tableView.frame.size.width - 16, 144)];
+    UILabel *copyLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 144, tableView.frame.size.width - 16, 72)];
     copyLabel.numberOfLines = 0;
     copyLabel.font = [UIFont systemFontOfSize:14];
     switch ([self.boxNumber intValue]) {
@@ -200,7 +204,7 @@ viewForFooterInSection:(NSInteger)section {
             break;
         case 3:
             titleLabel.text = @"What won't I like about giving up my addiction?";
-            copyLabel.text = @"List what you think you are going to hate, dread or merely dislike about living without your addiction.";
+            copyLabel.text = @"List what you think you are going to hate, dread, or merely dislike about living without your addiction.";
             break;
     }
     [footerView addSubview:titleLabel];
