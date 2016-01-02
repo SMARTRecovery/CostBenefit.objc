@@ -34,7 +34,7 @@
                     </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Rm-aZ-6tV">
-                    <rect key="frame" x="8" y="107" width="584" height="375"/>
+                    <rect key="frame" x="8" y="107" width="568" height="375"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="wuQ-2n-0Iu"/>
@@ -60,7 +60,7 @@
                 <constraint firstItem="XIp-FU-VQY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Yr3-jJ-BoI"/>
                 <constraint firstAttribute="trailing" secondItem="hea-jx-lX5" secondAttribute="trailing" constant="8" id="ZZz-5U-vof"/>
                 <constraint firstItem="dxa-Fy-ccz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dmu-7m-iwp"/>
-                <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="8" id="g3k-cq-Qp2"/>
+                <constraint firstAttribute="trailing" secondItem="8Rm-aZ-6tV" secondAttribute="trailing" constant="24" id="g3k-cq-Qp2"/>
                 <constraint firstItem="8Rm-aZ-6tV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iWR-vN-Soj"/>
                 <constraint firstAttribute="bottom" secondItem="hea-jx-lX5" secondAttribute="bottom" constant="44" id="pUS-Ty-qZ4"/>
                 <constraint firstItem="dxa-Fy-ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="rat-5t-1Wl"/>

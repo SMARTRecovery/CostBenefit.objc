@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextFieldLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
@@ -61,9 +62,21 @@
     self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveButtonTouchUpInside:)];
     self.navigationItem.rightBarButtonItem = self.saveButton;
     self.saveButton.enabled = NO;
+    self.titleTextFieldLabel.text = @"to consider is:".uppercaseString;
+    [self setPlaceholderText];
+
 }
 
 #pragma mark - SMREditCostBenefitItemViewController
+
+- (void)setPlaceholderText {
+    if ([self.costBenefit.type isEqualToString:@"substance"]) {
+        self.titleTextField.placeholder = @"Substance name, e.g. alcohol, nicotine";
+    }
+    else {
+        self.titleTextField.placeholder = @"Activity name, e.g. gambling, procrastinating";
+    }
+}
 
 - (void)cancelButtonTapped:(id)sender {
     [self.managedObjectContext rollback];
@@ -119,7 +132,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"The substance";
+        cell.textLabel.text = @"The substance".uppercaseString;
         if ([self.costBenefit.type isEqualToString:@"substance"]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -128,7 +141,7 @@
         }
     }
     else {
-        cell.textLabel.text = @"The activity";
+        cell.textLabel.text = @"The activity".uppercaseString;
         if ([self.costBenefit.type isEqualToString:@"activity"]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -136,6 +149,8 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
+    cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+    cell.textLabel.textColor = UIColor.darkGrayColor;
 
     return cell;
 }
@@ -153,6 +168,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.titleTextField.text.length > 2) {
         self.saveButton.enabled = YES;
     }
+    [self setPlaceholderText];
     [self.tableView reloadData];
 }
 
