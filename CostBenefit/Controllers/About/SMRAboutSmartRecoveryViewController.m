@@ -45,6 +45,13 @@
     NSString *aboutHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">body {font-family: \"%@\";font-size: %f;}</style></head><body>%@</body></html>", systemFont.familyName, 15.0f, htmlString];
     NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     self.aboutCopyLabel.attributedText = [[NSAttributedString alloc] initWithData:[aboutHTML dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:nil error:&error];
+    [self.websiteButton setImage:[IonIcons imageWithIcon:@"\uf4d3" size:24.0f color:self.view.tintColor] forState:UIControlStateNormal];
+    [self.websiteButton setTitle:@"" forState:UIControlStateNormal];
+    [self.facebookButton setImage:[IonIcons imageWithIcon:@"\uf231" size:24.0f color:self.view.tintColor] forState:UIControlStateNormal];
+    [self.facebookButton setTitle:@"" forState:UIControlStateNormal];
+    [self.twitterButton setImage:[IonIcons imageWithIcon:@"\uf243" size:24.0f color:self.view.tintColor] forState:UIControlStateNormal];
+    [self.twitterButton setTitle:@"" forState:UIControlStateNormal];
+    [self.appStoreButton setImage:[IonIcons imageWithIcon:@"\uf227" size:24.0f color:self.view.tintColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)appStoreButtonTouchUpInside:(id)sender {
