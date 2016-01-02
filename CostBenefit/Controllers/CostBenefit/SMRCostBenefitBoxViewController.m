@@ -204,7 +204,7 @@ viewForFooterInSection:(NSInteger)section {
             break;
         case 3:
             titleLabel.text = @"What won't I like about giving up my addiction?";
-            copyLabel.text = @"List what you think you are going to hate, dread or merely dislike about living without your addiction.";
+            copyLabel.text = @"List what you think you are going to hate, dread, or merely dislike about living without your addiction.";
             break;
     }
     [footerView addSubview:titleLabel];
