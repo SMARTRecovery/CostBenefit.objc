@@ -60,6 +60,10 @@
     else {
         self.title = @"Edit CBA";
         self.titleTextField.text = self.costBenefit.title;
+        self.navigationController.toolbarHidden = NO;
+        UIBarButtonItem *trashBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteButtonTouchUpInside:)];
+        NSArray *items = [NSArray arrayWithObjects:trashBarButtonItem, nil];
+        self.toolbarItems = items;
     }
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rowCell"];
 
@@ -187,6 +191,27 @@
     else {
         self.saveButton.enabled = YES;
     }
+}
+
+- (IBAction)deleteButtonTouchUpInside:(id)sender {
+
+    UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this CBA?" message:@"All items will be deleted as well. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        [self.managedObjectContext deleteObject:self.costBenefit];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        UINavigationController *presentingVC = (UINavigationController *)self.presentingViewController;
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            // Pop back to Home VC.
+            [presentingVC popToRootViewControllerAnimated:YES];
+        }];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    }];
+    [confirmDeleteAlertController addAction:deleteAction];
+    [confirmDeleteAlertController addAction:cancelAction];
+    [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate

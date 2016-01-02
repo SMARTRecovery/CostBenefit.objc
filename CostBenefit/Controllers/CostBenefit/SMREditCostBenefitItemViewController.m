@@ -135,8 +135,7 @@
     }];
     [confirmDeleteAlertController addAction:deleteAction];
     [confirmDeleteAlertController addAction:cancelAction];
-
-     [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
+    [self presentViewController:confirmDeleteAlertController animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate
