@@ -9,17 +9,15 @@
 #import "SMRCostBenefitBoxTableViewCell.h"
 
 @interface SMRCostBenefitBoxTableViewCell ()
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *longTermLabel;
 
 @end
 
-
 @implementation SMRCostBenefitBoxTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - Accessors
 
 - (void)setTitleLabelText:(NSString *)titleLabelText {
     self.titleLabel.text = titleLabelText;

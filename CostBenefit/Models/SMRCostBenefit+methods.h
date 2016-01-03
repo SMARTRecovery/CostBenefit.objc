@@ -12,10 +12,10 @@
 @interface SMRCostBenefit (methods)
 
 + (SMRCostBenefit *)createCostBenefitInContext:(NSManagedObjectContext *)context;
-+ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context;
-- (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context;
 
-- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context;
+
+- (NSMutableArray *)fetchCostBenefitItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 // Returns "Advantage" or "Disadvantage", based on boxNumber.
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural;
@@ -24,6 +24,6 @@
 - (NSString *)getBoxLabelText:(NSNumber*)boxNumber isPlural:(BOOL)isPlural;
 
 // Returns doing or using, based on the CostBenefit.type
-- (NSString *)getVerb;
+- (NSString *)verb;
 
 @end

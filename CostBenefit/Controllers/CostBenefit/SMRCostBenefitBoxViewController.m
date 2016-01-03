@@ -41,7 +41,6 @@
     }
 
     return self;
-
 }
 
 #pragma mark - UIViewController
@@ -55,7 +54,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 66;
 
-    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+    self.costBenefitItems = [self.costBenefit fetchCostBenefitItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.didEditBox = NO;
@@ -77,6 +76,7 @@
         self.editBoxButton.hidden = NO;
     }
 }
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
@@ -90,7 +90,7 @@
 - (void)reloadData {
     NSInteger originalCount = self.costBenefitItems.count;
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
-    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+    self.costBenefitItems = [self.costBenefit fetchCostBenefitItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
     // If we have a newly inserted item, scroll to it:
     if (originalCount + 1 == self.costBenefitItems.count) {
@@ -219,7 +219,7 @@ viewForFooterInSection:(NSInteger)section {
     return footerView;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (self.costBenefitItems.count > 0) {
         return 0;
     }

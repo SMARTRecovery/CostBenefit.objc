@@ -23,7 +23,6 @@
 
 - (IBAction)CostBenefitItemTitleFieldEditingChanged:(id)sender;
 
-
 @end
 
 @implementation SMREditCostBenefitItemViewController
@@ -121,7 +120,7 @@
 - (IBAction)deleteButtonTouchUpInside:(id)sender {
     UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this item?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-        [self.costBenefitItem.costBenefit setDateCreated:[[NSDate alloc] init]];
+        self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc ] init];
         [self.costBenefitItem.costBenefit removeCostBenefitItemsObject:self.costBenefitItem];
         [self.managedObjectContext deleteObject:self.costBenefitItem];
         NSError *error;
@@ -161,7 +160,7 @@
 
     if (indexPath.row == 0) {
         cell.textLabel.text = @"Long-term".uppercaseString;
-        if ([self.costBenefitItem.isLongTerm boolValue]) {
+        if (self.costBenefitItem.isLongTerm.boolValue) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
@@ -170,7 +169,7 @@
     }
     else {
         cell.textLabel.text = @"Short-term".uppercaseString;
-        if ([self.costBenefitItem.isLongTerm boolValue]) {
+        if (self.costBenefitItem.isLongTerm.boolValue) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else {

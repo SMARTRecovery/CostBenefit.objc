@@ -17,98 +17,67 @@
 
 + (NSMutableArray *)fetchAllCostBenefitsInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefit" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-
+    fetchRequest.entity = [NSEntityDescription entityForName:@"SMRCostBenefit" inManagedObjectContext:context];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
+    fetchRequest.sortDescriptors = @[sortDescriptor];
     NSError *error = nil;
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSMutableArray *)fetchBoxes:(NSManagedObjectContext *)context {
-    NSMutableArray *boxes = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 4; i++) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, [NSNumber numberWithInt:i]];
-        [fetchRequest setPredicate:predicate];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES];
-        [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
-        NSError *error = nil;
-        NSMutableArray *boxItems = (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
-        [boxes addObject:boxItems];
-    }
-
-    return boxes;
-}
-
-- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
-
+- (NSMutableArray *)fetchCostBenefitItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, boxNumber];
-    [fetchRequest setPredicate:predicate];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:managedObjectContext];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(costBenefit == %@) AND (boxNumber == %@)", self, boxNumber];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"seq" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
+    fetchRequest.sortDescriptors = @[sortDescriptor];
     NSError *error = nil;
     return (NSMutableArray *)[managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSString *)getVerb {
+- (NSString *)verb {
     if ([self.type isEqualToString:@"activity"]) {
         return @"doing it";
     }
     return @"using";
 }
 
-
 - (NSString *)getBoxDescriptor:(NSNumber *)boxNumber isPlural:(BOOL)isPlural {
-    NSString *descriptor;
-    if ([boxNumber intValue] % 2 == 0) {
+    if (boxNumber.intValue % 2 == 0) {
         if (isPlural) {
-            descriptor = @"Advantages";
+            return @"Advantages";
         }
         else {
-            descriptor = @"An advantage";
+            return @"An advantage";
         }
 
     }
     else {
         if (isPlural) {
-            descriptor = @"Disadvantages";
+            return @"Disadvantages";
         }
         else {
-            descriptor = @"A disadvantage";
+            return @"A disadvantage";
         }
     }
 
-    return descriptor;
+    return nil;
 }
 
 - (NSString *)getBoxLabelText:(NSNumber*)boxNumber isPlural:(BOOL)isPlural{
     NSString *action = @"";
-    if ([boxNumber intValue] > 1) {
+    if (boxNumber.intValue > 1) {
         action = @"NOT ";
     }
     NSString *descriptor = [self getBoxDescriptor:boxNumber isPlural:isPlural];
     if (isPlural) {
-        return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, [self getVerb]];
+        return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, self.verb];
     }
     NSString *singularVerbString;
     if ([self.type isEqualToString:@"activity"]) {
         singularVerbString = self.title;
     }
     else {
-        singularVerbString = [NSString stringWithFormat:@"%@ %@", self.getVerb, self.title];
+        singularVerbString = [NSString stringWithFormat:@"%@ %@", self.verb, self.title];
     }
     return [NSString stringWithFormat:@"%@ of %@%@", descriptor, action, singularVerbString];
 

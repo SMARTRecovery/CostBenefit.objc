@@ -30,6 +30,8 @@
 
 @implementation SMRAboutSmartRecoveryViewController
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -53,6 +55,8 @@
     [self.twitterButton setTitle:@"" forState:UIControlStateNormal];
     [self.appStoreButton setImage:[IonIcons imageWithIcon:@"\uf227" size:24.0f color:self.view.tintColor] forState:UIControlStateNormal];
 }
+
+#pragma mark - SMRAboutSmartRecoveryViewController
 
 - (IBAction)appStoreButtonTouchUpInside:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.apple.com/us/app/smart-recovery-cost-benefit/id988593978?mt=8"]];

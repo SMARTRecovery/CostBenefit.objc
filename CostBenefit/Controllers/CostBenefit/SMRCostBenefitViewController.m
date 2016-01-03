@@ -35,6 +35,18 @@
     return self;
 }
 
+#pragma mark - Accessors
+
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+    _managedObjectContext = managedObjectContext;
+    self.title = self.costBenefit.title;
+    for (int i=0; i < 4; i++) {
+        SMRCostBenefitBoxViewController *boxVC = self.boxViewControllers[i];
+        boxVC.managedObjectContext = managedObjectContext;
+        [boxVC reloadData];
+    }
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
@@ -58,7 +70,6 @@
     [self styleView];
 }
 
-
 #pragma mark - SMRCostBenefitViewController
 
 - (void)styleView {
@@ -79,31 +90,18 @@
 
 - (void)menuButtonTapped:(id)sender {
     UIAlertController *menuAlertController = [UIAlertController alertControllerWithTitle:nil message:nil                                                              preferredStyle:UIAlertControllerStyleActionSheet];
-
     UIAlertAction *editAlertAction = [UIAlertAction actionWithTitle:@"Edit CBA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
         SMREditCostBenefitViewController *editCostBenefitViewController = [[SMREditCostBenefitViewController alloc] initWithCostBenefitItem:self.costBenefit isNew:NO managedObjectContext:self.managedObjectContext];
         UINavigationController *destNavVC = [[UINavigationController alloc] initWithRootViewController:editCostBenefitViewController];
         destNavVC.navigationBar.translucent = NO;
         [self.navigationController presentViewController:destNavVC animated:YES completion:nil];
     }];
-
     UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [menuAlertController dismissViewControllerAnimated:YES completion:nil];
     }];
-
     [menuAlertController addAction:editAlertAction];
     [menuAlertController addAction:cancelAlertAction];
     [self presentViewController:menuAlertController animated:YES completion:nil];
-}
-
-- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
-    _managedObjectContext = managedObjectContext;
-    self.title = self.costBenefit.title;
-    for (int i=0; i < 4; i++) {
-        SMRCostBenefitBoxViewController *boxVC = self.boxViewControllers[i];
-        boxVC.managedObjectContext = managedObjectContext;
-        [boxVC reloadData];
-    }
 }
 
 #pragma mark - UIPageViewControllerDataSource
