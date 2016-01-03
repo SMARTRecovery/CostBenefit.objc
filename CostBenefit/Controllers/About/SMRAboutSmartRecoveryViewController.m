@@ -10,11 +10,10 @@
 #import <IonIcons.h>
 #import <MMMarkdown/MMMarkdown.h>
 
-
 @interface SMRAboutSmartRecoveryViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *aboutCopyLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 
 @property (weak, nonatomic) IBOutlet UIButton *appStoreButton;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
