@@ -24,6 +24,6 @@
 - (NSString *)getBoxLabelText:(NSNumber*)boxNumber isPlural:(BOOL)isPlural;
 
 // Returns doing or using, based on the CostBenefit.type
-- (NSString *)getVerb;
+- (NSString *)verb;
 
 @end
