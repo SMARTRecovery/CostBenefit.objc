@@ -55,7 +55,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 66;
 
-    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+    self.costBenefitItems = [self.costBenefit fetchCostBenefitItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
 
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.didEditBox = NO;
@@ -90,7 +90,7 @@
 - (void)reloadData {
     NSInteger originalCount = self.costBenefitItems.count;
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
-    self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
+    self.costBenefitItems = [self.costBenefit fetchCostBenefitItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
     // If we have a newly inserted item, scroll to it:
     if (originalCount + 1 == self.costBenefitItems.count) {

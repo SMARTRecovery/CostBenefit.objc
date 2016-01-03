@@ -25,7 +25,7 @@
     return (NSMutableArray *)[context executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSMutableArray *)loadItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+- (NSMutableArray *)fetchCostBenefitItemsForBoxNumber:(NSNumber *)boxNumber managedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SMRCostBenefitItem" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
