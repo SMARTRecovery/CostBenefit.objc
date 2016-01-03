@@ -88,9 +88,15 @@
 #pragma mark - SMRCostBenefitBoxViewController
 
 - (void)reloadData {
+    NSInteger originalCount = self.costBenefitItems.count;
     self.boxHeaderLabel.text = [self.costBenefit getBoxLabelText:self.boxNumber isPlural:YES].uppercaseString;
     self.costBenefitItems = [self.costBenefit loadItemsForBoxNumber:self.boxNumber managedObjectContext:self.managedObjectContext];
     [self.tableView reloadData];
+    // If we have a newly inserted item, scroll to it:
+    if (originalCount + 1 == self.costBenefitItems.count) {
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:self.costBenefitItems.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (IBAction)addItemButtonTouchUpInside:(id)sender {
