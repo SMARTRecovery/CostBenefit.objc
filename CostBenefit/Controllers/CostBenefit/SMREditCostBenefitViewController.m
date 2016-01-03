@@ -166,12 +166,10 @@
 - (void)saveButtonTouchUpInside:(id)sender {
     self.costBenefit.dateUpdated = [[NSDate alloc] init];
     self.costBenefit.title = [self.titleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
     NSError *error;
     [self.managedObjectContext save:&error];
 
     UINavigationController *navVC = (UINavigationController *)self.presentingViewController;
-
     if (!self.isNew) {
         SMRCostBenefitViewController *destVC = (SMRCostBenefitViewController *)navVC.topViewController;
         destVC.managedObjectContext = self.managedObjectContext;
@@ -194,9 +192,7 @@
 }
 
 - (IBAction)deleteButtonTouchUpInside:(id)sender {
-
     UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this CBA?" message:@"All items will be deleted as well. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
-
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
         [self.managedObjectContext deleteObject:self.costBenefit];
         NSError *error;

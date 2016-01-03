@@ -41,7 +41,6 @@
     }
 
     return self;
-
 }
 
 #pragma mark - UIViewController
@@ -77,6 +76,7 @@
         self.editBoxButton.hidden = NO;
     }
 }
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
@@ -219,7 +219,7 @@ viewForFooterInSection:(NSInteger)section {
     return footerView;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (self.costBenefitItems.count > 0) {
         return 0;
     }
