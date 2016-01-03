@@ -89,8 +89,6 @@
 
 - (void)saveButtonTouchUpInside:(id)sender {
     self.costBenefitItem.title = [self.costBenefitItemTitleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    // @todo: This should be calculated to go to the end... or first
-    self.costBenefitItem.seq = [NSNumber numberWithInt:10];
     self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
     if (self.isNew) {
         self.costBenefitItem.dateCreated = [[NSDate alloc] init];
@@ -120,7 +118,7 @@
 - (IBAction)deleteButtonTouchUpInside:(id)sender {
     UIAlertController *confirmDeleteAlertController = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete this item?" message:@"This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-        self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc ] init];
+        self.costBenefitItem.costBenefit.dateUpdated = [[NSDate alloc] init];
         [self.costBenefitItem.costBenefit removeCostBenefitItemsObject:self.costBenefitItem];
         [self.managedObjectContext deleteObject:self.costBenefitItem];
         NSError *error;

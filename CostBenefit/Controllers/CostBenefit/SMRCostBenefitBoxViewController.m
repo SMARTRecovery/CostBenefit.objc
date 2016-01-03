@@ -104,6 +104,7 @@
     costBenefitItem.boxNumber = self.boxNumber;
     costBenefitItem.costBenefit = self.costBenefit;
     costBenefitItem.isLongTerm = [NSNumber numberWithBool:YES];
+    costBenefitItem.seq = [NSNumber numberWithLong:(long)self.costBenefitItems.count * 10];
     SMREditCostBenefitItemViewController *addItemVC = [[SMREditCostBenefitItemViewController alloc] initWithCostBenefitItem:costBenefitItem isNew:YES managedObjectContext:self.managedObjectContext];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addItemVC];
     navVC.navigationBar.translucent = NO;
@@ -122,11 +123,11 @@
 }
 
 - (void)finishEditing {
-  if (self.didEditBox) {
+    if (self.didEditBox) {
         for (int i = 0; i < self.costBenefitItems.count; i++) {
             NSIndexPath *indexPath =[NSIndexPath indexPathForRow:i inSection:0];
             SMRCostBenefitBoxTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            cell.costBenefitItem.seq = [NSNumber numberWithInt:i];
+            cell.costBenefitItem.seq = [NSNumber numberWithInt:i * 10];
         }
         NSError *error;
         [self.managedObjectContext save:&error];
