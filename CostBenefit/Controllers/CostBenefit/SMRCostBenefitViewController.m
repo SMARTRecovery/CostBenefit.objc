@@ -101,6 +101,7 @@
     }];
     [menuAlertController addAction:editAlertAction];
     [menuAlertController addAction:cancelAlertAction];
+    menuAlertController.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
     [self presentViewController:menuAlertController animated:YES completion:nil];
 }
 
